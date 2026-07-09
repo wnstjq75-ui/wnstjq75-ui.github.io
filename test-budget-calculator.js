@@ -72,7 +72,7 @@ assert(html.indexOf('3개월 단위') !== -1, 'disclaimer 3-month');
 assert(Calc.PRODUCTS.sklg.bonus.indexOf('더 넓은 도달') !== -1, 'SK benefit copy');
 assert(Calc.PRODUCTS.all3.bonus.indexOf('KT 1개월 보너스') !== -1, '3사 KT bonus');
 assert(Calc.PRODUCTS.all3.bonus.indexOf('/') !== -1, '3사 dual benefit');
-assert(html.indexOf('src="budget-calculator.js"') !== -1, 'loads math module');
+assert(/src="budget-calculator\.js(\?[^"]*)?"/.test(html), 'loads math module');
 assert(js.indexOf('BudgetCalculator.calculateExposures') !== -1, 'script uses real math');
 
 const pricing = html.slice(html.indexOf('id="pricing"'), html.indexOf('id="contact"'));

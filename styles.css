@@ -58,7 +58,7 @@ svg {
   max-width: 100%;
   height: auto;
 }
-img { display: block; }
+img { display: block; max-width: 100%; height: auto; }
 
 .container {
   max-width: 1200px;
@@ -3271,7 +3271,9 @@ img { display: block; }
   margin-bottom: 20px;
 }
 
-.dashboard__header h4 {
+.dashboard__header h3,
+.dashboard__header h4,
+.dashboard__title {
   font-size: 1rem;
   font-weight: 700;
   color: var(--navy);
@@ -3821,6 +3823,91 @@ img { display: block; }
   gap: 8px;
 }
 
+.footer__inner a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+
+.footer__inner a:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* FAQ — crawlable accordion (details/summary) */
+.section--faq {
+  background: var(--bg, #f7f6f3);
+  padding: 72px 0;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 28px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.faq-item__q {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 18px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.faq-item__q::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__q::after {
+  content: '+';
+  float: right;
+  font-weight: 600;
+  color: #8a8a8a;
+  margin-left: 12px;
+}
+
+.faq-item[open] .faq-item__q::after {
+  content: '−';
+}
+
+.faq-item__a {
+  padding: 0 18px 16px;
+}
+
+.faq-item__a p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #4a4a4a;
+  word-break: keep-all;
+}
+
+@media (max-width: 768px) {
+  .section--faq {
+    padding: 56px 0;
+  }
+
+  .faq-item__q {
+    font-size: 0.9rem;
+    padding: 14px 14px;
+  }
+
+  .faq-item__a {
+    padding: 0 14px 14px;
+  }
+}
+
 /* Reveal animations */
 .reveal {
   opacity: 0;
@@ -4194,7 +4281,7 @@ body.nav-open {
   min-height: 100dvh;
   height: 100vh;
   height: 100dvh;
-  padding: calc(var(--nav-h) + 8px) 16px 14px;
+  padding: calc(var(--nav-h) + 4px) 16px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4241,46 +4328,52 @@ body.nav-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 10px; /* tighter H1 block → media stage */
   flex: 1;
   min-height: 0;
   justify-content: center;
 }
 
-/* Main copy — balanced with large media */
+/* Main copy — compact so video showcase leads */
 .hero__top {
   position: relative;
   text-align: center;
-  max-width: 720px;
+  max-width: 640px;
   padding: 0 12px;
   flex-shrink: 0;
+  margin: 0;
 }
 
 .hero__eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   color: rgba(212, 190, 150, 0.75);
-  margin-bottom: 10px;
+  margin: 0 0 6px;
 }
 
 .hero--premium .hero__title {
-  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
   font-weight: 700;
   color: #fff;
-  line-height: 1.28;
+  line-height: 1.25;
   letter-spacing: -0.03em;
-  margin-bottom: 10px;
+  margin: 0 0 6px;
   text-shadow: 0 2px 40px rgba(0, 0, 0, 0.45), 0 0 48px rgba(196, 168, 120, 0.12);
 }
 
 .hero--premium .hero__desc {
-  font-size: clamp(0.95rem, 1.35vw, 1.1rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
   color: rgba(255, 255, 255, 0.68);
-  max-width: 540px;
+  max-width: 36em;
   margin: 0 auto;
-  line-height: 1.55;
+  line-height: 1.45;
   font-weight: 400;
+  /* desktop: keep subcopy to ~2 lines */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 /* Stage row: left HUD | frame (arrows inside) | right meta */
@@ -6909,10 +7002,12 @@ body.nav-open {
   margin-bottom: 2px;
 }
 
+.product-flow__top h3,
 .product-flow__top h4 {
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--text);
+  margin: 0;
 }
 
 .product-flow__body p {

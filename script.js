@@ -269,7 +269,7 @@
         escapeHtml(s.thumb) +
         '" alt="' +
         escapeHtml(s.title) +
-        ' 미리보기" loading="lazy">' +
+        ' — 15초 AI TV CF 제작 사례" width="640" height="360" loading="lazy">' +
         '<div class="video-card__overlay"><span class="video-card__play" aria-hidden="true">' +
         '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>' +
         '<span class="video-card__duration">15초</span>' +

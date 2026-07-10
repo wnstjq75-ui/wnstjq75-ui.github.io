@@ -55,7 +55,7 @@ assert(html.indexOf('portfolioIndex') === -1, 'page index removed from portfolio
 assert(js.indexOf('buildPortfolioCards') !== -1, 'portfolio built from catalog');
 assert(js.indexOf('normalizePortfolioPos') !== -1, 'infinite loop normalize present');
 assert(js.indexOf('HeroCarousel.nextIndex') !== -1, 'hero uses nextIndex');
-assert(html.indexOf('src="hero-carousel.js"') !== -1, 'loads hero-carousel.js');
+assert(/src="hero-carousel\.js(\?[^"]*)?"/.test(html), 'loads hero-carousel.js');
 
 if (failed) {
   console.error('\n' + failed + ' failed');

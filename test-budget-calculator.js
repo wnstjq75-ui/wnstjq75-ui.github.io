@@ -65,7 +65,10 @@ assert(html.indexOf('SKT') !== -1 && html.indexOf('LGU+') !== -1, 'SK tab');
 assert(html.indexOf('3사') !== -1 && html.indexOf('동시') !== -1, '3사 tab');
 assert(html.indexOf('pricing-tiers') === -1, 'static package tiers removed');
 assert(html.indexOf('이 예산으로 상담 문의') === -1, 'CTA budget contact removed');
-assert(html.indexOf('패키지 상담 받기') !== -1, 'CTA package contact');
+assert(
+  html.indexOf('TV광고 상담 문의') !== -1 || html.indexOf('패키지 상담') !== -1,
+  'CTA package contact'
+);
 assert(html.indexOf('100만원부터') !== -1 || html.indexOf('월 100만원부터') !== -1, '100만 entry msg');
 assert(html.indexOf('예상 완전시청 노출') !== -1 || html.indexOf('예상 노출') !== -1, 'disclaimer monthly');
 assert(html.indexOf('3개월 단위') !== -1, 'disclaimer 3-month');

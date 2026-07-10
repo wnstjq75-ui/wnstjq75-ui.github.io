@@ -63,7 +63,7 @@ assert(section.indexOf('7개 이상') !== -1, 'channel criteria text');
 assert(section.indexOf('지역 등급 기준') !== -1, 'region grades title');
 assert(section.indexOf('S급') !== -1 && section.indexOf('강남구') !== -1, 'S grade content');
 assert(section.indexOf('집행 조건에 따라 달라질 수 있습니다') !== -1, 'disclaimer');
-assert(html.indexOf('src="targeting-surcharge.js"') !== -1, 'loads module');
+assert(/src="targeting-surcharge\.js(\?[^"]*)?"/.test(html), 'loads module');
 assert(js.indexOf('TargetingSurcharge') !== -1, 'script uses module');
 assert(js.indexOf('isRowVisible') !== -1 || js.indexOf('filterRows') !== -1, 'uses pure filter');
 

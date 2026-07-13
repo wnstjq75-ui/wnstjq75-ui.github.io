@@ -26,7 +26,7 @@ const whyMatch = html.match(/id="benefits"[\s\S]*?<\/section>/);
 ok('benefits section exists', !!whyMatch);
 const why = whyMatch ? whyMatch[0] : '';
 
-ok('title IPTV광고를 선택하는 이유', /IPTV광고를 선택하는 이유/.test(why));
+ok('title 중소기업 TV광고에 IPTV가 적합한 이유', /중소기업 TV광고에 IPTV가 적합한 이유/.test(why));
 ok('benefit cards present', /why-card|why__benefits/.test(why));
 ok('brand trust', /브랜드 신뢰감/.test(why));
 ok('repeat exposure', /반복 노출/.test(why));

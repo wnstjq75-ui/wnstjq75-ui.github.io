@@ -29,7 +29,7 @@ const left = section.slice(leftStart, leftEnd);
 
 assert(left.indexOf('타겟팅 기능') !== -1, 'badge 타겟팅 기능');
 assert(left.indexOf('필요한 곳에만') === -1, 'old abstract headline removed');
-assert(left.indexOf('원하는 고객에게만') !== -1 || left.indexOf('정확하게 송출') !== -1, 'new concrete headline');
+assert(left.indexOf('IPTV TV광고를 원하는 고객에게 맞춤 송출합니다') !== -1, 'new concrete headline');
 assert(left.indexOf('targeting__points') !== -1, 'points list present');
 assert((left.match(/targeting__point-icon/g) || []).length >= 3, 'at least 3 point icons');
 assert(left.indexOf('시·군·구') !== -1 || left.indexOf('정밀 송출') !== -1, 'point region');

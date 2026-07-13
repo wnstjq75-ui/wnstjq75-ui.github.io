@@ -199,7 +199,7 @@
 
       if (heroThumb) {
         heroThumb.src = 'https://img.youtube.com/vi/' + slide.youtubeId + '/maxresdefault.jpg';
-        heroThumb.alt = slide.title + ' AI TV CF 예시 영상 썸네일';
+        heroThumb.alt = (slide.brand || slide.title) + ' 15초 TV광고 제작 사례';
         heroThumb.onerror = function () {
           this.onerror = null;
           this.src = slide.thumb;
@@ -268,8 +268,8 @@
         '<img src="' +
         escapeHtml(s.thumb) +
         '" alt="' +
-        escapeHtml(s.title) +
-        ' — 15초 AI TV CF 제작 사례" width="640" height="360" loading="lazy">' +
+        escapeHtml(s.brand || s.title) +
+        ' 15초 TV광고 제작 사례" width="640" height="360" loading="lazy">' +
         '<div class="video-card__overlay"><span class="video-card__play" aria-hidden="true">' +
         '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>' +
         '<span class="video-card__duration">15초</span>' +

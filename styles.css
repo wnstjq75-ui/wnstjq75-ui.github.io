@@ -12137,3 +12137,452 @@ body.nav-open {
     font-size: 0.62rem;
   }
 }
+
+/* ------------------------------------------------------------
+   2026 visual coherence pass
+   Premium broadcast proposal: warm paper, restrained depth,
+   consistent card geometry, and stronger mobile typography.
+   ------------------------------------------------------------ */
+:root {
+  --paper: #f6f3ed;
+  --paper-soft: #fbfaf7;
+  --paper-deep: #eee9df;
+  --ink: #11110f;
+  --ink-muted: #69675f;
+  --brand-gold: #c4a878;
+  --brand-gold-soft: rgba(196, 168, 120, 0.14);
+  --border: #dedbd2;
+  --bg: var(--paper-soft);
+  --off-white: var(--paper);
+  --surface: #fffefa;
+  --text: var(--ink);
+  --text-muted: var(--ink-muted);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 10px 28px -24px rgba(18, 18, 16, 0.38);
+  --shadow-lg: 0 22px 52px -36px rgba(18, 18, 16, 0.48);
+}
+
+body {
+  background: var(--paper-soft);
+}
+
+.section {
+  padding: 76px 0;
+}
+
+.section__header,
+.pricing-premium__header {
+  margin-bottom: 42px;
+}
+
+.section__title {
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.section__subtitle,
+.section__desc,
+.pricing-premium__guide {
+  text-wrap: pretty;
+}
+
+.section__desc {
+  color: var(--ink-muted);
+}
+
+.badge {
+  border: 1px solid rgba(17, 17, 15, 0.08);
+  background: var(--paper-deep);
+  color: #4f483c;
+  box-shadow: none;
+}
+
+.badge::before {
+  background: var(--brand-gold);
+}
+
+.section--about {
+  background: var(--paper-soft);
+}
+
+.section--why,
+.section--report {
+  background: #fffefa;
+}
+
+.section--product,
+.section--faq {
+  background: var(--paper);
+}
+
+.section--targeting {
+  background: #fdfcf9;
+}
+
+.section--about,
+.section--why,
+.section--product,
+.section--targeting,
+.section--report,
+.section--faq {
+  border-top: 1px solid rgba(17, 17, 15, 0.06);
+}
+
+.section--dark,
+.section--solution,
+.section--aicf,
+.section--process,
+.section--contact {
+  background-color: #0a0a09;
+}
+
+/* Keep one quiet depth system across information cards. */
+.feature-card.card--info,
+.section--why .why-card.card--info,
+.product-flow__step.card--info,
+.viewing-benefit-v2.card--info,
+.section--report .dashboard,
+.faq-item {
+  border-color: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.feature-card.card--info,
+.section--why .why-card.card--info,
+.product-flow__step.card--info,
+.viewing-benefit-v2.card--info {
+  background: rgba(255, 254, 250, 0.92);
+}
+
+.feature-card--highlight.card--info,
+.product-flow__step--core.card--info {
+  border-color: rgba(196, 168, 120, 0.72);
+  background: linear-gradient(145deg, #fffefa 0%, #f5efe3 100%);
+  box-shadow: 0 16px 38px -30px rgba(109, 84, 42, 0.7);
+}
+
+.feature-card__icon,
+.why-card__icon,
+.product-flow__icon,
+.stat__icon {
+  background: var(--paper);
+  border-color: var(--border);
+  color: #332f28;
+  box-shadow: none;
+}
+
+.feature-card__index,
+.product-flow__num,
+.aicf-type__num {
+  letter-spacing: 0.08em;
+}
+
+.stats .stat {
+  background: rgba(255, 254, 250, 0.7);
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.card-chips span,
+.product-flow__tag,
+.why-card__metric {
+  background: var(--paper);
+  border-color: var(--border);
+}
+
+@media (hover: hover) {
+  .feature-card:hover,
+  .why-card:hover,
+  .product-flow__step:hover,
+  .faq-item:hover {
+    transform: translateY(-2px);
+    border-color: #ccc6b8;
+    box-shadow: 0 18px 38px -30px rgba(18, 18, 16, 0.5);
+  }
+}
+
+/* Restrain decorative effects outside the hero so the films stay dominant. */
+.process-stage__glow,
+.contact-stage__glow,
+.why-compare__glow {
+  opacity: 0.42;
+}
+
+.section--solution .compare__card,
+.section--aicf .aicf-type.card--info,
+.section--process .process-step__card,
+.section--contact .contact-sales__card {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 18px 46px -34px rgba(0, 0, 0, 0.82) !important;
+}
+
+.section--aicf .aicf-type.card--info {
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.section--process .process-step__card {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.why-compare__panel {
+  border-color: rgba(17, 17, 15, 0.1);
+}
+
+.why-compare__panel--iptv {
+  box-shadow: 0 22px 48px -38px rgba(63, 48, 24, 0.72);
+}
+
+.why-compare__badge--accent,
+.product-flow__tag--core {
+  background: #1a1916;
+  color: #f1e6cf;
+  box-shadow: none;
+}
+
+/* Portfolio cards use quieter chrome so the actual video image leads. */
+.section--aicf .portfolio-carousel__card.video-card {
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 18px 44px -34px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+.section--aicf .portfolio-carousel__card .video-card__thumb {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.section--aicf .portfolio-carousel__card .video-card__body {
+  background: rgba(8, 8, 8, 0.72);
+}
+
+.portfolio-carousel__arrow {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: none;
+}
+
+.portfolio-carousel__arrow:hover {
+  border-color: rgba(232, 210, 160, 0.5);
+  background: rgba(232, 210, 160, 0.1);
+}
+
+/* Targeting and report panels share the editorial paper treatment. */
+.targeting-tabs,
+.targeting-visual,
+.targeting-feature,
+.surcharge,
+.dashboard,
+.chart-card,
+.kpi {
+  border-color: var(--border);
+}
+
+.targeting-tab--active {
+  background: #171714;
+  color: #fff;
+  box-shadow: none;
+}
+
+.targeting-feature,
+.chart-card,
+.kpi {
+  background: rgba(255, 254, 250, 0.72);
+  box-shadow: none;
+}
+
+/* Pricing: one accent, clearer result hierarchy, less visual noise. */
+.section--pricing-premium {
+  background: linear-gradient(180deg, #0a0a09 0%, #12110f 100%);
+}
+
+.pricing-premium__header {
+  max-width: 920px;
+}
+
+.pricing-premium__meta strong,
+.calc-surcharge__eyebrow,
+.calc-surcharge__label em,
+.calc-surcharge__summary strong {
+  color: #ead7ae;
+}
+
+.pricing-sim-row .calc-surcharge,
+.ad-calc__panel {
+  border-radius: var(--radius);
+}
+
+.pricing-sim-row .calc-surcharge {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.11);
+  box-shadow: none;
+}
+
+.ad-calc__panel {
+  background: var(--paper);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px -36px rgba(0, 0, 0, 0.86);
+}
+
+.ad-calc__intro,
+.ad-calc__controls {
+  background: #fffefa;
+}
+
+.ad-calc__result-num--primary,
+.ad-calc__monthly-v,
+.ad-calc__budget-value {
+  letter-spacing: -0.04em;
+}
+
+.calc-surcharge__chip--active {
+  border-color: rgba(232, 210, 160, 0.5);
+  background: rgba(232, 210, 160, 0.11);
+  box-shadow: none;
+}
+
+.faq-item {
+  background: rgba(255, 254, 250, 0.8);
+  overflow: hidden;
+}
+
+.faq-item[open] {
+  border-color: rgba(196, 168, 120, 0.58);
+  background: #fffefa;
+}
+
+:where(a, button, summary, input):focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .container,
+  .nav__inner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .section,
+  .section--problem,
+  .section--process,
+  .section--showcase-premium,
+  .section--contact {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .section__header,
+  .pricing-premium__header {
+    margin-bottom: 32px !important;
+  }
+
+  .hero--premium .hero__title,
+  .hero__title {
+    font-size: clamp(1.65rem, 7.2vw, 1.9rem) !important;
+    line-height: 1.28 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  .hero--premium .hero__desc,
+  .hero__desc {
+    font-size: 0.9rem !important;
+    line-height: 1.58 !important;
+  }
+
+  .section--why .section__title,
+  .section__title,
+  .section--product-system .section__title,
+  .section--aicf .section__title {
+    font-size: clamp(1.5rem, 6.5vw, 1.75rem) !important;
+    line-height: 1.28 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  .section__subtitle {
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .section__desc,
+  .pricing-premium__guide {
+    font-size: 0.94rem !important;
+    line-height: 1.68 !important;
+  }
+
+  .feature-card.card--info,
+  .section--why .why-card.card--info,
+  .viewing-panel,
+  .section--report .dashboard,
+  .contact-sales__card {
+    border-radius: 14px !important;
+  }
+
+  .feature-card.card--info,
+  .section--why .why-card.card--info {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 22px 18px !important;
+    overflow: hidden !important;
+  }
+
+  .about__cards,
+  .why__benefits,
+  .product-system__grid,
+  .pricing-sim-row,
+  .contact-sales {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .section--about,
+  .section--process,
+  .section--contact {
+    overflow-x: clip !important;
+  }
+
+  .process-stage,
+  .contact-stage {
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  .hero__visual,
+  .hero__frame {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .pricing-premium__meta {
+    font-size: 0.8rem !important;
+    line-height: 1.65 !important;
+    letter-spacing: 0 !important;
+  }
+
+  .targeting-tab {
+    border-radius: 9px !important;
+  }
+
+  .pricing-sim-row .calc-surcharge,
+  .ad-calc__panel {
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero--premium .hero__title,
+  .hero__title {
+    font-size: 1.65rem !important;
+  }
+
+  .section--why .section__title,
+  .section__title,
+  .section--product-system .section__title,
+  .section--aicf .section__title {
+    font-size: 1.5rem !important;
+  }
+}

@@ -15648,3 +15648,32 @@ body {
     margin-top: 1px;
   }
 }
+
+/* SOLUTION heading — keep all copy in one vertical reading flow. */
+@media (min-width: 901px) {
+  .section--solution .solution__intro {
+    display: block;
+    max-width: none;
+    margin-bottom: 36px;
+  }
+
+  .section--solution .solution__intro .section__eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .section--solution .solution__intro .section__title {
+    max-width: none;
+    margin: 0 0 22px;
+    white-space: nowrap;
+  }
+
+  .section--solution .solution__intro .section__lead {
+    margin: 0 0 5px;
+    padding-top: 0;
+  }
+
+  .section--solution .solution__intro .section__desc {
+    max-width: none;
+    margin: 0;
+  }
+}

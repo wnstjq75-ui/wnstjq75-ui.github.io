@@ -14983,6 +14983,7 @@ body {
 
   #targeting .targeting-pattern__chart {
     height: 104px;
+    margin-top: 14px;
   }
 
   #targeting .pattern-bar__track {

@@ -14519,6 +14519,60 @@ body {
   }
 }
 
+/* White information surfaces — retain intentional black controls/results. */
+#targeting .targeting__points li,
+#targeting .targeting__footer,
+#targeting .targeting__panel,
+#targeting .targeting-tabs,
+#targeting .targeting-visual,
+#targeting .targeting-data,
+#targeting .targeting-pattern,
+#targeting .targeting-report,
+#targeting .targeting-feature,
+#targeting .surcharge__panel,
+#targeting .surcharge__filters,
+#targeting .surcharge__table,
+#targeting .surcharge__thead,
+#targeting .surcharge__row,
+#targeting .surcharge__row--region,
+#targeting .surcharge__grades,
+#targeting + .channels,
+.channels {
+  background-color: #fff !important;
+  background-image: none !important;
+}
+
+#targeting .targeting-tab:not(.targeting-tab--active),
+#targeting .surcharge__filter:not(.surcharge__filter--active),
+.channels__list span,
+.channels__more {
+  background: #fff !important;
+  color: #111 !important;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+#report .report__note,
+#report .dashboard,
+#report .dashboard__date,
+#report .kpi,
+#report .chart-card {
+  background-color: #fff !important;
+  background-image: none !important;
+}
+
+#pricing .ad-calc__panel,
+#pricing .ad-calc__intro,
+#pricing .ad-calc__controls,
+#pricing .ad-calc__tabs,
+#pricing .ad-calc__meta-item {
+  background-color: #fff !important;
+  background-image: none !important;
+}
+
+#pricing .ad-calc__tabs {
+  border: 1px solid rgba(17, 17, 17, 0.1);
+}
+
 @media (max-width: 480px) {
   .container,
   .nav__inner {

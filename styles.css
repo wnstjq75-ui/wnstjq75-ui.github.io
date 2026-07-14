@@ -12138,6 +12138,61 @@ body.nav-open {
   }
 }
 
+/* Section badge alignment and compact product-system balance. */
+.section__header > .badge {
+  display: flex;
+  width: max-content;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.section--aicf .aicf__eyebrow {
+  display: flex;
+  width: max-content;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+@media (min-width: 1025px) {
+  .section--product-system .product-system__flow {
+    align-self: center;
+  }
+}
+
+.section--product-system .viewing-panel {
+  padding: 24px 26px;
+}
+
+.section--product-system .viewing-panel__head {
+  margin-bottom: 14px;
+}
+
+.section--product-system .viewing-panel__title {
+  margin-top: 10px;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  white-space: nowrap;
+}
+
+.section--product-system .viewing-panel__rule {
+  margin-bottom: 16px;
+}
+
+.section--product-system .viewing-timeline-v2 {
+  padding: 16px 18px 14px;
+  margin-bottom: 14px;
+}
+
+.section--product-system .viewing-benefit-v2 {
+  min-height: 104px;
+  padding: 12px 14px 14px;
+}
+
+@media (max-width: 768px) {
+  .section--product-system .viewing-panel__title {
+    white-space: normal;
+  }
+}
+
 /* ------------------------------------------------------------
    2026 visual coherence pass
    Premium broadcast proposal: warm paper, restrained depth,
@@ -12854,4 +12909,11 @@ body {
     font-size: 0.95rem !important;
     line-height: 1.7;
   }
+}
+
+.section--aicf .aicf__eyebrow {
+  display: flex;
+  width: max-content;
+  margin-left: 0;
+  margin-right: auto;
 }

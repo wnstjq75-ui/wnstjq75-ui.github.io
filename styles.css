@@ -14685,7 +14685,8 @@ body {
 .section--solution .compare__card--after,
 .section--solution .compare__card--after.card--emphasis {
   border-left: 1px solid rgba(17, 17, 17, 0.2) !important;
-  background: linear-gradient(145deg, #eef2f5 0%, #e3e9ee 100%) !important;
+  background: linear-gradient(145deg, #242424 0%, #080808 100%) !important;
+  color: #fff !important;
 }
 
 .section--solution .compare__card--before::after,
@@ -14751,6 +14752,27 @@ body {
   color: rgba(17, 17, 17, 0.6) !important;
   font-size: 0.82rem;
   line-height: 1.55;
+}
+
+.section--solution .compare__card--after .compare__label {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.section--solution .compare__card--after h3,
+.section--solution .compare__card--after li strong {
+  color: #fff !important;
+}
+
+.section--solution .compare__card--after .compare__num {
+  color: rgba(255, 255, 255, 0.46) !important;
+}
+
+.section--solution .compare__card--after li {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.section--solution .compare__card--after li p {
+  color: rgba(255, 255, 255, 0.62) !important;
 }
 
 .section--solution .compare__arrow,

@@ -1,5 +1,6 @@
 const fs=require("fs");const path=require("path");
 const html=fs.readFileSync(path.join(__dirname,"index.html"),"utf8");
+const css=fs.readFileSync(path.join(__dirname,"styles.css"),"utf8");
 const why=(html.match(/id="benefits"[\s\S]*?<\/section>/)||[""])[0];
 let p=0,f=0;const ok=(n,c)=>{if(c){console.log("PASS "+n);p++}else{console.log("FAIL "+n);f++}};
 ok("vs title", /TV광고를 선택하는 이유/.test(why));
@@ -7,5 +8,7 @@ ok("tv advantages", /브랜드 신뢰감/.test(why) && /반복 노출/.test(why)
 ok("online side", /짧게 스치고 끝납니다/.test(why));
 ok("unified board", /why-vs-board/.test(why));
 ok("no old list", !/why-edit__list/.test(why));
+ok("about precedes why", html.indexOf('id="about"') < html.indexOf('id="benefits"'));
+ok("balanced 50 50 board", /why-vs-board[\s\S]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/.test(css));
 console.log(f===0?"All ok":f+" failed");
 process.exit(f>0?1:0);

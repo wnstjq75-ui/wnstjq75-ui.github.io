@@ -40,7 +40,8 @@ assert(left.indexOf('효율') !== -1 || left.indexOf('높아집니다') !== -1, 
 // not two long abstract desc paragraphs only
 assert((left.match(/section__desc/g) || []).length <= 1, 'at most one body desc');
 assert(section.indexOf('targeting-tab') !== -1, 'middle tabs remain');
-assert(css.indexOf('height: 200px !important') !== -1, 'targeting tab visuals share compact height');
+assert(css.indexOf('var(--targeting-geo-height') !== -1, 'targeting visuals inherit first GEO panel height');
+assert(js.indexOf('syncTargetingVisualHeight') !== -1, 'first GEO panel height is measured');
 assert(section.indexOf('id="surcharge"') !== -1 || section.indexOf('surcharge') !== -1, 'surcharge remains');
 assert(html.indexOf('href="#targeting"') !== -1, 'nav targeting');
 assert(js.indexOf('targeting-tab') !== -1 || js.indexOf('targetingTabs') !== -1, 'tabs JS remains');

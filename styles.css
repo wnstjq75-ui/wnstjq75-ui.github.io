@@ -14941,21 +14941,31 @@ body {
   }
 }
 
-/* Targeting content visuals — compact equal height across all four tabs. */
+/* Targeting content visuals — match the natural size of the first GEO panel. */
 @media (min-width: 769px) {
-  #targeting .targeting-visual,
-  #targeting .targeting-geo,
   #targeting .targeting-data,
   #targeting .targeting-visual--pattern,
   #targeting .targeting-visual--report {
-    height: 200px !important;
-    min-height: 200px !important;
-    max-height: 200px !important;
+    height: var(--targeting-geo-height, auto) !important;
+    min-height: var(--targeting-geo-height, 168px) !important;
+    max-height: var(--targeting-geo-height, none) !important;
     box-sizing: border-box;
     overflow: hidden;
   }
 
-  #targeting .geo-console,
+  #targeting .targeting-geo {
+    height: auto !important;
+    min-height: 168px !important;
+    max-height: none !important;
+    overflow: hidden;
+  }
+
+  #targeting .geo-console {
+    height: auto;
+    min-height: 168px;
+    box-sizing: border-box;
+  }
+
   #targeting .targeting-report {
     height: 100%;
     min-height: 0;

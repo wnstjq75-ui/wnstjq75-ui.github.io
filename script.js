@@ -91,6 +91,29 @@
     });
   });
 
+  // Keep every targeting visual aligned to the natural height of the first GEO panel.
+  const targetingPanel = document.getElementById('targetingPanel');
+  const targetingGeoVisual = targetingPanel?.querySelector('[data-panel="geo"] .targeting-geo');
+
+  const syncTargetingVisualHeight = () => {
+    if (!targetingPanel || !targetingGeoVisual) return;
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      targetingPanel.style.removeProperty('--targeting-geo-height');
+      return;
+    }
+
+    const geoHeight = Math.ceil(targetingGeoVisual.getBoundingClientRect().height);
+    if (geoHeight > 0) {
+      targetingPanel.style.setProperty('--targeting-geo-height', `${geoHeight}px`);
+    }
+  };
+
+  syncTargetingVisualHeight();
+  window.addEventListener('resize', syncTargetingVisualHeight, { passive: true });
+  if ('ResizeObserver' in window && targetingGeoVisual) {
+    new ResizeObserver(syncTargetingVisualHeight).observe(targetingGeoVisual);
+  }
+
   const kpiValues = document.querySelectorAll('.kpi__value');
   const animateValue = (el) => {
     const text = el.textContent;

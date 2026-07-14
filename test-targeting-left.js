@@ -27,7 +27,7 @@ const leftStart = section.indexOf('targeting__text');
 const leftEnd = section.indexOf('targeting__panel');
 const left = section.slice(leftStart, leftEnd);
 
-assert(left.indexOf('타겟팅 기능') !== -1, 'badge 타겟팅 기능');
+assert(left.indexOf('타겟팅 기능') === -1, 'top badge removed');
 assert(left.indexOf('필요한 곳에만') === -1, 'old abstract headline removed');
 assert(left.indexOf('IPTV TV광고를 원하는 고객에게 맞춤 송출합니다') !== -1, 'new concrete headline');
 assert(left.indexOf('targeting__points') !== -1, 'points list present');

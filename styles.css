@@ -12138,40 +12138,6 @@ body.nav-open {
   }
 }
 
-/* Section badge alignment and compact product-system balance. */
-.section__header > .badge {
-  display: flex;
-  width: max-content;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.section--aicf .aicf__eyebrow {
-  display: flex;
-  width: max-content;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-/* Desktop targeting alignment: badge above, headline level with the UI card. */
-@media (min-width: 1101px) {
-  .section--targeting .targeting__text {
-    position: relative;
-    padding-top: 0;
-  }
-
-  .section--targeting .targeting__text > .badge {
-    position: absolute;
-    top: -52px;
-    left: 0;
-    margin: 0;
-  }
-
-  .section--targeting .targeting__headline {
-    margin-top: 0;
-  }
-}
-
 @media (min-width: 1025px) {
   .section--product-system .product-system__flow {
     align-self: center;
@@ -12187,7 +12153,7 @@ body.nav-open {
 }
 
 .section--product-system .viewing-panel__title {
-  margin-top: 10px;
+  margin-top: 0;
   font-size: clamp(1.35rem, 2.2vw, 1.75rem);
   white-space: nowrap;
 }
@@ -12930,9 +12896,15 @@ body {
   }
 }
 
-.section--aicf .aicf__eyebrow {
-  display: flex;
-  width: max-content;
-  margin-left: 0;
-  margin-right: auto;
+/* Badge-free section openings and text-only contact benefits. */
+.section--aicf .aicf__hero {
+  padding-top: 20px;
+}
+
+.section--contact .contact-sales__points li {
+  padding-left: 14px !important;
+}
+
+.section--contact .contact-sales__points li::before {
+  content: none !important;
 }

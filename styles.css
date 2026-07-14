@@ -12586,3 +12586,10 @@ body {
     font-size: 1.5rem !important;
   }
 }
+
+@media (min-width: 1120px) {
+  #benefits .section__desc--center {
+    max-width: 1080px;
+    white-space: nowrap;
+  }
+}

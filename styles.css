@@ -12748,3 +12748,97 @@ body {
     white-space: normal;
   }
 }
+
+/* AI CF core benefit: make the strongest commercial value unmistakable. */
+.section--aicf .aicf__hero {
+  position: relative;
+  max-width: 1200px;
+  padding: 58px 40px 52px;
+  margin-bottom: 56px;
+  border: 1px solid rgba(232, 210, 160, 0.2);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(196, 168, 120, 0.13), transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.section--aicf .aicf__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(232, 210, 160, 0.28);
+  border-radius: 999px;
+  background: rgba(232, 210, 160, 0.08);
+  color: #e8d2a0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.section--aicf .aicf__title {
+  margin-bottom: 22px;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+}
+
+.section--aicf .aicf__desc {
+  margin-bottom: 28px;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.section--aicf .aicf__desc-line + .aicf__desc-line {
+  margin-top: 6px;
+}
+
+.section--aicf .aicf__desc strong {
+  color: #f1d79f;
+  font-weight: 800;
+}
+
+.section--aicf .aicf__hero .btn {
+  min-height: 54px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: #fff !important;
+  color: #111 !important;
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 14px 34px -20px rgba(0, 0, 0, 0.9);
+}
+
+.section--aicf .aicf__hero .btn:hover {
+  background: #f2eadc !important;
+}
+
+@media (max-width: 768px) {
+  .section--aicf .aicf__hero {
+    padding: 36px 18px 34px;
+    margin-bottom: 42px;
+    border-radius: 16px;
+  }
+
+  .section--aicf .aicf__eyebrow {
+    margin-bottom: 14px;
+    font-size: 0.75rem;
+  }
+
+  .section--aicf .aicf__title {
+    margin-bottom: 18px;
+    font-size: clamp(1.65rem, 7.2vw, 2rem) !important;
+    line-height: 1.28;
+  }
+
+  .section--aicf .aicf__desc {
+    margin-bottom: 24px;
+    font-size: 0.95rem !important;
+    line-height: 1.7;
+  }
+}

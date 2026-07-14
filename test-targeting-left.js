@@ -40,7 +40,7 @@ assert(left.indexOf('효율') !== -1 || left.indexOf('높아집니다') !== -1, 
 // not two long abstract desc paragraphs only
 assert((left.match(/section__desc/g) || []).length <= 1, 'at most one body desc');
 assert(section.indexOf('targeting-tab') !== -1, 'middle tabs remain');
-assert(css.indexOf('grid-template-columns: repeat(4, minmax(0, 1fr))') !== -1, 'targeting tabs use equal four-column grid');
+assert(css.indexOf('height: 260px !important') !== -1, 'targeting tab visuals share one height');
 assert(section.indexOf('id="surcharge"') !== -1 || section.indexOf('surcharge') !== -1, 'surcharge remains');
 assert(html.indexOf('href="#targeting"') !== -1, 'nav targeting');
 assert(js.indexOf('targeting-tab') !== -1 || js.indexOf('targetingTabs') !== -1, 'tabs JS remains');

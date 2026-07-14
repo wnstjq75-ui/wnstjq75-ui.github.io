@@ -14627,6 +14627,12 @@ body {
 }
 
 /* SOLUTION comparison — restrained editorial treatment. */
+.section--solution {
+  background:
+    radial-gradient(ellipse 72% 48% at 82% 8%, rgba(190, 156, 101, 0.11), transparent 62%),
+    linear-gradient(180deg, #f3f1ec 0%, #e9e5de 100%) !important;
+}
+
 .section--solution .solution__intro {
   max-width: 960px;
   margin-bottom: 44px;
@@ -14637,10 +14643,12 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
   overflow: hidden;
-  border: 1px solid rgba(17, 17, 17, 0.1);
+  border: 1px solid rgba(17, 17, 17, 0.13);
   border-radius: 14px;
   background: #fff;
-  box-shadow: none;
+  box-shadow:
+    0 24px 60px -42px rgba(17, 17, 17, 0.42),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
 }
 
 .section--solution .compare__card,
@@ -14651,15 +14659,15 @@ body {
   padding: 34px 38px 30px !important;
   border: 0 !important;
   border-radius: 0 !important;
-  background: #fff !important;
+  background: linear-gradient(180deg, #fff 0%, #fbfaf7 100%) !important;
   color: #111 !important;
   box-shadow: none !important;
 }
 
 .section--solution .compare__card--after,
 .section--solution .compare__card--after.card--emphasis {
-  border-left: 1px solid rgba(17, 17, 17, 0.1) !important;
-  background: #f2f0eb !important;
+  border-left: 1px solid rgba(122, 99, 59, 0.2) !important;
+  background: linear-gradient(145deg, #f3ede2 0%, #e8dfcf 100%) !important;
 }
 
 .section--solution .compare__card--before::after,
@@ -14682,7 +14690,7 @@ body {
 }
 
 .section--solution .compare__card--after .compare__label {
-  color: #7b6844 !important;
+  color: #765f37 !important;
 }
 
 .section--solution .compare__card h3,
@@ -14745,7 +14753,7 @@ body {
   margin-top: 22px;
   padding: 18px 0 0 !important;
   border: 0 !important;
-  border-top: 1px solid rgba(17, 17, 17, 0.1) !important;
+  border-top: 1px solid rgba(17, 17, 17, 0.14) !important;
   border-radius: 0 !important;
   background: transparent !important;
   color: rgba(17, 17, 17, 0.64) !important;

@@ -14628,9 +14628,7 @@ body {
 
 /* SOLUTION comparison — restrained editorial treatment. */
 .section--solution {
-  background:
-    radial-gradient(ellipse 72% 48% at 82% 8%, rgba(190, 156, 101, 0.11), transparent 62%),
-    linear-gradient(180deg, #f3f1ec 0%, #e9e5de 100%) !important;
+  background: linear-gradient(180deg, #f6f6f4 0%, #ededeb 100%) !important;
 }
 
 .section--solution .solution__intro {
@@ -14643,11 +14641,11 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
   overflow: hidden;
-  border: 1px solid rgba(17, 17, 17, 0.13);
+  border: 1px solid rgba(17, 17, 17, 0.18);
   border-radius: 14px;
   background: #fff;
   box-shadow:
-    0 24px 60px -42px rgba(17, 17, 17, 0.42),
+    0 24px 60px -42px rgba(17, 17, 17, 0.5),
     0 1px 0 rgba(255, 255, 255, 0.9) inset;
 }
 
@@ -14666,8 +14664,8 @@ body {
 
 .section--solution .compare__card--after,
 .section--solution .compare__card--after.card--emphasis {
-  border-left: 1px solid rgba(122, 99, 59, 0.2) !important;
-  background: linear-gradient(145deg, #f3ede2 0%, #e8dfcf 100%) !important;
+  border-left: 1px solid #111 !important;
+  background: linear-gradient(145deg, #171717 0%, #0b0b0b 100%) !important;
 }
 
 .section--solution .compare__card--before::after,
@@ -14690,7 +14688,7 @@ body {
 }
 
 .section--solution .compare__card--after .compare__label {
-  color: #765f37 !important;
+  color: rgba(255, 255, 255, 0.52) !important;
 }
 
 .section--solution .compare__card h3,
@@ -14725,7 +14723,7 @@ body {
 }
 
 .section--solution .compare__card--after .compare__num {
-  color: #8b744c;
+  color: rgba(255, 255, 255, 0.48);
 }
 
 .section--solution .compare__card li strong,
@@ -14741,6 +14739,19 @@ body {
   color: rgba(17, 17, 17, 0.58) !important;
   font-size: 0.82rem;
   line-height: 1.55;
+}
+
+.section--solution .compare__card--after h3,
+.section--solution .compare__card--after li strong {
+  color: #fff !important;
+}
+
+.section--solution .compare__card--after li {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.section--solution .compare__card--after li p {
+  color: rgba(255, 255, 255, 0.64) !important;
 }
 
 .section--solution .compare__arrow,
@@ -14784,7 +14795,7 @@ body {
 
   .section--solution .compare__card--after,
   .section--solution .compare__card--after.card--emphasis {
-    border-top: 1px solid rgba(17, 17, 17, 0.1) !important;
+    border-top: 1px solid #111 !important;
     border-left: 0 !important;
   }
 

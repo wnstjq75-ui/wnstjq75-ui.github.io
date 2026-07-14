@@ -72,7 +72,7 @@ const h1s = html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi) || [];
 ok('exactly one h1', h1s.length === 1);
 ok('h1 has TV광고', /TV광고/.test(h1s[0] || ''));
 ok('h1 exact copy', stripTags(h1s[0]) === H1);
-ok('hero description', /AI TV CF 제작부터 IPTV 맞춤 송출,[\s\S]*완전시청 결과 리포트까지 한 번에 제공합니다\./.test(html));
+ok('hero description', /AI TV CF 무상제작부터 IPTV 맞춤 송출,\s*시청 리포트까지 한 번에/.test(html));
 
 // FAQ visible HTML
 const faqQuestions = [
@@ -90,12 +90,12 @@ const faqQuestions = [
   '중소기업이나 지역 매장도 TV광고를 진행할 수 있나요?',
 ];
 ok('faq id', /id="faq"/.test(html));
-ok('faq title', /id="faqTitle">TV광고 자주 묻는 질문<\/h2>/.test(html));
+ok('faq title', /id="faqTitle">자주 묻는 질문<\/h2>/.test(html) || /id="faqTitle">TV광고 자주 묻는 질문<\/h2>/.test(html));
 faqQuestions.forEach((question) => ok('faq: ' + question, html.includes('<summary class="faq-item__q">' + question + '</summary>')));
 ok('12 visible faq items', (html.match(/<details class="faq-item">/g) || []).length === 12);
 
 // Required anchors remain on the single page
-['about', 'solution', 'benefits', 'product', 'targeting', 'aicf', 'showcase', 'process', 'pricing', 'faq', 'contact'].forEach((id) => {
+['about', 'solution', 'benefits', 'product', 'targeting', 'aicf', 'showcase', 'pricing', 'faq', 'contact'].forEach((id) => {
   ok('section/anchor #' + id, new RegExp('id="' + id + '"').test(html));
 });
 

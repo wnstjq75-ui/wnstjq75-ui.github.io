@@ -12736,6 +12736,11 @@ body {
   max-width: none;
 }
 
+.section--aicf .aicf__desc,
+.section--aicf .aicf__portfolio-desc {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
 @media (max-width: 980px) {
   .about__desc-line,
   .aicf__desc-line,

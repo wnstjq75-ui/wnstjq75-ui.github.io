@@ -14941,16 +14941,16 @@ body {
   }
 }
 
-/* Targeting content visuals — equal height across all four tabs. */
+/* Targeting content visuals — compact equal height across all four tabs. */
 @media (min-width: 769px) {
   #targeting .targeting-visual,
   #targeting .targeting-geo,
   #targeting .targeting-data,
   #targeting .targeting-visual--pattern,
   #targeting .targeting-visual--report {
-    height: 260px !important;
-    min-height: 260px !important;
-    max-height: 260px !important;
+    height: 200px !important;
+    min-height: 200px !important;
+    max-height: 200px !important;
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -14960,5 +14960,49 @@ body {
     height: 100%;
     min-height: 0;
     box-sizing: border-box;
+  }
+
+  #targeting .targeting-pattern {
+    padding: 10px 14px 8px;
+  }
+
+  #targeting .targeting-pattern__header {
+    min-height: 24px;
+    margin-bottom: 6px;
+  }
+
+  #targeting .targeting-pattern__chart {
+    height: 104px;
+  }
+
+  #targeting .pattern-bar__track {
+    height: 82px;
+  }
+
+  #targeting .targeting-pattern__legend {
+    margin-top: 6px;
+  }
+
+  #targeting .targeting-report {
+    padding: 10px 12px;
+  }
+
+  #targeting .targeting-report__header {
+    margin-bottom: 8px;
+  }
+
+  #targeting .targeting-report__flow {
+    gap: 6px;
+    margin-bottom: 8px;
+    padding: 6px;
+  }
+
+  #targeting .report-flow__step,
+  #targeting .targeting-report__kpi {
+    padding: 6px;
+  }
+
+  #targeting .targeting-report__kpis {
+    margin-bottom: 6px;
   }
 }

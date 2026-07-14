@@ -14560,59 +14560,59 @@ body {
   border: 1px solid rgba(17, 17, 17, 0.1);
 }
 
-/* Targeting mini cards — strong hierarchy inside white outer panels. */
+/* Targeting mini cards — dimensional white surfaces inside white panels. */
 #targeting .targeting-feature {
   background:
-    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.14) 0%, transparent 42%),
-    linear-gradient(145deg, #343434 0%, #191919 48%, #050505 100%) !important;
-  border: 1px solid rgba(0, 0, 0, 0.95);
+    radial-gradient(circle at 16% 0%, #fff 0%, rgba(255, 255, 255, 0) 44%),
+    linear-gradient(145deg, #ffffff 0%, #f7f7f6 48%, #ececea 100%) !important;
+  border: 1px solid rgba(17, 17, 17, 0.14);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.88),
-    0 16px 30px -18px rgba(0, 0, 0, 0.78);
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(17, 17, 17, 0.05),
+    0 16px 30px -20px rgba(0, 0, 0, 0.42);
 }
 
 #targeting .targeting-feature__num {
-  color: rgba(255, 255, 255, 0.48) !important;
+  color: rgba(17, 17, 17, 0.46) !important;
 }
 
 #targeting .targeting-feature strong {
-  color: #fff !important;
+  color: #111 !important;
 }
 
 #targeting .targeting-feature p {
-  color: #fff !important;
+  color: rgba(17, 17, 17, 0.7) !important;
 }
 
 #targeting .report-flow__step,
 #targeting .targeting-report__kpi {
   background:
-    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.14) 0%, transparent 42%),
-    linear-gradient(145deg, #343434 0%, #191919 48%, #050505 100%) !important;
-  border-color: rgba(0, 0, 0, 0.95) !important;
+    radial-gradient(circle at 16% 0%, #fff 0%, rgba(255, 255, 255, 0) 44%),
+    linear-gradient(145deg, #ffffff 0%, #f7f7f6 48%, #ececea 100%) !important;
+  border-color: rgba(17, 17, 17, 0.14) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.16),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.88),
-    0 16px 30px -18px rgba(0, 0, 0, 0.78);
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(17, 17, 17, 0.05),
+    0 16px 30px -20px rgba(0, 0, 0, 0.42);
 }
 
 #targeting .report-flow__step--active {
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.88),
-    0 16px 30px -18px rgba(0, 0, 0, 0.78);
+    inset 0 0 0 1px rgba(17, 17, 17, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(17, 17, 17, 0.05),
+    0 16px 30px -20px rgba(0, 0, 0, 0.42);
 }
 
 #targeting .report-flow__week,
 #targeting .report-flow__step em,
 #targeting .targeting-report__kpi span {
-  color: #fff !important;
+  color: rgba(17, 17, 17, 0.56) !important;
 }
 
 #targeting .report-flow__step strong,
 #targeting .targeting-report__kpi strong {
-  color: #fff !important;
+  color: #111 !important;
 }
 
 @media (max-width: 480px) {

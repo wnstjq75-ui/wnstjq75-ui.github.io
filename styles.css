@@ -14837,6 +14837,15 @@ body {
   }
 }
 
+/* Keep the long cost-efficiency sentence on one line whenever the card is wide enough. */
+@media (min-width: 520px) {
+  .section--solution .compare__card li p.compare__copy--single-line {
+    font-size: 0.75rem;
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+  }
+}
+
 /* Budget tick labels follow the range's real stop positions (28px thumb center). */
 #calcTicks.ad-calc__ticks {
   position: relative !important;

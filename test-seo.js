@@ -31,7 +31,7 @@ function stripTags(value) {
 const ROOT = 'https://wnstjq75-ui.github.io/';
 const TITLE = 'TV광고 비용·제작·IPTV 송출 | 월 100만원부터 | 오픈엑스';
 const DESCRIPTION = '월 100만원부터 시작하는 TV광고. 15초 AI TV CF 제작 지원부터 KT·SK B tv·LG U+tv IPTV 맞춤 송출, 지역·채널 타겟팅, 완전시청 결과 리포트까지 오픈엑스가 제공합니다.';
-const H1 = '월 100만원부터, TV광고를 시작하세요';
+const H1 = '월 100만원부터 TV광고를 시작하세요';
 
 // Document and head metadata
 ok('html lang ko', /<html\s+lang="ko">/i.test(html));

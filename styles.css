@@ -14042,6 +14042,72 @@ body {
   background: linear-gradient(90deg, transparent, rgba(196, 168, 120, 0.55), transparent);
 }
 
+.why-research-proof {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  margin: -10px 0 28px;
+  padding: 16px 4px;
+  border-top: 1px solid rgba(196, 168, 120, 0.22);
+  border-bottom: 1px solid rgba(196, 168, 120, 0.22);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.why-research-proof:hover {
+  border-color: rgba(232, 210, 160, 0.48);
+  background: rgba(196, 168, 120, 0.035);
+}
+
+.why-research-proof:focus-visible {
+  outline: 2px solid rgba(232, 210, 160, 0.8);
+  outline-offset: 5px;
+}
+
+.why-research-proof__source {
+  color: rgba(232, 210, 160, 0.8);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+.why-research-proof__statement {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: clamp(0.88rem, 1.35vw, 1rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -0.025em;
+}
+
+.why-research-proof__statement strong,
+.why-research-proof__statement b {
+  color: #fff;
+  font-weight: 800;
+}
+
+.why-research-proof__meta {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.why-research-proof__meta span {
+  display: inline-block;
+  margin-left: 5px;
+  color: rgba(232, 210, 160, 0.72);
+  transition: transform 180ms ease;
+}
+
+.why-research-proof:hover .why-research-proof__meta span {
+  transform: translate(2px, -2px);
+}
+
 /* One stage, two columns — not card stacks */
 .why-vs-board {
   display: grid;
@@ -14213,6 +14279,23 @@ body {
 }
 
 @media (max-width: 860px) {
+  .why-research-proof {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-top: -12px;
+    padding: 16px 2px;
+    text-align: center;
+  }
+
+  .why-research-proof__statement {
+    max-width: 30em;
+    margin: 0 auto;
+  }
+
+  .why-research-proof__meta {
+    margin-top: 2px;
+  }
+
   .why-vs-board {
     grid-template-columns: 1fr;
     border-radius: 16px;

@@ -197,7 +197,7 @@
         'https://www.youtube-nocookie.com/embed/' +
         encodeURIComponent(slide.youtubeId) +
         '?autoplay=1&rel=0&playsinline=1&modestbranding=1';
-      iframe.title = slide.title + ' 영상 재생';
+      iframe.title = (slide.brand || slide.title) + ' AI CF 영상 재생';
       iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       iframe.allowFullscreen = true;
       heroPlayerHost.replaceChildren(iframe);
@@ -213,14 +213,14 @@
 
       if (heroThumb) {
         heroThumb.src = 'https://img.youtube.com/vi/' + slide.youtubeId + '/maxresdefault.jpg';
-        heroThumb.alt = (slide.brand || slide.title) + ' 15초 TV광고 제작 사례';
+        heroThumb.alt = (slide.brand || slide.title) + ' 15초 AI CF 제작 사례';
         heroThumb.onerror = function () {
           this.onerror = null;
           this.src = slide.thumb;
         };
       }
       if (heroPlay) {
-        heroPlay.setAttribute('aria-label', slide.title + ' 영상 바로 재생');
+        heroPlay.setAttribute('aria-label', (slide.brand || slide.title) + ' AI CF 영상 바로 재생');
       }
       if (heroMediaCategory) {
         heroMediaCategory.textContent = 'AI CF';
@@ -277,7 +277,7 @@
         '<a class="video-card card--media portfolio-carousel__card" href="' +
         escapeHtml(s.href) +
         '" target="_blank" rel="noopener noreferrer" aria-label="' +
-        escapeHtml(s.title) +
+        escapeHtml('AI CF · ' + (s.brand || s.title)) +
         ' YouTube에서 보기" data-portfolio-index="' +
         i +
         '">' +
@@ -286,20 +286,20 @@
         escapeHtml(s.thumb) +
         '" alt="' +
         escapeHtml(s.brand || s.title) +
-        ' 15초 TV광고 제작 사례" width="640" height="360" loading="lazy">' +
+        ' 15초 AI CF 제작 사례" width="640" height="360" loading="lazy">' +
         '<div class="video-card__overlay"><span class="video-card__play" aria-hidden="true">' +
         '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>' +
         '<span class="video-card__duration">15초</span>' +
         '</div>' +
         '<div class="video-card__body">' +
         '<h3>' +
-        escapeHtml(s.title) +
+        escapeHtml('AI CF · ' + (s.brand || s.title)) +
         '</h3>' +
         '<p>' +
         escapeHtml(s.desc) +
         '</p>' +
         '<div class="video-card__meta">' +
-        '<span>🎬 AI TV CF</span><span>📺 IPTV 송출</span><span>⏱ 15초</span>' +
+        '<span>🎬 AI CF</span><span>📺 IPTV 송출</span><span>⏱ 15초</span>' +
         '</div>' +
         '<span class="video-card__link">YouTube에서 보기 →</span>' +
         '</div></a>'

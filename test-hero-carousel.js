@@ -39,6 +39,8 @@ const ids = HeroCarousel.SLIDES.map((s) => s.youtubeId);
 requiredIds.forEach((id) => {
   assert(ids.indexOf(id) !== -1, 'catalog includes ' + id);
 });
+assert(HeroCarousel.SLIDES.every((slide) => slide.desc.indexOf('AI CF') !== -1), 'all hero and showcase descriptions use AI CF');
+assert(HeroCarousel.SLIDES.every((slide) => slide.desc.indexOf('AI TV CF') === -1), 'legacy AI TV CF wording removed from descriptions');
 
 let i = 0;
 for (let step = 0; step < HeroCarousel.slideCount(); step++) {
@@ -52,10 +54,17 @@ assert(i === HeroCarousel.slideCount() - 1, 'prev wraps to last');
 
 const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
 const js = fs.readFileSync(path.join(__dirname, 'script.js'), 'utf8');
+const heroHtml = html.slice(html.indexOf('id="hero"'), html.indexOf('id="about"'));
+const showcaseHtml = html.slice(html.indexOf('id="aicf"'), html.indexOf('id="report"'));
+assert(heroHtml.indexOf('AI TV CF') === -1 && heroHtml.indexOf('제품광고') === -1 && heroHtml.indexOf('브랜드광고') === -1, 'hero visible copy is standardized to AI CF');
+assert(showcaseHtml.indexOf('AI TV CF') === -1 && showcaseHtml.indexOf('제품광고') === -1 && showcaseHtml.indexOf('브랜드광고') === -1, 'showcase visible copy is standardized to AI CF');
 assert(html.indexOf('portfolio-carousel') !== -1, 'portfolio carousel markup');
 assert(html.indexOf('id="portfolioPrev"') !== -1 && html.indexOf('id="portfolioNext"') !== -1, 'portfolio arrows');
 assert(html.indexOf('portfolioIndex') === -1, 'page index removed from portfolio');
 assert(js.indexOf('buildPortfolioCards') !== -1, 'portfolio built from catalog');
+assert(js.indexOf("'AI CF · ' + (s.brand || s.title)") !== -1, 'portfolio titles use AI CF label');
+assert(js.indexOf('🎬 AI CF') !== -1, 'portfolio meta uses AI CF label');
+assert(html.indexOf('실제 AI CF 제작 사례') !== -1, 'showcase note uses AI CF label');
 assert(js.indexOf('normalizePortfolioPos') !== -1, 'infinite loop normalize present');
 assert(js.indexOf('HeroCarousel.nextIndex') !== -1, 'hero uses nextIndex');
 assert(html.indexOf('id="heroMediaCategory">AI CF</p>') !== -1, 'hero category defaults to AI CF');

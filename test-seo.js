@@ -72,7 +72,7 @@ const h1s = html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi) || [];
 ok('exactly one h1', h1s.length === 1);
 ok('h1 has TV광고', /TV광고/.test(h1s[0] || ''));
 ok('h1 exact copy', stripTags(h1s[0]) === H1);
-ok('hero description', /AI TV CF 무상제작부터 IPTV 맞춤 송출,\s*시청 리포트까지 한 번에/.test(html));
+ok('hero description', /AI CF 무상제작부터 IPTV 맞춤 송출,\s*시청 리포트까지 한 번에/.test(html));
 
 // FAQ visible HTML
 const faqQuestions = [

@@ -15,7 +15,7 @@
     {
       type: '제품',
       title: '제품광고 미즈허브 비타민세럼',
-      desc: '뷰티 제품의 핵심 효능을 감각적으로 전달하는 AI TV CF',
+      desc: '뷰티 제품의 핵심 효능을 감각적으로 전달하는 AI CF',
       youtubeId: 'fO7mEll3Leg',
     },
     {
@@ -27,13 +27,13 @@
     {
       type: '브랜드',
       title: '브랜드광고 감성주택',
-      desc: '공간과 라이프스타일의 감성을 담은 브랜드 CF',
+      desc: '공간과 라이프스타일의 감성을 담은 브랜드 AI CF',
       youtubeId: 'vVRYGupRGNE',
     },
     {
       type: '브랜드',
       title: '브랜드광고 병원동행서비스',
-      desc: '신뢰감 있는 서비스 브랜딩 AI TV CF',
+      desc: '신뢰감 있는 서비스 브랜딩 AI CF',
       youtubeId: 'mi_ikAotG3c',
     },
     {
@@ -45,67 +45,67 @@
     {
       type: '브랜드',
       title: '브랜드광고 머니가드',
-      desc: '금융·케어 브랜드 톤의 프리미엄 CF',
+      desc: '금융·케어 브랜드 톤의 프리미엄 AI CF',
       youtubeId: 'HrUkB2OzNoM',
     },
     {
       type: '브랜드',
       title: '브랜드광고 CamCube',
-      desc: '제품 세계관을 보여주는 브랜드 영상',
+      desc: '제품 세계관을 보여주는 브랜드 AI CF',
       youtubeId: 'NZ8BtMKu0XE',
     },
     {
       type: '제품',
       title: '제품광고 물티슈 시치미쓱',
-      desc: '제품 장점을 직관적으로 각인하는 AI TV CF',
+      desc: '제품 장점을 직관적으로 각인하는 AI CF',
       youtubeId: 's3Pf_cABpjE',
     },
     {
       type: '제품',
       title: '제품광고 전기삼륜차',
-      desc: '모빌리티 제품 특장점을 강조한 CF',
+      desc: '모빌리티 제품 특장점을 강조한 AI CF',
       youtubeId: 'KwgesSgkj4c',
     },
     {
       type: '제품',
       title: '제품광고 르오브 2in1 UV 전기모기채',
-      desc: '기능성 생활가전 제품 광고',
+      desc: '기능성 생활가전의 장점을 보여주는 AI CF',
       youtubeId: 'jexf0BNc7iw',
     },
     {
       type: '브랜드',
       title: '브랜드광고 토리야',
-      desc: '브랜드 무드를 살린 스토리텔링 CF',
+      desc: '브랜드 무드를 살린 스토리텔링 AI CF',
       youtubeId: '6REG7_HWdCg',
     },
     {
       type: '제품',
       title: '제품광고 도라지 · 배 · 꿀 꿀목',
-      desc: '식품 제품의 핵심 가치를 전달하는 CF',
+      desc: '식품 제품의 핵심 가치를 전달하는 AI CF',
       youtubeId: 'XPCIuqyUwZI',
     },
     {
       type: '제품',
       title: '제품광고 락K-1 코앤면역',
-      desc: '건강기능식품 제품 포인트를 압축한 CF',
+      desc: '건강기능식품 제품 포인트를 압축한 AI CF',
       youtubeId: 'FR8Q9qalmNM',
     },
     {
       type: '제품',
       title: '제품광고 덴티스테',
-      desc: '제품의 핵심 장점을 직관적으로 각인하는 AI TV CF',
+      desc: '제품의 핵심 장점을 직관적으로 각인하는 AI CF',
       youtubeId: 'nIdOks3lYWo',
     },
     {
       type: '브랜드',
       title: '브랜드광고 샤브보트R',
-      desc: '브랜드 가치와 이미지를 전달하는 스토리텔링 영상',
+      desc: '브랜드 가치와 이미지를 전달하는 스토리텔링 AI CF',
       youtubeId: '8j4rYB8eMmc',
     },
     {
       type: '제품',
       title: '제품광고 디에스 시카멜라리페어 크림',
-      desc: '화장품 제품 특성을 강조한 프리미엄 AI 영상',
+      desc: '화장품 제품 특성을 강조한 프리미엄 AI CF',
       youtubeId: '0ToCzQUdCDo',
     },
   ];

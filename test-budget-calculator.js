@@ -58,6 +58,7 @@ assert(Calc.formatExposures(100000).indexOf('100') !== -1, 'comma format');
 // Structure wiring
 const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
 const js = fs.readFileSync(path.join(__dirname, 'script.js'), 'utf8');
+const css = fs.readFileSync(path.join(__dirname, 'styles.css'), 'utf8');
 assert(html.indexOf('id="pricing"') !== -1, 'pricing section');
 assert(html.indexOf('budget-calculator') !== -1 || html.indexOf('ad-calc') !== -1, 'calculator markup');
 assert(html.indexOf('KT') !== -1 && html.indexOf('단독') !== -1, 'KT tab label');
@@ -101,6 +102,10 @@ const kt12 = Calc.calculateExposures(100, 'kt', 12);
 assert(kt12.totalExposures === 1200000, 'KT 100만 × 12개월 total 1,200,000');
 assert(Calc.calculateExposures(200, 'all3', 6).totalExposures === 1800000, '3사 200만 × 6 = 1,800,000');
 assert(html.indexOf('id="calcTerm"') !== -1, 'term slider in HTML');
+assert(/id="calcTerm"[\s\S]*?min="6"[\s\S]*?step="6"[\s\S]*?value="6"/.test(html), 'term slider starts at 6 in 6-month steps');
+const termTicks = (html.match(/id="calcTermTicks"[\s\S]*?<\/div>/) || [''])[0];
+assert((termTicks.match(/<span>/g) || []).length === 6, 'six contract-term tick labels');
+assert(/repeat\(6, minmax\(0, 1fr\)\)/.test(css), 'term tick columns align with six slider stops');
 assert(html.indexOf('calcTotalExposures') !== -1, 'total exposures element');
 assert(html.indexOf('계약 기간') !== -1, 'contract period label');
 assert(html.indexOf('계약 기간 총 예상 노출') !== -1, 'total is primary label');

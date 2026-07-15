@@ -16,11 +16,11 @@
   var PRODUCTS = {
     all3: {
       id: 'all3',
-      label: 'KT, SKT, LGU+ 3사 통합',
+      label: 'KT, SKT, LGU+ IPTV 3사 통합 송출',
       unitPrice: null,
       unitLabel: '100만원당 월 18만회',
       minManwon: 100,
-      bonus: 'KT, SKT, LGU+ 3사 통합 송출로 폭넓은 커버리지 제공',
+      bonus: 'KT, SKT, LGU+ IPTV 3사 통합 송출로 폭넓은 커버리지 제공',
     },
   };
 

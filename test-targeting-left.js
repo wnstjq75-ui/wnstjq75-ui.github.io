@@ -51,6 +51,9 @@ assert(section.indexOf('라이프스타일') !== -1, 'audience lifestyle group')
 assert(section.indexOf('세대') !== -1, 'audience generation group');
 assert(section.indexOf('트렌드') !== -1, 'audience trend group');
 assert(section.indexOf('targeting-features--audience') !== -1, 'three audience group cards');
+assert(section.indexOf('audience-console') !== -1, 'premium audience console');
+assert((section.match(/class="audience-segment audience-segment--/g) || []).length === 3, 'three audience segment tiles');
+assert(section.indexOf('targeting-data__bar') === -1, 'old audience progress bars removed');
 assert(section.indexOf('data-panel="time"') !== -1, 'time targeting panel');
 assert(section.indexOf('data-panel="channel"') !== -1, 'channel targeting panel');
 assert(css.indexOf('var(--targeting-geo-height') !== -1, 'targeting visuals inherit first GEO panel height');

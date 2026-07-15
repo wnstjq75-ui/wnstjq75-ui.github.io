@@ -6229,6 +6229,16 @@ body.nav-open {
   letter-spacing: -0.035em;
 }
 
+.ad-calc__product-subtext {
+  display: block;
+  margin-top: 3px;
+  color: #777;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
 .ad-calc__label-row {
   display: flex;
   align-items: baseline;
@@ -14697,6 +14707,31 @@ body {
     font-size: clamp(1.45rem, 7vw, 1.8rem) !important;
     white-space: normal !important;
   }
+}
+
+/* Budget tick labels follow the range's real stop positions (28px thumb center). */
+#calcTicks.ad-calc__ticks {
+  position: relative !important;
+  display: block !important;
+  width: calc(100% - 28px) !important;
+  max-width: none !important;
+  height: 18px !important;
+  margin: 0 14px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+#calcTicks.ad-calc__ticks > span {
+  position: absolute !important;
+  top: 0 !important;
+  left: var(--tick-pct) !important;
+  display: block !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 0 !important;
+  transform: translateX(-50%) !important;
+  white-space: nowrap !important;
+  text-align: center !important;
 }
 
 /* WHY comparison: exact 50:50 split with VS over the center seam. */

@@ -437,15 +437,19 @@
       budgetInput.min = String(min);
       budgetInput.setAttribute('aria-valuemin', String(min));
 
-      // 3사: 눈금·슬라이더 시작을 200만부터 (짧은 라벨 — 모바일에서 끝 눈금 잘림 방지)
       const ticks = document.getElementById('calcTicks');
       if (ticks) {
-        const labels =
-          min >= 200
-            ? ['200만', '300만', '400만', '500만']
-            : ['100만', '200만', '300만', '400만', '500만'];
-        ticks.innerHTML = labels.map((t) => '<span>' + t + '</span>').join('');
-        ticks.classList.toggle('ad-calc__ticks--from-200', min >= 200);
+        const labels = [
+          { text: '100만', position: '0%' },
+          { text: '300만', position: '22.222%' },
+          { text: '500만', position: '44.444%' },
+          { text: '700만', position: '66.667%' },
+          { text: '1,000만', position: '100%' },
+        ];
+        ticks.innerHTML = labels
+          .map((tick) => '<span style="--tick-pct:' + tick.position + '">' + tick.text + '</span>')
+          .join('');
+        ticks.classList.remove('ad-calc__ticks--from-200');
       }
     }
 

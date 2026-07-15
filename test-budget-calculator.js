@@ -20,10 +20,10 @@ function assert(cond, msg) {
 
 // Defaults / clamps
 assert(Calc.DEFAULT_MANWON === 100, 'default 100만');
-assert(Calc.MIN_MANWON === 100 && Calc.MAX_MANWON === 500, 'range 100–500');
+assert(Calc.MIN_MANWON === 100 && Calc.MAX_MANWON === 1000, 'range 100–1,000');
 assert(Calc.STEP_MANWON === 100, 'step 100만');
 assert(Calc.clampBudgetManwon(95) === 100, 'clamp min');
-assert(Calc.clampBudgetManwon(510) === 500, 'clamp max');
+assert(Calc.clampBudgetManwon(1010) === 1000, 'clamp max');
 assert(Calc.clampBudgetManwon(240) === 200, 'step round');
 
 // IPTV 3사 통합: 월 100만원당 예상 완전시청 18만 회
@@ -33,12 +33,13 @@ assert(all3At100.exposures === 180000, '3사 100만 → 180,000');
 assert(Calc.calculateExposures(200, 'all3').exposures === 360000, '3사 200만 → 360,000');
 assert(Calc.calculateExposures(300, 'all3').exposures === 540000, '3사 300만 → 540,000');
 assert(Calc.calculateExposures(500, 'all3').exposures === 900000, '3사 500만 → 900,000');
+assert(Calc.calculateExposures(1000, 'all3').exposures === 1800000, '3사 1,000만 → 1,800,000');
 assert(Calc.calculateExposures(100, 'legacy').exposures === 180000, 'legacy product falls back to 3사 통합');
-assert(Calc.PRODUCTS.all3.label === 'KT, SKT, LGU+ IPTV 3사 통합 송출', 'full 3사 product label');
+assert(Calc.PRODUCTS.all3.label === 'IPTV 3사 통합 패키지', 'full 3사 product label');
 assert(Calc.PRODUCTS.all3.unitLabel.indexOf('18만회') !== -1, '3사 unit label is 18만회');
 
 // Labels
-assert(all3At100.productLabel === 'KT, SKT, LGU+ IPTV 3사 통합 송출', '3사 label');
+assert(all3At100.productLabel === 'IPTV 3사 통합 패키지', '3사 label');
 assert(Calc.formatExposures(180000).indexOf('180') !== -1, 'comma format');
 
 // Structure wiring
@@ -47,7 +48,8 @@ const js = fs.readFileSync(path.join(__dirname, 'script.js'), 'utf8');
 const css = fs.readFileSync(path.join(__dirname, 'styles.css'), 'utf8');
 assert(html.indexOf('id="pricing"') !== -1, 'pricing section');
 assert(html.indexOf('budget-calculator') !== -1 || html.indexOf('ad-calc') !== -1, 'calculator markup');
-assert(html.indexOf('KT, SKT, LGU+ IPTV 3사 통합 송출') !== -1, '3사 integrated product label');
+assert(html.indexOf('IPTV 3사 통합 패키지') !== -1, '3사 integrated product label');
+assert(html.indexOf('KT · SKT · LGU+ 동시 송출') !== -1, 'three-carrier simultaneous delivery subtext');
 assert(html.indexOf('pricing-tiers') === -1, 'static package tiers removed');
 assert(html.indexOf('이 예산으로 상담 문의') === -1, 'CTA budget contact removed');
 assert(
@@ -57,17 +59,22 @@ assert(
 assert(html.indexOf('100만원부터') !== -1 || html.indexOf('월 100만원부터') !== -1, '100만 entry msg');
 assert(html.indexOf('예상 완전시청 노출') !== -1 || html.indexOf('예상 노출') !== -1, 'disclaimer monthly');
 assert(html.indexOf('6개월 단위') !== -1, 'disclaimer 6-month');
-assert(Calc.PRODUCTS.all3.bonus.indexOf('3사 통합 송출') !== -1, '3사 integrated benefit copy');
+assert(Calc.PRODUCTS.all3.bonus.indexOf('동시 송출') !== -1, '3사 integrated benefit copy');
 assert(/src="budget-calculator\.js(\?[^"]*)?"/.test(html), 'loads math module');
 assert(js.indexOf('BudgetCalculator.calculateExposures') !== -1, 'script uses real math');
 
 const pricing = html.slice(html.indexOf('id="pricing"'), html.indexOf('id="contact"'));
 assert(pricing.indexOf('type="range"') !== -1 || pricing.indexOf('ad-calc__slider') !== -1, 'slider in pricing');
-assert(pricing.indexOf('min="100"') !== -1 && pricing.indexOf('max="500"') !== -1, 'slider min max');
+assert(pricing.indexOf('min="100"') !== -1 && pricing.indexOf('max="1000"') !== -1, 'slider min max');
 assert(pricing.indexOf('step="100"') !== -1, 'slider step 100');
 assert(pricing.indexOf('data-calc-product=') === -1, 'product tab buttons removed');
 assert(pricing.indexOf('ad-calc__tabs') === -1, 'product box removed');
-assert(/class="ad-calc__product-text">KT, SKT, LGU\+ IPTV 3사 통합 송출<\/strong>/.test(pricing), 'plain-text unified product');
+assert(/class="ad-calc__product-text">IPTV 3사 통합 패키지<\/strong>/.test(pricing), 'plain-text unified product');
+assert(/class="ad-calc__product-subtext">KT · SKT · LGU\+ 동시 송출<\/span>/.test(pricing), 'plain-text carrier subtext');
+const budgetTicks = (html.match(/id="calcTicks"[\s\S]*?<\/div>/) || [''])[0];
+assert((budgetTicks.match(/<span/g) || []).length === 5, 'five readable budget tick labels');
+assert(budgetTicks.indexOf('--tick-pct:22.222%') !== -1 && budgetTicks.indexOf('1,000만') !== -1, 'budget tick labels use real positions');
+assert(/#calcTicks\.ad-calc__ticks[\s\S]*?width:\s*calc\(100% - 28px\)/.test(css), 'budget ticks align to the 28px slider thumb');
 assert(pricing.indexOf('calcProductLabel') === -1, 'redundant selected-product card removed');
 assert(pricing.indexOf('calcUnitLabel') === -1, 'redundant unit-price card removed');
 

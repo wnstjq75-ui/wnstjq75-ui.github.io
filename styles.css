@@ -14101,7 +14101,7 @@ body {
 
 .why-research-proof__source {
   color: rgba(232, 210, 160, 0.8);
-  font-size: 0.68rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   white-space: nowrap;
@@ -14111,15 +14111,9 @@ body {
   margin: 0;
   color: rgba(255, 255, 255, 0.74);
   font-size: clamp(0.88rem, 1.35vw, 1rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.55;
   letter-spacing: -0.025em;
-}
-
-.why-research-proof__statement strong,
-.why-research-proof__statement b {
-  color: #fff;
-  font-weight: 800;
 }
 
 .why-research-proof__meta {
@@ -14142,8 +14136,6 @@ body {
 }
 
 .why-research-proof__statement,
-.why-research-proof__statement strong,
-.why-research-proof__statement b,
 .why-research-proof__meta,
 .why-research-proof__meta span {
   color: #fff;

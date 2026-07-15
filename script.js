@@ -223,8 +223,8 @@
         heroPlay.setAttribute('aria-label', slide.title + ' 영상 바로 재생');
       }
       if (heroMediaCategory) {
-        heroMediaCategory.textContent = slide.category || '';
-        heroMediaCategory.hidden = !slide.category;
+        heroMediaCategory.textContent = 'AI CF';
+        heroMediaCategory.hidden = false;
       }
       if (heroMediaTitle) heroMediaTitle.textContent = slide.brand || slide.title;
       if (heroMediaDesc) heroMediaDesc.textContent = slide.desc;

@@ -58,6 +58,8 @@ assert(html.indexOf('portfolioIndex') === -1, 'page index removed from portfolio
 assert(js.indexOf('buildPortfolioCards') !== -1, 'portfolio built from catalog');
 assert(js.indexOf('normalizePortfolioPos') !== -1, 'infinite loop normalize present');
 assert(js.indexOf('HeroCarousel.nextIndex') !== -1, 'hero uses nextIndex');
+assert(html.indexOf('id="heroMediaCategory">AI CF</p>') !== -1, 'hero category defaults to AI CF');
+assert(js.indexOf("heroMediaCategory.textContent = 'AI CF'") !== -1, 'hero category remains AI CF across slides');
 assert(html.indexOf('id="heroPlayerHost"') !== -1, 'hero inline player host');
 assert(/<button[^>]*id="heroPlay"/.test(html), 'hero play is an in-page button');
 assert(js.indexOf('www.youtube-nocookie.com/embed/') !== -1, 'hero uses privacy-enhanced inline YouTube embed');

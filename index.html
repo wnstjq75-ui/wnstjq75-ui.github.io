@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260715-targeting-consoles2">
+  <link rel="stylesheet" href="styles.css?v=20260715-inquiry-budget1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1393,15 +1393,13 @@
               </div>
             </fieldset>
 
-            <fieldset class="inquiry-choice">
-              <legend>월 예산 <b>*</b></legend>
-              <div class="inquiry-choice__grid">
-                <label><input type="radio" name="월 예산" value="100만원" required><span>100만원</span></label>
-                <label><input type="radio" name="월 예산" value="200만원"><span>200만원</span></label>
-                <label><input type="radio" name="월 예산" value="300만원"><span>300만원</span></label>
-                <label><input type="radio" name="월 예산" value="500만원 이상"><span>500만원+</span></label>
+            <label class="inquiry-field inquiry-budget">
+              <span>월 예산 <b>*</b> <em>만원 단위</em></span>
+              <div class="inquiry-budget__control">
+                <input type="number" name="월 예산" min="100" step="10" inputmode="numeric" placeholder="예: 300" required>
+                <strong>만원</strong>
               </div>
-            </fieldset>
+            </label>
           </div>
 
           <div class="inquiry-consent">
@@ -1445,6 +1443,6 @@
 
   <script src="hero-carousel.js?v=20260710-seo1" defer></script>
   <script src="budget-calculator.js?v=20260710-seo1" defer></script>
-  <script src="script.js?v=20260715-targeting-tabs1" defer></script>
+  <script src="script.js?v=20260715-inquiry-budget1" defer></script>
 </body>
 </html>

@@ -30,7 +30,7 @@ assert((form.match(/name="희망 타겟팅"/g) || []).length === 3, 'three targe
 assert(/value="오디언스"/.test(form) && /value="채널"/.test(form) && /value="시간"/.test(form), 'audience channel time targeting');
 assert((form.match(/name="희망 매체"/g) || []).length === 4, 'media choices');
 assert((form.match(/name="광고 기간"/g) || []).length === 4, 'advertising period choices');
-assert(/name="월 예산"/.test(form), 'monthly budget choices');
+assert(/type="number" name="월 예산" min="100" step="10"/.test(form), 'monthly budget input');
 assert(/개인정보 수집 및 이용 동의/.test(form) && /required/.test(form), 'required privacy consent');
 assert(/name="_honey"/.test(form), 'spam honeypot');
 assert((form.match(/data-inquiry-step=/g) || []).length === 2, 'two guided steps');
@@ -39,6 +39,7 @@ assert(/role="progressbar"/.test(form) && /id="inquiryProgressFill"/.test(form),
 assert(/id="inquirySubmit"/.test(form) && /상담 신청 제출하기/.test(form), 'final submit action');
 assert(/id="inquirySuccess"/.test(form), 'submission completion screen');
 assert(/new FormData\(inquiryForm\)/.test(js), 'form payload handling');
+assert(/formData\.set\('월 예산', `\$\{monthlyBudget\.value\}만원`\)/.test(js), 'monthly budget email formatting');
 assert(/checkedTargeting/.test(js) && /checkedTargeting\.map/.test(js), 'multiple targeting values are joined');
 assert(/fetch\(inquiryForm\.action/.test(js), 'AJAX submission');
 assert(/renderInquiryStep/.test(js) && /validateInquiryStep/.test(js), 'step navigation and validation');

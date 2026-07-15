@@ -749,6 +749,10 @@
       }
 
       const formData = new FormData(inquiryForm);
+      const monthlyBudget = inquiryForm.querySelector('input[name="월 예산"]');
+      if (monthlyBudget?.value) {
+        formData.set('월 예산', `${monthlyBudget.value}만원`);
+      }
       formData.delete('희망 매체');
       formData.append('희망 매체', checkedMedia.map((input) => input.value).join(', '));
       const checkedTargeting = Array.from(

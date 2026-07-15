@@ -16819,6 +16819,36 @@ body {
   font-size: clamp(0.68rem, 2.3vw, 0.78rem) !important;
 }
 
+.inquiry-budget {
+  margin-top: 2px;
+}
+
+.inquiry-budget__control {
+  position: relative;
+}
+
+.inquiry-budget__control input {
+  padding-right: 62px;
+  appearance: textfield;
+}
+
+.inquiry-budget__control input::-webkit-inner-spin-button,
+.inquiry-budget__control input::-webkit-outer-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.inquiry-budget__control > strong {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  color: rgba(17, 17, 15, 0.48);
+  font-size: 0.78rem;
+  font-weight: 700;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
 #targeting .targeting-features--audience .targeting-feature:last-child {
   grid-column: 1 / -1;
 }

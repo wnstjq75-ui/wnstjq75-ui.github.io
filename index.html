@@ -91,7 +91,7 @@
       {
         "@type": "Question",
         "name": "TV광고 비용은 얼마부터 시작하나요?",
-        "acceptedAnswer": {"@type": "Answer", "text": "오픈엑스의 IPTV 기반 TV광고는 월 100만원부터 시작할 수 있으며, 기본 계약은 3개월 단위입니다. 실제 비용은 송출사, 월 예산, 계약 기간과 타겟팅 조건에 따라 달라집니다."}
+        "acceptedAnswer": {"@type": "Answer", "text": "오픈엑스의 IPTV 기반 TV광고는 월 100만원부터 시작할 수 있으며, 기본 계약은 6개월 단위입니다. 실제 비용은 송출사, 월 예산, 계약 기간과 타겟팅 조건에 따라 달라집니다."}
       },
       {
         "@type": "Question",
@@ -141,7 +141,7 @@
       {
         "@type": "Question",
         "name": "TV광고 계약 기간은 얼마인가요?",
-        "acceptedAnswer": {"@type": "Answer", "text": "기본 계약은 3개월 단위이며, 현재 계산기에서는 3개월부터 36개월까지 3개월 단위로 예상 결과를 확인할 수 있습니다."}
+        "acceptedAnswer": {"@type": "Answer", "text": "기본 계약은 6개월 단위이며, 현재 계산기에서는 6개월부터 36개월까지 6개월 단위로 예상 결과를 확인할 수 있습니다."}
       },
       {
         "@type": "Question",
@@ -993,7 +993,7 @@
     <div class="container">
       <div class="pricing-premium__header reveal">
         <h2 class="section__title section__title--center">예산에 맞춰 설계하세요</h2>
-        <p class="pricing-premium__guide">월 100만원부터 · 예상 완전시청 노출을 바로 확인 · VAT 별도 · 기본 계약 3개월</p>
+        <p class="pricing-premium__guide">월 100만원부터 · 예상 완전시청 노출을 바로 확인 · VAT 별도 · 기본 계약 6개월</p>
       </div>
 
       <!-- 할증 선택(좌) + 계산기 박스 + 혜택 텍스트(우) -->
@@ -1055,7 +1055,7 @@
             <div class="ad-calc__intro">
               <p class="ad-calc__eyebrow">AD BUDGET SIMULATOR</p>
               <h3 class="ad-calc__title">예산별 예상 노출 수 계산</h3>
-              <p class="ad-calc__lead">월 예산·계약 기간을 조절하면 예상 완전시청 노출 수를 바로 확인할 수 있습니다.<br>계약은 <strong>3개월 단위</strong>이며, <strong>월 100만원부터</strong> IPTV광고를 시작할 수 있습니다.</p>
+              <p class="ad-calc__lead">월 예산·계약 기간을 조절하면 예상 완전시청 노출 수를 바로 확인할 수 있습니다.<br>계약은 <strong>6개월 단위</strong>이며, <strong>월 100만원부터</strong> IPTV광고를 시작할 수 있습니다.</p>
             </div>
 
             <div class="ad-calc__body">
@@ -1099,28 +1099,28 @@
                 <div class="ad-calc__field ad-calc__field--last">
                   <div class="ad-calc__label-row">
                     <span class="ad-calc__label">계약 기간</span>
-                    <strong class="ad-calc__budget-value" id="calcTermLabel">3개월</strong>
+                    <strong class="ad-calc__budget-value" id="calcTermLabel">6개월</strong>
                   </div>
                   <input
                     type="range"
                     class="ad-calc__slider ad-calc__slider--term"
                     id="calcTerm"
-                    min="3"
+                    min="6"
                     max="36"
-                    step="3"
-                    value="3"
-                    aria-valuemin="3"
+                    step="6"
+                    value="6"
+                    aria-valuemin="6"
                     aria-valuemax="36"
                     aria-valuenow="3"
                     aria-label="계약 기간 (개월)"
                   >
                   <div class="ad-calc__ticks" id="calcTermTicks" aria-hidden="true">
-                    <span>3</span>
+                    <span>6</span>
                     <span>12</span>
                     <span>24</span>
                     <span>36</span>
                   </div>
-                  <p class="ad-calc__term-hint" id="calcTermHint">3~36개월 · 3개월 단위</p>
+                  <p class="ad-calc__term-hint" id="calcTermHint">6~36개월 · 6개월 단위</p>
                 </div>
 
                 <div class="ad-calc__meta-row">
@@ -1138,7 +1138,7 @@
                   </div>
                   <div class="ad-calc__meta-item">
                     <span class="ad-calc__meta-k">계약 기간</span>
-                    <span class="ad-calc__meta-v" id="calcMetaTerm">3개월</span>
+                    <span class="ad-calc__meta-v" id="calcMetaTerm">6개월</span>
                   </div>
                 </div>
 
@@ -1154,18 +1154,18 @@
                   <p class="ad-calc__result-num ad-calc__result-num--primary">
                     <span id="calcTotalExposures">300,000</span><em>회</em>
                   </p>
-                  <p class="ad-calc__term-total-sub" id="calcTotalSub">3개월 · 총 예산 300만원</p>
+                    <p class="ad-calc__term-total-sub" id="calcTotalSub">6개월 · 총 예산 600만원</p>
                 </div>
                 <div class="ad-calc__monthly">
                   <span class="ad-calc__monthly-k">월 예상 노출</span>
                   <strong class="ad-calc__monthly-v"><span id="calcExposures">100,000</span>회</strong>
                 </div>
                 <p class="ad-calc__surcharge-line" id="calcSurchargeLine">할증 미적용 · 기본 단가 기준</p>
-                <p class="ad-calc__result-sub" id="calcResultSub">KT 단독 · 월 예산 100만원 · 3개월</p>
+                <p class="ad-calc__result-sub" id="calcResultSub">KT 단독 · 월 예산 100만원 · 6개월</p>
                 <div class="ad-calc__notes">
                   <p>월 예산 기준 예상 노출 수를 계산합니다.</p>
                   <p>할증 적용 시 동일 예산 대비 노출 수가 감소합니다.</p>
-                  <p>계약은 3개월 단위로 진행됩니다.</p>
+                  <p>계약은 6개월 단위로 진행됩니다.</p>
                   <p>실제 집행 조건 및 타겟 설정에 따라 변동될 수 있습니다.</p>
                 </div>
                 <div class="ad-calc__actions">
@@ -1207,7 +1207,7 @@
         <details class="faq-item">
           <summary class="faq-item__q">TV광고 비용은 얼마부터 시작하나요?</summary>
           <div class="faq-item__a">
-            <p>오픈엑스의 IPTV 기반 TV광고는 월 100만원부터 시작할 수 있으며, 기본 계약은 3개월 단위입니다. 실제 비용은 송출사, 월 예산, 계약 기간과 타겟팅 조건에 따라 달라집니다.</p>
+            <p>오픈엑스의 IPTV 기반 TV광고는 월 100만원부터 시작할 수 있으며, 기본 계약은 6개월 단위입니다. 실제 비용은 송출사, 월 예산, 계약 기간과 타겟팅 조건에 따라 달라집니다.</p>
           </div>
         </details>
         <details class="faq-item">
@@ -1267,7 +1267,7 @@
         <details class="faq-item">
           <summary class="faq-item__q">TV광고 계약 기간은 얼마인가요?</summary>
           <div class="faq-item__a">
-            <p>기본 계약은 3개월 단위이며, 현재 계산기에서는 3개월부터 36개월까지 3개월 단위로 예상 결과를 확인할 수 있습니다.</p>
+            <p>기본 계약은 6개월 단위이며, 현재 계산기에서는 6개월부터 36개월까지 6개월 단위로 예상 결과를 확인할 수 있습니다.</p>
           </div>
         </details>
         <details class="faq-item">
@@ -1387,9 +1387,9 @@
             <fieldset class="inquiry-choice">
               <legend>광고 기간 <b>*</b></legend>
               <div class="inquiry-choice__grid">
-                <label><input type="radio" name="광고 기간" value="3개월" required><span>3개월</span></label>
-                <label><input type="radio" name="광고 기간" value="6개월"><span>6개월</span></label>
+                <label><input type="radio" name="광고 기간" value="6개월" required><span>6개월</span></label>
                 <label><input type="radio" name="광고 기간" value="12개월"><span>12개월</span></label>
+                <label><input type="radio" name="광고 기간" value="18개월"><span>18개월</span></label>
                 <label><input type="radio" name="광고 기간" value="기타/협의"><span>기타/협의</span></label>
               </div>
             </fieldset>

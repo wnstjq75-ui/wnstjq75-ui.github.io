@@ -71,7 +71,7 @@ assert(
 );
 assert(html.indexOf('100만원부터') !== -1 || html.indexOf('월 100만원부터') !== -1, '100만 entry msg');
 assert(html.indexOf('예상 완전시청 노출') !== -1 || html.indexOf('예상 노출') !== -1, 'disclaimer monthly');
-assert(html.indexOf('3개월 단위') !== -1, 'disclaimer 3-month');
+assert(html.indexOf('6개월 단위') !== -1, 'disclaimer 6-month');
 assert(Calc.PRODUCTS.sklg.bonus.indexOf('더 넓은 도달') !== -1, 'SK benefit copy');
 assert(Calc.PRODUCTS.all3.bonus.indexOf('KT 1개월 보너스') !== -1, '3사 KT bonus');
 assert(Calc.PRODUCTS.all3.bonus.indexOf('/') !== -1, '3사 dual benefit');
@@ -84,19 +84,19 @@ assert(pricing.indexOf('min="100"') !== -1 && pricing.indexOf('max="500"') !== -
 assert(pricing.indexOf('step="10"') !== -1, 'slider step 10');
 assert(pricing.indexOf('data-calc-product="all3"') !== -1, 'all3 tab in pricing');
 
-// Contract term slider (3-month steps)
-assert(Calc.MIN_TERM_MONTHS === 3, 'min term 3');
-assert(Calc.STEP_TERM_MONTHS === 3, 'step term 3');
-assert(Calc.DEFAULT_TERM_MONTHS === 3, 'default term 3 months');
+// Contract term slider (6-month steps)
+assert(Calc.MIN_TERM_MONTHS === 6, 'min term 6');
+assert(Calc.STEP_TERM_MONTHS === 6, 'step term 6');
+assert(Calc.DEFAULT_TERM_MONTHS === 6, 'default term 6 months');
 assert(Calc.clampTermMonths(6) === 6, 'clamp term 6');
-assert(Calc.clampTermMonths(5) === 6 || Calc.clampTermMonths(5) === 3, 'step round term');
+assert(Calc.clampTermMonths(5) === 6, 'step round term');
 assert(Calc.clampTermMonths(12) === 12, 'clamp term 12');
 assert(Calc.clampTermMonths(36) === 36, 'term up to UI max 36');
-const kt3 = Calc.calculateExposures(100, 'kt', 3);
+const kt3 = Calc.calculateExposures(100, 'kt', 6);
 assert(kt3.exposures === 100000, 'KT monthly exposures unchanged');
-assert(kt3.termMonths === 3, 'termMonths 3');
-assert(kt3.totalExposures === 300000, 'KT 100만 × 3개월 total 300,000');
-assert(kt3.totalBudgetManwon === 300, 'KT total budget 300만');
+assert(kt3.termMonths === 6, 'termMonths 6');
+assert(kt3.totalExposures === 600000, 'KT 100만 × 6개월 total 600,000');
+assert(kt3.totalBudgetManwon === 600, 'KT total budget 600만');
 const kt12 = Calc.calculateExposures(100, 'kt', 12);
 assert(kt12.totalExposures === 1200000, 'KT 100만 × 12개월 total 1,200,000');
 assert(Calc.calculateExposures(200, 'all3', 6).totalExposures === 1800000, '3사 200만 × 6 = 1,800,000');

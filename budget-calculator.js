@@ -48,11 +48,11 @@
   var STEP_MANWON = 10;
   var DEFAULT_MANWON = 100;
 
-  /** Contract: 3-month steps (no business ceiling; UI slider cap for usability) */
-  var MIN_TERM_MONTHS = 3;
+  /** Contract: 6-month steps (no business ceiling; UI slider cap for usability) */
+  var MIN_TERM_MONTHS = 6;
   var MAX_TERM_MONTHS = 36;
-  var STEP_TERM_MONTHS = 3;
-  var DEFAULT_TERM_MONTHS = 3;
+  var STEP_TERM_MONTHS = 6;
+  var DEFAULT_TERM_MONTHS = 6;
 
   function getProduct(productId) {
     return PRODUCTS[productId] || PRODUCTS.kt;
@@ -102,7 +102,7 @@
   /**
    * @param {number} budgetManwon - monthly budget in 만원
    * @param {string} productId - 'kt' | 'sklg' | 'all3'
-   * @param {number} [termMonths] - contract length: 3 | 6 | 9 | 12 (default 3)
+   * @param {number} [termMonths] - contract length: 6 | 12 | 18 | 24 | 30 | 36 (default 6)
    */
   function calculateExposures(budgetManwon, productId, termMonths) {
     var product = getProduct(productId);

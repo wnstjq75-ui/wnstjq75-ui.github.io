@@ -13229,6 +13229,18 @@ body {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
+@media (min-width: 900px) {
+  .section--aicf .aicf__portfolio-header {
+    max-width: none !important;
+  }
+
+  .section--aicf .aicf__portfolio-desc {
+    width: max-content;
+    max-width: none !important;
+    white-space: nowrap !important;
+  }
+}
+
 @media (max-width: 768px) {
   .section--aicf .aicf__hero {
     padding: 8px 12px 32px !important;

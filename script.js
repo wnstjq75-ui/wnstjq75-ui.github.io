@@ -602,11 +602,15 @@
   const inquiryActions = document.getElementById('inquiryActions');
   const inquirySuccess = document.getElementById('inquirySuccess');
   const inquiryRestart = document.getElementById('inquiryRestart');
+  const inquiryFallback = document.getElementById('inquiryFallback');
+  const inquiryRetry = document.getElementById('inquiryRetry');
+  const inquiryMailFallback = document.getElementById('inquiryMailFallback');
   const inquiryTopbar = inquiryForm?.querySelector('.inquiry-wizard__topbar');
   const inquiryMediaInputs = inquiryForm
     ? Array.from(inquiryForm.querySelectorAll('input[name="희망 매체"]'))
     : [];
   let inquiryStep = 0;
+  let inquirySending = false;
 
   if (inquiryPhone) {
     inquiryPhone.addEventListener('input', () => {
@@ -644,6 +648,7 @@
       inquiryStatus.textContent = '';
       inquiryStatus.className = 'inquiry-form__status';
     }
+    if (inquiryFallback) inquiryFallback.hidden = true;
 
     if (shouldFocus) {
       const focusTarget = inquirySteps[inquiryStep].querySelector('input, textarea, button');
@@ -712,8 +717,96 @@
       inquirySteps.forEach((step) => { step.hidden = true; });
       if (inquiryTopbar) inquiryTopbar.hidden = true;
       if (inquiryActions) inquiryActions.hidden = true;
+      if (inquiryFallback) inquiryFallback.hidden = true;
       inquiryStatus.textContent = '';
       if (inquirySuccess) inquirySuccess.hidden = false;
+    };
+
+    const waitForInquiryRetry = (ms) => new Promise((resolve) => {
+      window.setTimeout(resolve, ms);
+    });
+
+    const buildInquiryPayload = () => {
+      const payload = {};
+      new FormData(inquiryForm).forEach((value, key) => {
+        if (!(key in payload)) payload[key] = value;
+      });
+
+      const checkedMedia = Array.from(
+        inquiryForm.querySelectorAll('input[name="희망 매체"]:checked')
+      );
+      const checkedTargeting = Array.from(
+        inquiryForm.querySelectorAll('input[name="희망 타겟팅"]:checked')
+      );
+      const monthlyBudget = inquiryForm.querySelector('input[name="월 예산"]');
+
+      payload['희망 매체'] = checkedMedia.map((input) => input.value).join(', ');
+      payload['희망 타겟팅'] = checkedTargeting.length
+        ? checkedTargeting.map((input) => input.value).join(', ')
+        : '선택 안 함';
+      payload['월 예산'] = `${monthlyBudget.value}만원`;
+      payload['접수 페이지'] = `${window.location.origin}${window.location.pathname}#contact`;
+      return payload;
+    };
+
+    const buildInquiryMailto = (payload) => {
+      const excludedKeys = new Set(['_subject', '_template', '_captcha', '_url', '_honey']);
+      const lines = Object.entries(payload)
+        .filter(([key]) => !excludedKeys.has(key))
+        .map(([key, value]) => `${key}: ${value || '-'}`);
+      const subject = payload._subject || '[IPTV 광고 상담] 홈페이지 신규 문의';
+      return `mailto:mkt@openxgroup.co.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+    };
+
+    const sendInquiryWithRetry = async (payload) => {
+      const retryDelays = [0, 1200, 2800];
+      let lastError;
+
+      for (let attempt = 0; attempt < retryDelays.length; attempt += 1) {
+        if (retryDelays[attempt]) await waitForInquiryRetry(retryDelays[attempt]);
+        if (attempt > 0) {
+          inquiryStatus.textContent = `전송 서버에 다시 연결하고 있습니다. (${attempt + 1}/${retryDelays.length})`;
+        }
+
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(() => controller.abort(), 10000);
+        try {
+          const response = await fetch(inquiryForm.action, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
+            },
+            body: JSON.stringify(payload),
+            signal: controller.signal
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || (result.success !== undefined && result.success !== true && result.success !== 'true')) {
+            throw new Error(result.message || `전송 서버 오류 (${response.status})`);
+          }
+          return result;
+        } catch (error) {
+          lastError = error;
+        } finally {
+          window.clearTimeout(timeoutId);
+        }
+      }
+
+      throw lastError || new Error('전송 서버에 연결할 수 없습니다.');
+    };
+
+    const finishInquirySending = () => {
+      inquirySending = false;
+      if (inquirySubmit) inquirySubmit.disabled = false;
+      inquiryForm.classList.remove('is-submitting');
+    };
+
+    const showInquiryFallback = (payload) => {
+      finishInquirySending();
+      inquiryStatus.textContent = '현재 전송 서버가 응답하지 않습니다. 잠시 후 다시 시도하거나 이메일로 보내주세요.';
+      inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';
+      if (inquiryMailFallback) inquiryMailFallback.href = buildInquiryMailto(payload);
+      if (inquiryFallback) inquiryFallback.hidden = false;
     };
 
     inquiryForm.addEventListener('keydown', (event) => {
@@ -726,7 +819,7 @@
       }
     });
 
-    inquiryForm.addEventListener('submit', (event) => {
+    inquiryForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       if (inquiryStep !== inquirySteps.length - 1) {
@@ -739,7 +832,8 @@
 
       if (!validateInquiryStep()) return;
 
-      const submitButton = inquirySubmit;
+      if (inquirySending) return;
+
       const checkedMedia = Array.from(
         inquiryForm.querySelectorAll('input[name="희망 매체"]:checked')
       );
@@ -756,42 +850,26 @@
         return;
       }
 
-      const monthlyBudget = inquiryForm.querySelector('input[name="월 예산"]');
-      const checkedTargeting = Array.from(
-        inquiryForm.querySelectorAll('input[name="희망 타겟팅"]:checked')
-      );
-
-      inquiryForm.querySelectorAll('[data-submission-value]').forEach((input) => input.remove());
-      const addSubmissionValue = (name, value) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        input.value = value;
-        input.dataset.submissionValue = 'true';
-        inquiryForm.appendChild(input);
-      };
-
-      inquiryMediaInputs.forEach((input) => { input.disabled = true; });
-      inquiryForm.querySelectorAll('input[name="희망 타겟팅"]').forEach((input) => {
-        input.disabled = true;
-      });
-      if (monthlyBudget) monthlyBudget.disabled = true;
-
-      addSubmissionValue('희망 매체', checkedMedia.map((input) => input.value).join(', '));
-      addSubmissionValue(
-        '희망 타겟팅',
-        checkedTargeting.length
-          ? checkedTargeting.map((input) => input.value).join(', ')
-          : '선택 안 함'
-      );
-      addSubmissionValue('월 예산', `${monthlyBudget.value}만원`);
-      addSubmissionValue('접수 페이지', window.location.href);
-
-      submitButton.disabled = true;
+      const payload = buildInquiryPayload();
+      inquirySending = true;
+      inquirySubmit.disabled = true;
       inquiryForm.classList.add('is-submitting');
+      if (inquiryFallback) inquiryFallback.hidden = true;
       inquiryStatus.textContent = '상담 신청을 전송하고 있습니다.';
       inquiryStatus.className = 'inquiry-form__status';
-      window.setTimeout(() => inquiryForm.submit(), 60);
+
+      try {
+        await sendInquiryWithRetry(payload);
+        finishInquirySending();
+        showInquirySuccess();
+      } catch (error) {
+        showInquiryFallback(payload);
+      }
+    });
+
+    inquiryRetry?.addEventListener('click', () => {
+      if (inquirySending) return;
+      inquiryForm.requestSubmit();
     });
 
     inquiryRestart?.addEventListener('click', () => {
@@ -800,6 +878,7 @@
       if (fallbackMedia) fallbackMedia.checked = true;
       inquiryStep = 0;
       inquirySuccess.hidden = true;
+      if (inquiryFallback) inquiryFallback.hidden = true;
       if (inquiryTopbar) inquiryTopbar.hidden = false;
       if (inquiryActions) inquiryActions.hidden = false;
       renderInquiryStep(true);
@@ -814,12 +893,7 @@
     }
 
     window.addEventListener('pageshow', () => {
-      inquiryMediaInputs.forEach((input) => { input.disabled = false; });
-      inquiryForm.querySelectorAll('input[name="희망 타겟팅"]').forEach((input) => {
-        input.disabled = false;
-      });
-      const monthlyBudget = inquiryForm.querySelector('input[name="월 예산"]');
-      if (monthlyBudget) monthlyBudget.disabled = false;
+      inquirySending = false;
       if (inquirySubmit) inquirySubmit.disabled = false;
       inquiryForm.classList.remove('is-submitting');
     });

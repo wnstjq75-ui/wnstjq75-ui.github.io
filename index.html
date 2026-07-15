@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260715-inquiry-budget1">
+  <link rel="stylesheet" href="styles.css?v=20260715-inquiry-resilient1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1307,13 +1307,12 @@
       <form
         class="inquiry-form"
         id="inquiryForm"
-        action="https://formsubmit.co/mkt@openxgroup.co.kr"
+        action="https://formsubmit.co/ajax/mkt@openxgroup.co.kr"
         method="POST"
       >
         <input type="hidden" name="_subject" value="[IPTV 광고 상담] 홈페이지 신규 문의">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://wnstjq75-ui.github.io/?submitted=1#contact">
         <input type="hidden" name="_url" value="https://wnstjq75-ui.github.io/#contact">
         <input class="inquiry-form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
@@ -1424,6 +1423,13 @@
           </button>
         </div>
         <p class="inquiry-form__status" id="inquiryStatus" role="status" aria-live="polite"></p>
+        <div class="inquiry-form__fallback" id="inquiryFallback" hidden>
+          <p>전송 서버 연결이 원활하지 않습니다. 입력 내용은 그대로 보관되어 있습니다.</p>
+          <div class="inquiry-form__fallback-actions">
+            <button id="inquiryRetry" type="button">다시 시도</button>
+            <a id="inquiryMailFallback" href="mailto:mkt@openxgroup.co.kr">이메일로 보내기</a>
+          </div>
+        </div>
 
         <div class="inquiry-wizard__success" id="inquirySuccess" hidden>
           <span class="inquiry-wizard__success-mark" aria-hidden="true">✓</span>
@@ -1445,6 +1451,6 @@
 
   <script src="hero-carousel.js?v=20260710-seo1" defer></script>
   <script src="budget-calculator.js?v=20260710-seo1" defer></script>
-  <script src="script.js?v=20260715-inquiry-submit-fix1" defer></script>
+  <script src="script.js?v=20260715-inquiry-resilient1" defer></script>
 </body>
 </html>

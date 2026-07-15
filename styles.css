@@ -16026,6 +16026,52 @@ body {
   color: #ffb7b7;
 }
 
+.inquiry-form__fallback {
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid rgba(161, 67, 63, 0.2);
+  border-radius: 14px;
+  background: rgba(161, 67, 63, 0.06);
+  text-align: center;
+}
+
+.inquiry-form__fallback p {
+  margin: 0;
+  color: rgba(17, 17, 15, 0.7);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.inquiry-form__fallback-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.inquiry-form__fallback-actions button,
+.inquiry-form__fallback-actions a {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(17, 17, 15, 0.16);
+  border-radius: 10px;
+  background: #fff;
+  color: #11110f;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.inquiry-form__fallback-actions a {
+  border-color: #11110f;
+  background: #11110f;
+  color: #fff;
+}
+
 @keyframes inquiry-spin {
   to { transform: rotate(360deg); }
 }

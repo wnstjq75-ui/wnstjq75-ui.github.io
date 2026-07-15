@@ -19,8 +19,8 @@ function assert(condition, message) {
 const form = (html.match(/<form[\s\S]*?id="inquiryForm"[\s\S]*?<\/form>/) || [''])[0];
 
 assert(form.length > 0, 'inquiry form exists');
-assert(/formsubmit\.co\/mkt@openxgroup\.co\.kr/.test(form), 'direct email delivery endpoint');
-assert(/name="_next" value="https:\/\/wnstjq75-ui\.github\.io\/\?submitted=1#contact"/.test(form), 'success redirect');
+assert(/formsubmit\.co\/ajax\/mkt@openxgroup\.co\.kr/.test(form), 'AJAX email delivery endpoint');
+assert(!/name="_next"/.test(form), 'no external success redirect');
 assert(/name="기업명"/.test(form), 'company field');
 assert(/name="담당자명"/.test(form), 'contact name field');
 assert(/name="휴대폰 번호"/.test(form), 'phone field');
@@ -39,11 +39,15 @@ assert(/id="inquiryPrev"/.test(form) && /id="inquiryNext"/.test(form), 'previous
 assert(/role="progressbar"/.test(form) && /id="inquiryProgressFill"/.test(form), 'step progress indicator');
 assert(/id="inquirySubmit"/.test(form) && /상담 신청 제출하기/.test(form), 'final submit action');
 assert(/id="inquirySuccess"/.test(form), 'submission completion screen');
-assert(/addSubmissionValue/.test(js), 'form payload handling');
-assert(/addSubmissionValue\('월 예산', `\$\{monthlyBudget\.value\}만원`\)/.test(js), 'monthly budget email formatting');
+assert(/id="inquiryFallback"/.test(form) && /id="inquiryRetry"/.test(form), 'in-page outage fallback');
+assert(/id="inquiryMailFallback"/.test(form) && /mailto:mkt@openxgroup\.co\.kr/.test(form), 'email fallback');
+assert(/buildInquiryPayload/.test(js), 'form payload handling');
+assert(/payload\['월 예산'\] = `\$\{monthlyBudget\.value\}만원`/.test(js), 'monthly budget email formatting');
 assert(/checkedTargeting/.test(js) && /checkedTargeting\.map/.test(js), 'multiple targeting values are joined');
-assert(/inquiryForm\.submit\(\)/.test(js) && !/fetch\(inquiryForm\.action/.test(js), 'direct form submission');
-assert(/URLSearchParams/.test(js) && /showInquirySuccess/.test(js), 'success screen after redirect');
+assert(/fetch\(inquiryForm\.action/.test(js) && /application\/json/.test(js), 'in-page AJAX submission');
+assert(/retryDelays = \[0, 1200, 2800\]/.test(js) && /AbortController/.test(js), 'automatic retries with timeout');
+assert(/showInquiryFallback/.test(js) && /buildInquiryMailto/.test(js), 'failure keeps the user on-page with a mail fallback');
+assert(!/\.disabled = true; \}\);/.test(js), 'form values stay enabled and preserved');
 assert(/renderInquiryStep/.test(js) && /validateInquiryStep/.test(js), 'step navigation and validation');
 assert(/#inquiryNext\[hidden\][\s\S]*#inquirySubmit\[hidden\][\s\S]*display:\s*none\s*!important/.test(css), 'only the active step action is visible');
 assert(/inquirySuccess\.hidden = false/.test(js), 'success feedback');

@@ -16988,3 +16988,321 @@ body {
     font-size: 0.53rem;
   }
 }
+
+/* Channel panel — compact dark channel-mix console. */
+#targeting .targeting-channel {
+  height: auto;
+  min-height: 210px;
+  padding: 0;
+  border: 1px solid rgba(17, 17, 15, 0.18);
+  border-radius: var(--radius-sm);
+  background: #151513;
+  color: #fff;
+}
+
+.channel-console {
+  display: flex;
+  min-height: inherit;
+  height: 100%;
+  flex-direction: column;
+}
+
+.channel-console__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.channel-console__bar > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.channel-console__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d7bb88;
+  box-shadow: 0 0 0 3px rgba(215, 187, 136, 0.14);
+}
+
+.channel-console__bar strong {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+}
+
+.channel-console__bar > span {
+  padding: 3px 8px;
+  border: 1px solid rgba(196, 168, 120, 0.3);
+  border-radius: 999px;
+  color: rgba(232, 210, 160, 0.88);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.channel-console__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  padding: 11px 12px;
+}
+
+.channel-console__grid article {
+  position: relative;
+  min-width: 0;
+  padding: 9px 10px 8px 42px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.channel-console__grid article > span {
+  position: absolute;
+  top: 10px;
+  left: 9px;
+  color: rgba(215, 187, 136, 0.58);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.channel-console__grid article > strong {
+  display: block;
+  color: #fff;
+  font-size: 0.73rem;
+}
+
+.channel-console__grid article > p {
+  margin: 2px 0 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.57rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.channel-console__footer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.channel-console__footer > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 10px 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.channel-console__footer > div:last-child {
+  border-right: 0;
+}
+
+.channel-console__footer span {
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+.channel-console__footer strong {
+  overflow: hidden;
+  color: rgba(232, 210, 160, 0.82);
+  font-size: 0.62rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .channel-console__grid article {
+    padding-left: 9px;
+  }
+
+  .channel-console__grid article > span {
+    position: static;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .channel-console__footer > div {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+/* Time panel — selected viewing window console. */
+#targeting .targeting-time-console {
+  height: auto;
+  min-height: 210px;
+  padding: 0;
+  border: 1px solid rgba(17, 17, 15, 0.18);
+  border-radius: var(--radius-sm);
+  background: #151513;
+  color: #fff;
+}
+
+.time-console {
+  display: flex;
+  min-height: inherit;
+  height: 100%;
+  flex-direction: column;
+}
+
+.time-console__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.time-console__bar > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-console__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d7bb88;
+  box-shadow: 0 0 0 3px rgba(215, 187, 136, 0.14);
+}
+
+.time-console__bar strong {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+}
+
+.time-console__bar > span {
+  padding: 3px 8px;
+  border: 1px solid rgba(196, 168, 120, 0.3);
+  border-radius: 999px;
+  color: rgba(232, 210, 160, 0.88);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.time-console__range {
+  padding: 14px 16px 10px;
+}
+
+.time-console__range-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 6vw, 48px);
+  margin-bottom: 14px;
+}
+
+.time-console__range-copy > div {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.time-console__range-copy span {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.time-console__range-copy strong {
+  color: #fff;
+  font-size: 1.08rem;
+  letter-spacing: -0.03em;
+}
+
+.time-console__range-copy em {
+  color: rgba(215, 187, 136, 0.72);
+  font-size: 0.88rem;
+  font-style: normal;
+}
+
+.time-console__track,
+.time-console__ticks {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.time-console__track span {
+  display: block;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.time-console__track .is-active {
+  border-color: rgba(215, 187, 136, 0.26);
+  background: rgba(215, 187, 136, 0.18);
+}
+
+.time-console__track .is-peak {
+  border-color: rgba(215, 187, 136, 0.48);
+  background: linear-gradient(90deg, rgba(215, 187, 136, 0.34), rgba(215, 187, 136, 0.2));
+}
+
+.time-console__ticks {
+  margin-top: 5px;
+}
+
+.time-console__ticks span {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.52rem;
+  text-align: center;
+}
+
+.time-console__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding: 10px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.time-console__footer span {
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.time-console__footer strong {
+  color: rgba(232, 210, 160, 0.78);
+  font-size: 0.62rem;
+}
+
+@media (max-width: 480px) {
+  .time-console__range {
+    padding-inline: 11px;
+  }
+
+  .time-console__range-copy {
+    gap: 18px;
+  }
+
+  .time-console__footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+}

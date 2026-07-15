@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260715-audience-console1">
+  <link rel="stylesheet" href="styles.css?v=20260715-targeting-consoles2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -499,7 +499,7 @@
             <span class="targeting__point-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a3 3 0 0 1 0 5.74"/></svg>
             </span>
-            <span>관심사·생애주기 오디언스 선택</span>
+            <span>관심사·세대 등 오디언스 선택</span>
           </li>
           <li>
             <span class="targeting__point-icon" aria-hidden="true">
@@ -656,21 +656,32 @@
 
         <!-- 시간 타겟팅 -->
         <div class="targeting-content" data-panel="time" role="tabpanel" hidden>
-          <div class="targeting-visual targeting-pattern targeting-visual--pattern">
-            <div class="targeting-pattern__header">
-              <span class="targeting-pattern__title">시간 타겟팅 송출 예시</span>
-              <span class="targeting-pattern__range">18:00 ~ 02:00</span>
-            </div>
-            <div class="targeting-pattern__chart">
-              <div class="pattern-bar"><span class="pattern-bar__label">06시</span><div class="pattern-bar__track"><span style="height:20%"></span></div></div>
-              <div class="pattern-bar"><span class="pattern-bar__label">12시</span><div class="pattern-bar__track"><span style="height:45%"></span></div></div>
-              <div class="pattern-bar pattern-bar--peak"><span class="pattern-bar__label">18시</span><div class="pattern-bar__track"><span style="height:90%"></span></div></div>
-              <div class="pattern-bar pattern-bar--peak"><span class="pattern-bar__label">21시</span><div class="pattern-bar__track"><span style="height:100%"></span></div></div>
-              <div class="pattern-bar pattern-bar--peak"><span class="pattern-bar__label">00시</span><div class="pattern-bar__track"><span style="height:75%"></span></div></div>
-              <div class="pattern-bar"><span class="pattern-bar__label">03시</span><div class="pattern-bar__track"><span style="height:30%"></span></div></div>
-            </div>
-            <div class="targeting-pattern__legend">
-              <span class="targeting-pattern__dot"></span> 시청 집중 시간대
+          <div class="targeting-visual targeting-pattern targeting-visual--pattern targeting-time-console">
+            <div class="time-console">
+              <div class="time-console__bar">
+                <div>
+                  <span class="time-console__dot"></span>
+                  <strong>TIME WINDOW</strong>
+                </div>
+                <span>08H SELECTED</span>
+              </div>
+              <div class="time-console__range">
+                <div class="time-console__range-copy">
+                  <div><span>START</span><strong>18:00</strong></div>
+                  <em>→</em>
+                  <div><span>END</span><strong>02:00</strong></div>
+                </div>
+                <div class="time-console__track" aria-hidden="true">
+                  <span></span><span></span><span class="is-active"></span><span class="is-peak"></span><span class="is-active"></span><span></span>
+                </div>
+                <div class="time-console__ticks" aria-hidden="true">
+                  <span>06</span><span>12</span><span>18</span><span>21</span><span>00</span><span>03</span>
+                </div>
+              </div>
+              <div class="time-console__footer">
+                <span>PRIME VIEWING</span>
+                <strong>퇴근 후 · 저녁 · 심야 집중</strong>
+              </div>
             </div>
           </div>
           <div class="targeting-features">
@@ -707,40 +718,42 @@
 
         <!-- 채널 타겟팅 -->
         <div class="targeting-content" data-panel="channel" role="tabpanel" hidden>
-          <div class="targeting-visual targeting-visual--report">
-            <div class="targeting-report">
-              <div class="targeting-report__header">
-                <strong>채널 타겟팅 구성 예시</strong>
-                <span class="targeting-report__badge">7개 이상 선택 가능</span>
+          <div class="targeting-visual targeting-visual--report targeting-channel">
+            <div class="channel-console">
+              <div class="channel-console__bar">
+                <div>
+                  <span class="channel-console__dot"></span>
+                  <strong>CHANNEL MIX</strong>
+                </div>
+                <span>MIN. 07</span>
               </div>
-              <div class="targeting-report__flow">
-                <div class="report-flow__step report-flow__step--done">
-                  <span class="report-flow__week">STEP 1</span>
-                  <strong>장르 선택</strong>
-                  <em>뉴스·예능·드라마</em>
-                </div>
-                <div class="report-flow__arrow" aria-hidden="true">→</div>
-                <div class="report-flow__step report-flow__step--active">
-                  <span class="report-flow__week">STEP 2</span>
-                  <strong>채널 확정</strong>
-                  <em>브랜드 맞춤 편성</em>
-                </div>
+              <div class="channel-console__grid">
+                <article>
+                  <span>NEWS</span>
+                  <strong>뉴스·시사</strong>
+                  <p>YTN · 연합뉴스TV</p>
+                </article>
+                <article>
+                  <span>ENT.</span>
+                  <strong>예능·종합</strong>
+                  <p>tvN · JTBC</p>
+                </article>
+                <article>
+                  <span>DRAMA</span>
+                  <strong>드라마·영화</strong>
+                  <p>OCN · KBS Joy</p>
+                </article>
+                <article>
+                  <span>LIFE</span>
+                  <strong>라이프·취향</strong>
+                  <p>SBS Plus · MBC every1</p>
+                </article>
               </div>
-              <div class="targeting-report__kpis">
-                <div class="targeting-report__kpi">
-                  <span>선택 채널</span>
-                  <strong>12개</strong>
-                </div>
-                <div class="targeting-report__kpi">
-                  <span>장르 그룹</span>
-                  <strong>4개</strong>
-                </div>
-                <div class="targeting-report__kpi">
-                  <span>송출 범위</span>
-                  <strong>맞춤형</strong>
-                </div>
+              <div class="channel-console__footer">
+                <div><span>SELECTED</span><strong>12 CH</strong></div>
+                <div><span>GENRES</span><strong>04</strong></div>
+                <div><span>RULE</span><strong>BRAND FIT</strong></div>
               </div>
-              <p class="targeting-report__caption">※ 채널 구성은 업종과 캠페인 조건에 따라 달라질 수 있습니다.</p>
             </div>
           </div>
           <div class="targeting-features">

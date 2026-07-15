@@ -585,4 +585,79 @@
 
     renderCalculator();
   }
+
+  // ---------- IPTV advertising inquiry form ----------
+  const inquiryForm = document.getElementById('inquiryForm');
+  const inquiryPhone = document.getElementById('inquiryPhone');
+  const inquiryStatus = document.getElementById('inquiryStatus');
+
+  if (inquiryPhone) {
+    inquiryPhone.addEventListener('input', () => {
+      const digits = inquiryPhone.value.replace(/\D/g, '').slice(0, 11);
+      if (digits.length <= 3) {
+        inquiryPhone.value = digits;
+      } else if (digits.length <= 7) {
+        inquiryPhone.value = digits.replace(/(\d{3})(\d+)/, '$1-$2');
+      } else {
+        inquiryPhone.value = digits.replace(/(\d{3})(\d{3,4})(\d{4})/, '$1-$2-$3');
+      }
+    });
+  }
+
+  if (inquiryForm && inquiryStatus) {
+    inquiryForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = inquiryForm.querySelector('button[type="submit"]');
+      const checkedMedia = Array.from(
+        inquiryForm.querySelectorAll('input[name="희망 매체"]:checked')
+      );
+
+      if (!checkedMedia.length) {
+        inquiryStatus.textContent = '희망 매체를 한 가지 이상 선택해 주세요.';
+        inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';
+        inquiryForm.querySelector('input[name="희망 매체"]').focus();
+        return;
+      }
+
+      const formData = new FormData(inquiryForm);
+      formData.delete('희망 매체');
+      formData.append('희망 매체', checkedMedia.map((input) => input.value).join(', '));
+      formData.append('접수 페이지', window.location.href);
+
+      submitButton.disabled = true;
+      inquiryForm.classList.add('is-submitting');
+      inquiryStatus.textContent = '상담 신청을 전송하고 있습니다.';
+      inquiryStatus.className = 'inquiry-form__status';
+
+      try {
+        const payload = Object.fromEntries(formData.entries());
+        const response = await fetch(inquiryForm.action, {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          }
+        });
+
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || String(result.success).toLowerCase() === 'false') {
+          throw new Error('Request failed');
+        }
+
+        inquiryForm.reset();
+        const fallbackMedia = inquiryForm.querySelector('input[value="협의 필요"]');
+        if (fallbackMedia) fallbackMedia.checked = true;
+        inquiryStatus.textContent = '상담 신청이 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.';
+        inquiryStatus.className = 'inquiry-form__status inquiry-form__status--success';
+      } catch (error) {
+        inquiryStatus.innerHTML = '전송 중 문제가 발생했습니다. <a href="mailto:mkt@openxgroup.co.kr">mkt@openxgroup.co.kr</a>로 문의해 주세요.';
+        inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';
+      } finally {
+        submitButton.disabled = false;
+        inquiryForm.classList.remove('is-submitting');
+      }
+    });
+  }
 })();

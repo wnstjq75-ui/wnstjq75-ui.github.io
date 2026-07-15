@@ -665,7 +665,7 @@
       return false;
     }
 
-    if (inquiryStep === 3) {
+    if (currentPanel.querySelector('input[name="희망 매체"]')) {
       const checkedMedia = inquiryForm.querySelectorAll('input[name="희망 매체"]:checked');
       if (!checkedMedia.length) {
         inquiryStatus.textContent = '희망 매체를 한 가지 이상 선택해 주세요.';
@@ -737,7 +737,10 @@
       );
 
       if (!checkedMedia.length) {
-        inquiryStep = 3;
+        inquiryStep = inquirySteps.findIndex((step) =>
+          step.querySelector('input[name="희망 매체"]')
+        );
+        if (inquiryStep < 0) inquiryStep = inquirySteps.length - 1;
         renderInquiryStep();
         inquiryStatus.textContent = '희망 매체를 한 가지 이상 선택해 주세요.';
         inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';

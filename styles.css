@@ -16706,3 +16706,78 @@ body {
     transition: none;
   }
 }
+
+/* Two-step phone-proportioned inquiry card. */
+.section--contact .contact-sales {
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 520px) !important;
+  gap: clamp(44px, 7vw, 96px) !important;
+  align-items: center !important;
+}
+
+.section--contact .inquiry-form {
+  width: 100%;
+  max-width: 520px;
+  justify-self: end;
+}
+
+.inquiry-wizard__progress span {
+  width: 50%;
+}
+
+.inquiry-wizard__step {
+  min-height: 0;
+  padding-top: 26px;
+}
+
+.inquiry-wizard__fields--single {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.inquiry-wizard__fields--campaign {
+  margin-bottom: 20px;
+}
+
+.inquiry-wizard__choices--stacked {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.inquiry-wizard__choices--stacked .inquiry-choice__grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.inquiry-wizard__choices--stacked .inquiry-choice__grid span {
+  min-height: 43px;
+  padding: 7px 5px;
+  font-size: 0.72rem;
+}
+
+.inquiry-wizard__choices--stacked .inquiry-choice legend {
+  margin-bottom: 8px;
+}
+
+.inquiry-wizard__step .inquiry-consent {
+  margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+  .section--contact .contact-sales {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section--contact .inquiry-form {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .inquiry-wizard__choices--stacked .inquiry-choice__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inquiry-wizard__choices--stacked .inquiry-choice__grid span {
+    min-height: 42px;
+  }
+}

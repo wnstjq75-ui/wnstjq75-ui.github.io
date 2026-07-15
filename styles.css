@@ -16801,3 +16801,20 @@ body {
     min-height: 42px;
   }
 }
+
+/* Keep the four targeting categories on one compact row at every width. */
+#targeting .targeting-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px !important;
+  flex-wrap: nowrap !important;
+}
+
+#targeting .targeting-tab {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 5px !important;
+  flex: none !important;
+  white-space: nowrap !important;
+  font-size: clamp(0.68rem, 2.3vw, 0.78rem) !important;
+}

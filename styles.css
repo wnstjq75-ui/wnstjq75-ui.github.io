@@ -16449,6 +16449,11 @@ body {
   display: none !important;
 }
 
+#inquiryNext[hidden],
+#inquirySubmit[hidden] {
+  display: none !important;
+}
+
 .inquiry-wizard__back {
   display: inline-flex;
   align-items: center;

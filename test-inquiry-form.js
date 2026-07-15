@@ -40,6 +40,7 @@ assert(/id="inquirySuccess"/.test(form), 'submission completion screen');
 assert(/new FormData\(inquiryForm\)/.test(js), 'form payload handling');
 assert(/fetch\(inquiryForm\.action/.test(js), 'AJAX submission');
 assert(/renderInquiryStep/.test(js) && /validateInquiryStep/.test(js), 'step navigation and validation');
+assert(/#inquiryNext\[hidden\][\s\S]*#inquirySubmit\[hidden\][\s\S]*display:\s*none\s*!important/.test(css), 'only the active step action is visible');
 assert(/inquirySuccess\.hidden = false/.test(js), 'success feedback');
 assert(/@media \(max-width: 620px\)/.test(css) && /\.inquiry-wizard__step/.test(css), 'responsive wizard styles');
 

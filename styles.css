@@ -6219,6 +6219,16 @@ body.nav-open {
   margin-bottom: 10px;
 }
 
+.ad-calc__product-text {
+  display: block;
+  margin-top: 4px;
+  color: #111;
+  font-size: clamp(1rem, 2vw, 1.14rem);
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: -0.035em;
+}
+
 .ad-calc__label-row {
   display: flex;
   align-items: baseline;

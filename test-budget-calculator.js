@@ -34,11 +34,11 @@ assert(Calc.calculateExposures(200, 'all3').exposures === 360000, '3사 200만 �
 assert(Calc.calculateExposures(300, 'all3').exposures === 540000, '3사 300만 → 540,000');
 assert(Calc.calculateExposures(500, 'all3').exposures === 900000, '3사 500만 → 900,000');
 assert(Calc.calculateExposures(100, 'legacy').exposures === 180000, 'legacy product falls back to 3사 통합');
-assert(Calc.PRODUCTS.all3.label === '3사 통합', '3사 product label is 3사 통합');
+assert(Calc.PRODUCTS.all3.label === 'KT, SKT, LGU+ 3사 통합', 'full 3사 product label');
 assert(Calc.PRODUCTS.all3.unitLabel.indexOf('18만회') !== -1, '3사 unit label is 18만회');
 
 // Labels
-assert(all3At100.productLabel === '3사 통합', '3사 label');
+assert(all3At100.productLabel === 'KT, SKT, LGU+ 3사 통합', '3사 label');
 assert(Calc.formatExposures(180000).indexOf('180') !== -1, 'comma format');
 
 // Structure wiring
@@ -47,7 +47,7 @@ const js = fs.readFileSync(path.join(__dirname, 'script.js'), 'utf8');
 const css = fs.readFileSync(path.join(__dirname, 'styles.css'), 'utf8');
 assert(html.indexOf('id="pricing"') !== -1, 'pricing section');
 assert(html.indexOf('budget-calculator') !== -1 || html.indexOf('ad-calc') !== -1, 'calculator markup');
-assert(html.indexOf('IPTV 3사 통합') !== -1, '3사 integrated product label');
+assert(html.indexOf('KT, SKT, LGU+ 3사 통합') !== -1, '3사 integrated product label');
 assert(html.indexOf('pricing-tiers') === -1, 'static package tiers removed');
 assert(html.indexOf('이 예산으로 상담 문의') === -1, 'CTA budget contact removed');
 assert(
@@ -65,10 +65,11 @@ const pricing = html.slice(html.indexOf('id="pricing"'), html.indexOf('id="conta
 assert(pricing.indexOf('type="range"') !== -1 || pricing.indexOf('ad-calc__slider') !== -1, 'slider in pricing');
 assert(pricing.indexOf('min="100"') !== -1 && pricing.indexOf('max="500"') !== -1, 'slider min max');
 assert(pricing.indexOf('step="100"') !== -1, 'slider step 100');
-assert(pricing.indexOf('data-calc-product="all3"') !== -1, 'all3 tab in pricing');
-assert(pricing.indexOf('data-calc-product="kt"') === -1, 'KT-only option removed');
-assert(pricing.indexOf('data-calc-product="sklg"') === -1, 'SKT/LGU+ option removed');
-assert((pricing.match(/data-calc-product=/g) || []).length === 1, 'single 3사 integrated product');
+assert(pricing.indexOf('data-calc-product=') === -1, 'product tab buttons removed');
+assert(pricing.indexOf('ad-calc__tabs') === -1, 'product box removed');
+assert(/class="ad-calc__product-text">KT, SKT, LGU\+ 3사 통합<\/strong>/.test(pricing), 'plain-text unified product');
+assert(pricing.indexOf('calcProductLabel') === -1, 'redundant selected-product card removed');
+assert(pricing.indexOf('calcUnitLabel') === -1, 'redundant unit-price card removed');
 
 // Contract term slider (6-month steps)
 assert(Calc.MIN_TERM_MONTHS === 6, 'min term 6');

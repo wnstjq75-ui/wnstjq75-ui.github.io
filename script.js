@@ -401,8 +401,6 @@
     const budgetLabel = document.getElementById('calcBudgetLabel');
     const termInput = document.getElementById('calcTerm');
     const termLabel = document.getElementById('calcTermLabel');
-    const productLabel = document.getElementById('calcProductLabel');
-    const unitLabel = document.getElementById('calcUnitLabel');
     const metaBudget = document.getElementById('calcMetaBudget');
     const metaTerm = document.getElementById('calcMetaTerm');
     const exposuresEl = document.getElementById('calcExposures');
@@ -485,8 +483,6 @@
       if (termLabel) {
         termLabel.textContent = BudgetCalculator.formatTermMonths(result.termMonths);
       }
-      if (productLabel) productLabel.textContent = result.productLabel;
-      if (unitLabel) unitLabel.textContent = result.unitLabel;
       if (metaBudget) {
         metaBudget.textContent = BudgetCalculator.formatManwon(result.budgetManwon, calcProduct);
       }

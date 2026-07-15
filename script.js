@@ -441,8 +441,7 @@
       if (ticks) {
         const labels = [
           { text: '100만', position: '0%' },
-          { text: '300만', position: '22.222%' },
-          { text: '500만', position: '44.444%' },
+          { text: '400만', position: '33.333%' },
           { text: '700만', position: '66.667%' },
           { text: '1,000만', position: '100%' },
         ];

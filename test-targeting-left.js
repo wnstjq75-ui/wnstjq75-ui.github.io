@@ -40,6 +40,14 @@ assert(left.indexOf('효율') !== -1 || left.indexOf('높아집니다') !== -1, 
 // not two long abstract desc paragraphs only
 assert((left.match(/section__desc/g) || []).length <= 1, 'at most one body desc');
 assert(section.indexOf('targeting-tab') !== -1, 'middle tabs remain');
+assert(section.indexOf('오디언스 타겟팅') !== -1, 'audience targeting tab');
+assert(section.indexOf('시간 타겟팅') !== -1, 'time targeting tab');
+assert(section.indexOf('채널 타겟팅') !== -1, 'channel targeting tab');
+assert(section.indexOf('데이터 조건') === -1, 'old data condition tab removed');
+assert(section.indexOf('검증 및 리포트') === -1, 'old report tab removed');
+assert(section.indexOf('data-panel="audience"') !== -1, 'audience targeting panel');
+assert(section.indexOf('data-panel="time"') !== -1, 'time targeting panel');
+assert(section.indexOf('data-panel="channel"') !== -1, 'channel targeting panel');
 assert(css.indexOf('var(--targeting-geo-height') !== -1, 'targeting visuals inherit first GEO panel height');
 assert(js.indexOf('syncTargetingVisualHeight') !== -1, 'first GEO panel height is measured');
 assert(section.indexOf('id="surcharge"') !== -1 || section.indexOf('surcharge') !== -1, 'surcharge remains');

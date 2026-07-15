@@ -486,7 +486,7 @@
       <div class="targeting__text reveal">
         <p class="section__eyebrow">TARGETING</p>
         <h2 class="section__title targeting__headline"><span class="targeting__headline-line">더 많이가 아니라,</span><span class="targeting__headline-line">더 정확하게</span></h2>
-        <p class="section__lead">지역·채널·시간·시청 패턴으로 송출 조건을 설계합니다.</p>
+        <p class="section__lead">지역·오디언스·시간·채널 기준으로 송출 조건을 설계합니다.</p>
         <p class="section__desc targeting__lead">불필요한 노출을 줄이고, 캠페인 목적에 맞는 IPTV 타겟 광고로 예산을 집중합니다.</p>
         <ul class="targeting__points">
           <li>
@@ -497,15 +497,21 @@
           </li>
           <li>
             <span class="targeting__point-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a3 3 0 0 1 0 5.74"/></svg>
             </span>
-            <span>채널·시간대 조건 설정</span>
+            <span>관심사·생애주기 오디언스 선택</span>
           </li>
           <li>
             <span class="targeting__point-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a3 3 0 0 1 0 5.74"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
             </span>
-            <span>오디언스 기반 맞춤 노출</span>
+            <span>요일·시간대 집중 송출</span>
+          </li>
+          <li>
+            <span class="targeting__point-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h10M7 13h6M7 17h4"/></svg>
+            </span>
+            <span>업종에 맞는 채널 선택 송출</span>
           </li>
         </ul>
         <p class="targeting__footer">조건을 세밀하게 설계할수록 광고 효율은 더 높아집니다.</p>
@@ -513,9 +519,9 @@
       <div class="targeting__panel reveal reveal--delay" id="targetingPanel">
         <div class="targeting-tabs" role="tablist" aria-label="타겟팅 기능">
           <button class="targeting-tab targeting-tab--active" role="tab" aria-selected="true" data-tab="geo">지역 타겟팅</button>
-          <button class="targeting-tab" role="tab" aria-selected="false" data-tab="data">데이터 조건</button>
-          <button class="targeting-tab" role="tab" aria-selected="false" data-tab="pattern">시청 패턴</button>
-          <button class="targeting-tab" role="tab" aria-selected="false" data-tab="report">검증 및 리포트</button>
+          <button class="targeting-tab" role="tab" aria-selected="false" data-tab="audience">오디언스 타겟팅</button>
+          <button class="targeting-tab" role="tab" aria-selected="false" data-tab="time">시간 타겟팅</button>
+          <button class="targeting-tab" role="tab" aria-selected="false" data-tab="channel">채널 타겟팅</button>
         </div>
 
         <!-- 지역 타겟팅 -->
@@ -586,14 +592,14 @@
           </div>
         </div>
 
-        <!-- 데이터 조건 -->
-        <div class="targeting-content" data-panel="data" role="tabpanel" hidden>
+        <!-- 오디언스 타겟팅 -->
+        <div class="targeting-content" data-panel="audience" role="tabpanel" hidden>
           <div class="targeting-visual targeting-data">
             <div class="targeting-data__filters">
-              <span class="targeting-data__filter targeting-data__filter--on">연령 30~49</span>
-              <span class="targeting-data__filter targeting-data__filter--on">여성</span>
-              <span class="targeting-data__filter">프리미엄 소비</span>
-              <span class="targeting-data__filter targeting-data__filter--on">뷰티·생활</span>
+              <span class="targeting-data__filter targeting-data__filter--on">MZ세대</span>
+              <span class="targeting-data__filter targeting-data__filter--on">신혼·육아</span>
+              <span class="targeting-data__filter">골프·스포츠</span>
+              <span class="targeting-data__filter targeting-data__filter--on">뷰티·여행</span>
             </div>
             <div class="targeting-data__rows">
               <div class="targeting-data__row">
@@ -602,14 +608,14 @@
                 <em>182K 가구</em>
               </div>
               <div class="targeting-data__row">
-                <span>관심 카테고리</span>
+                <span>관심사 적합도</span>
                 <div class="targeting-data__bar"><span style="width:58%"></span></div>
-                <em>뷰티 34%</em>
+                <em>여행 34%</em>
               </div>
               <div class="targeting-data__row">
-                <span>채널 적합도</span>
+                <span>생애주기 매칭</span>
                 <div class="targeting-data__bar"><span style="width:84%"></span></div>
-                <em>드라마 CH</em>
+                <em>신혼·육아</em>
               </div>
             </div>
           </div>
@@ -617,39 +623,39 @@
             <div class="targeting-feature">
               <span class="targeting-feature__num">01</span>
               <div>
-                <strong>연령·성별</strong>
-                <p>타겟 고객층의 연령대와 성별 조건을 세밀하게 설정</p>
+                <strong>관심사 세그먼트</strong>
+                <p>맛집·여행·골프·뷰티·스포츠·자동차 등 관심 분야 기반 선택</p>
               </div>
             </div>
             <div class="targeting-feature">
               <span class="targeting-feature__num">02</span>
               <div>
-                <strong>관심사 Interest</strong>
-                <p>시청 이력 기반 라이프스타일 카테고리 매칭</p>
+                <strong>생애주기 세그먼트</strong>
+                <p>신혼, 영유아·초중고 자녀, MZ세대 등 생활 단계에 맞춰 설계</p>
               </div>
             </div>
             <div class="targeting-feature">
               <span class="targeting-feature__num">03</span>
               <div>
-                <strong>채널 Channel</strong>
-                <p>브랜드 특성과 시청자 콘텐츠 성향을 분석한 채널 매칭</p>
+                <strong>라이프스타일 분류</strong>
+                <p>프로여행러, 펀딩의 시대, 휴먼터치 등 소비 성향별 분류 활용</p>
               </div>
             </div>
             <div class="targeting-feature">
               <span class="targeting-feature__num">04</span>
               <div>
-                <strong>오디언스 규모</strong>
-                <p>설정 조건에 따른 예상 도달 가구 수를 사전 확인</p>
+                <strong>브랜드 맞춤 조합</strong>
+                <p>캠페인 업종과 목표에 맞는 여러 오디언스를 조합해 도달 설계</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 시청 패턴 -->
-        <div class="targeting-content" data-panel="pattern" role="tabpanel" hidden>
+        <!-- 시간 타겟팅 -->
+        <div class="targeting-content" data-panel="time" role="tabpanel" hidden>
           <div class="targeting-visual targeting-pattern targeting-visual--pattern">
             <div class="targeting-pattern__header">
-              <span class="targeting-pattern__title">프라임 타임 송출 예시</span>
+              <span class="targeting-pattern__title">시간 타겟팅 송출 예시</span>
               <span class="targeting-pattern__range">18:00 ~ 02:00</span>
             </div>
             <div class="targeting-pattern__chart">
@@ -668,92 +674,99 @@
             <div class="targeting-feature">
               <span class="targeting-feature__num">01</span>
               <div>
-                <strong>시간 Time</strong>
-                <p>8시간 이상 송출 구간 선택 (18:00 ~ 02:00 등 프라임 타임 집중)</p>
+                <strong>연속 시간 선택</strong>
+                <p>8시간 이상 송출 구간을 선택해 원하는 시간대에 집중</p>
               </div>
             </div>
             <div class="targeting-feature">
               <span class="targeting-feature__num">02</span>
               <div>
-                <strong>송출 시간대</strong>
-                <p>캠페인 목적에 맞는 시간대를 지정하여 집중 송출</p>
+                <strong>프라임 타임</strong>
+                <p>18:00~02:00 등 시청 집중 시간대를 중심으로 설계</p>
               </div>
             </div>
             <div class="targeting-feature">
               <span class="targeting-feature__num">03</span>
               <div>
-                <strong>반복 노출</strong>
-                <p>타깃 가구 기준 지속적 반복 송출로 브랜드 인지도 강화</p>
+                <strong>생활 시간대 매칭</strong>
+                <p>출근 전·낮 시간·퇴근 후 등 고객 생활 패턴에 맞춰 선택</p>
               </div>
             </div>
             <div class="targeting-feature">
               <span class="targeting-feature__num">04</span>
               <div>
-                <strong>시청 집중도</strong>
-                <p>시청자가 많은 프라임 타임에 맞춰 효율적인 노출 설계</p>
+                <strong>반복 노출</strong>
+                <p>선택 시간대 안에서 타겟 가구에 반복 송출해 인지도 강화</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 검증 및 리포트 -->
-        <div class="targeting-content" data-panel="report" role="tabpanel" hidden>
+        <!-- 채널 타겟팅 -->
+        <div class="targeting-content" data-panel="channel" role="tabpanel" hidden>
           <div class="targeting-visual targeting-visual--report">
             <div class="targeting-report">
               <div class="targeting-report__header">
-                <strong>월간 송출 결과 리포트</strong>
-                <span class="targeting-report__badge">송출 1개월 후 이메일 발송</span>
+                <strong>채널 타겟팅 구성 예시</strong>
+                <span class="targeting-report__badge">7개 이상 선택 가능</span>
               </div>
               <div class="targeting-report__flow">
                 <div class="report-flow__step report-flow__step--done">
-                  <span class="report-flow__week">1~4주</span>
-                  <strong>IPTV 송출</strong>
-                  <em>광고 집행</em>
+                  <span class="report-flow__week">STEP 1</span>
+                  <strong>장르 선택</strong>
+                  <em>뉴스·예능·드라마</em>
                 </div>
                 <div class="report-flow__arrow" aria-hidden="true">→</div>
                 <div class="report-flow__step report-flow__step--active">
-                  <span class="report-flow__week">1개월 후</span>
-                  <strong>리포트 발송</strong>
-                  <em>이메일 전달</em>
+                  <span class="report-flow__week">STEP 2</span>
+                  <strong>채널 확정</strong>
+                  <em>브랜드 맞춤 편성</em>
                 </div>
               </div>
               <div class="targeting-report__kpis">
                 <div class="targeting-report__kpi">
-                  <span>노출수</span>
-                  <strong>245.8K</strong>
+                  <span>선택 채널</span>
+                  <strong>12개</strong>
                 </div>
                 <div class="targeting-report__kpi">
-                  <span>완전시청률</span>
-                  <strong>84.2%</strong>
+                  <span>장르 그룹</span>
+                  <strong>4개</strong>
                 </div>
                 <div class="targeting-report__kpi">
-                  <span>도달 가구</span>
-                  <strong>182.3K</strong>
+                  <span>송출 범위</span>
+                  <strong>맞춤형</strong>
                 </div>
               </div>
-              <p class="targeting-report__caption">※ 예시 수치이며, 실제 리포트는 송출 1개월 후 제공됩니다.</p>
+              <p class="targeting-report__caption">※ 채널 구성은 업종과 캠페인 조건에 따라 달라질 수 있습니다.</p>
             </div>
           </div>
-          <div class="targeting-features targeting-features--report">
+          <div class="targeting-features">
             <div class="targeting-feature">
               <span class="targeting-feature__num">01</span>
               <div>
-                <strong>완전시청 확인</strong>
-                <p>15초 광고를 끝까지 본 시청만 집계·과금 기준으로 반영</p>
+                <strong>채널 직접 선택</strong>
+                <p>주요 IPTV 채널 중 캠페인에 맞는 채널을 7개 이상 선택</p>
               </div>
             </div>
             <div class="targeting-feature">
               <span class="targeting-feature__num">02</span>
               <div>
-                <strong>지역·채널 분석</strong>
-                <p>지역별 송출 농도와 채널별 노출 TOP 데이터 포함</p>
+                <strong>장르별 구성</strong>
+                <p>뉴스·예능·드라마·스포츠 등 콘텐츠 장르 중심으로 조합</p>
               </div>
             </div>
             <div class="targeting-feature">
               <span class="targeting-feature__num">03</span>
               <div>
-                <strong>광고비 정산 내역</strong>
-                <p>월간 노출·완전시청 기준 광고비 산출 내역을 투명하게 제공</p>
+                <strong>업종 적합도</strong>
+                <p>브랜드 특성과 시청자 콘텐츠 성향을 고려해 채널 매칭</p>
+              </div>
+            </div>
+            <div class="targeting-feature">
+              <span class="targeting-feature__num">04</span>
+              <div>
+                <strong>다채널 도달</strong>
+                <p>복수 채널에 분산 송출해 타겟 가구 접점을 안정적으로 확보</p>
               </div>
             </div>
           </div>
@@ -1416,6 +1429,6 @@
 
   <script src="hero-carousel.js?v=20260710-seo1" defer></script>
   <script src="budget-calculator.js?v=20260710-seo1" defer></script>
-  <script src="script.js?v=20260715-inquiry-wizard4" defer></script>
+  <script src="script.js?v=20260715-targeting-tabs1" defer></script>
 </body>
 </html>

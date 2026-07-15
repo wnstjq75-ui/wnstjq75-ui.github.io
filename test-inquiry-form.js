@@ -32,10 +32,16 @@ assert((form.match(/name="광고 기간"/g) || []).length === 4, 'advertising pe
 assert(/name="문의 내용"/.test(form), 'message field');
 assert(/개인정보 수집 및 이용 동의/.test(form) && /required/.test(form), 'required privacy consent');
 assert(/name="_honey"/.test(form), 'spam honeypot');
+assert((form.match(/data-inquiry-step=/g) || []).length === 5, 'five guided steps');
+assert(/id="inquiryPrev"/.test(form) && /id="inquiryNext"/.test(form), 'previous and next controls');
+assert(/role="progressbar"/.test(form) && /id="inquiryProgressFill"/.test(form), 'step progress indicator');
+assert(/id="inquirySubmit"/.test(form) && /상담 신청 제출하기/.test(form), 'final submit action');
+assert(/id="inquirySuccess"/.test(form), 'submission completion screen');
 assert(/new FormData\(inquiryForm\)/.test(js), 'form payload handling');
 assert(/fetch\(inquiryForm\.action/.test(js), 'AJAX submission');
-assert(/inquiry-form__status--success/.test(js), 'success feedback');
-assert(/@media \(max-width: 620px\)/.test(css) && /\.inquiry-form/.test(css), 'responsive form styles');
+assert(/renderInquiryStep/.test(js) && /validateInquiryStep/.test(js), 'step navigation and validation');
+assert(/inquirySuccess\.hidden = false/.test(js), 'success feedback');
+assert(/@media \(max-width: 620px\)/.test(css) && /\.inquiry-wizard__step/.test(css), 'responsive wizard styles');
 
 if (failed) {
   console.error(`\n${failed} inquiry form checks failed.`);

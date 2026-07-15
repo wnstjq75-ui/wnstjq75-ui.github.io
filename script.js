@@ -590,6 +590,23 @@
   const inquiryForm = document.getElementById('inquiryForm');
   const inquiryPhone = document.getElementById('inquiryPhone');
   const inquiryStatus = document.getElementById('inquiryStatus');
+  const inquirySteps = inquiryForm
+    ? Array.from(inquiryForm.querySelectorAll('[data-inquiry-step]'))
+    : [];
+  const inquiryPrev = document.getElementById('inquiryPrev');
+  const inquiryNext = document.getElementById('inquiryNext');
+  const inquirySubmit = document.getElementById('inquirySubmit');
+  const inquiryProgress = document.getElementById('inquiryProgress');
+  const inquiryProgressFill = document.getElementById('inquiryProgressFill');
+  const inquiryStepCount = document.getElementById('inquiryStepCount');
+  const inquiryActions = document.getElementById('inquiryActions');
+  const inquirySuccess = document.getElementById('inquirySuccess');
+  const inquiryRestart = document.getElementById('inquiryRestart');
+  const inquiryTopbar = inquiryForm?.querySelector('.inquiry-wizard__topbar');
+  const inquiryMediaInputs = inquiryForm
+    ? Array.from(inquiryForm.querySelectorAll('input[name="희망 매체"]'))
+    : [];
+  let inquiryStep = 0;
 
   if (inquiryPhone) {
     inquiryPhone.addEventListener('input', () => {
@@ -604,19 +621,127 @@
     });
   }
 
+  const renderInquiryStep = (shouldFocus = false) => {
+    if (!inquirySteps.length) return;
+
+    inquirySteps.forEach((step, index) => {
+      const isCurrent = index === inquiryStep;
+      step.hidden = !isCurrent;
+      step.setAttribute('aria-hidden', isCurrent ? 'false' : 'true');
+    });
+
+    const currentNumber = inquiryStep + 1;
+    const total = inquirySteps.length;
+    if (inquiryPrev) inquiryPrev.hidden = inquiryStep === 0;
+    if (inquiryNext) inquiryNext.hidden = inquiryStep === total - 1;
+    if (inquirySubmit) inquirySubmit.hidden = inquiryStep !== total - 1;
+    if (inquiryProgress) inquiryProgress.setAttribute('aria-valuenow', String(currentNumber));
+    if (inquiryProgressFill) inquiryProgressFill.style.width = `${(currentNumber / total) * 100}%`;
+    if (inquiryStepCount) {
+      inquiryStepCount.textContent = `${String(currentNumber).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+    }
+    if (inquiryStatus) {
+      inquiryStatus.textContent = '';
+      inquiryStatus.className = 'inquiry-form__status';
+    }
+
+    if (shouldFocus) {
+      const focusTarget = inquirySteps[inquiryStep].querySelector('input, textarea, button');
+      focusTarget?.focus({ preventScroll: true });
+    }
+  };
+
+  const validateInquiryStep = () => {
+    const currentPanel = inquirySteps[inquiryStep];
+    if (!currentPanel) return true;
+
+    const invalidField = Array.from(
+      currentPanel.querySelectorAll('input, textarea, select')
+    ).find((field) => !field.checkValidity());
+
+    if (invalidField) {
+      invalidField.reportValidity();
+      invalidField.focus({ preventScroll: true });
+      return false;
+    }
+
+    if (inquiryStep === 3) {
+      const checkedMedia = inquiryForm.querySelectorAll('input[name="희망 매체"]:checked');
+      if (!checkedMedia.length) {
+        inquiryStatus.textContent = '희망 매체를 한 가지 이상 선택해 주세요.';
+        inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';
+        inquiryForm.querySelector('input[name="희망 매체"]')?.focus({ preventScroll: true });
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  if (inquiryNext) {
+    inquiryNext.addEventListener('click', () => {
+      if (!validateInquiryStep()) return;
+      inquiryStep = Math.min(inquiryStep + 1, inquirySteps.length - 1);
+      renderInquiryStep(true);
+    });
+  }
+
+  if (inquiryPrev) {
+    inquiryPrev.addEventListener('click', () => {
+      inquiryStep = Math.max(inquiryStep - 1, 0);
+      renderInquiryStep(true);
+    });
+  }
+
+  inquiryMediaInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      if (!input.checked) return;
+      if (input.value === '협의 필요') {
+        inquiryMediaInputs.forEach((media) => {
+          if (media !== input) media.checked = false;
+        });
+      } else {
+        const fallbackMedia = inquiryMediaInputs.find((media) => media.value === '협의 필요');
+        if (fallbackMedia) fallbackMedia.checked = false;
+      }
+    });
+  });
+
   if (inquiryForm && inquiryStatus) {
+    inquiryForm.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' || event.target.tagName === 'TEXTAREA') return;
+      event.preventDefault();
+      if (inquiryStep === inquirySteps.length - 1) {
+        inquirySubmit?.click();
+      } else {
+        inquiryNext?.click();
+      }
+    });
+
     inquiryForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
-      const submitButton = inquiryForm.querySelector('button[type="submit"]');
+      if (inquiryStep !== inquirySteps.length - 1) {
+        if (validateInquiryStep()) {
+          inquiryStep = Math.min(inquiryStep + 1, inquirySteps.length - 1);
+          renderInquiryStep(true);
+        }
+        return;
+      }
+
+      if (!validateInquiryStep()) return;
+
+      const submitButton = inquirySubmit;
       const checkedMedia = Array.from(
         inquiryForm.querySelectorAll('input[name="희망 매체"]:checked')
       );
 
       if (!checkedMedia.length) {
+        inquiryStep = 3;
+        renderInquiryStep();
         inquiryStatus.textContent = '희망 매체를 한 가지 이상 선택해 주세요.';
         inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';
-        inquiryForm.querySelector('input[name="희망 매체"]').focus();
+        inquiryForm.querySelector('input[name="희망 매체"]')?.focus({ preventScroll: true });
         return;
       }
 
@@ -649,8 +774,11 @@
         inquiryForm.reset();
         const fallbackMedia = inquiryForm.querySelector('input[value="협의 필요"]');
         if (fallbackMedia) fallbackMedia.checked = true;
-        inquiryStatus.textContent = '상담 신청이 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.';
-        inquiryStatus.className = 'inquiry-form__status inquiry-form__status--success';
+        inquirySteps.forEach((step) => { step.hidden = true; });
+        if (inquiryTopbar) inquiryTopbar.hidden = true;
+        if (inquiryActions) inquiryActions.hidden = true;
+        inquiryStatus.textContent = '';
+        inquirySuccess.hidden = false;
       } catch (error) {
         inquiryStatus.innerHTML = '전송 중 문제가 발생했습니다. <a href="mailto:mkt@openxgroup.co.kr">mkt@openxgroup.co.kr</a>로 문의해 주세요.';
         inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';
@@ -659,5 +787,18 @@
         inquiryForm.classList.remove('is-submitting');
       }
     });
+
+    inquiryRestart?.addEventListener('click', () => {
+      inquiryForm.reset();
+      const fallbackMedia = inquiryForm.querySelector('input[value="협의 필요"]');
+      if (fallbackMedia) fallbackMedia.checked = true;
+      inquiryStep = 0;
+      inquirySuccess.hidden = true;
+      if (inquiryTopbar) inquiryTopbar.hidden = false;
+      if (inquiryActions) inquiryActions.hidden = false;
+      renderInquiryStep(true);
+    });
+
+    renderInquiryStep();
   }
 })();

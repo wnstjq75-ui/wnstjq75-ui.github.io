@@ -48,7 +48,7 @@ ok('single canonical', (html.match(/rel="canonical"/gi) || []).length === 1);
 ok('og metadata',
   /property="og:type" content="website"/.test(html) &&
   /property="og:locale" content="ko_KR"/.test(html) &&
-  /property="og:site_name" content="오픈엑스 TV광고"/.test(html) &&
+  /property="og:site_name" content="TV광고"/.test(html) &&
   /property="og:title" content="TV광고 비용·제작·IPTV 송출 \| 오픈엑스"/.test(html) &&
   /property="og:url" content="https:\/\/wnstjq75-ui\.github\.io\/"/.test(html)
 );
@@ -116,7 +116,13 @@ const website = ldBlocks.find((block) => block['@type'] === 'WebSite');
 const service = ldBlocks.find((block) => block['@type'] === 'Service');
 const faqPage = ldBlocks.find((block) => block['@type'] === 'FAQPage');
 ok('Organization present', !!org && org.url === ROOT);
-ok('WebSite present', !!website && website.name === '오픈엑스 TV광고' && website.url === ROOT && website.inLanguage === 'ko-KR');
+ok('WebSite present',
+  !!website &&
+  website.name === 'TV광고' &&
+  JSON.stringify(website.alternateName) === JSON.stringify(['오픈엑스 TV광고', '오픈엑스']) &&
+  website.url === ROOT &&
+  website.inLanguage === 'ko-KR'
+);
 ok('Service present', !!service && service.name === 'TV광고 제작·IPTV 맞춤 송출' && service.url === ROOT);
 ok('FAQPage present', !!faqPage && Array.isArray(faqPage.mainEntity) && faqPage.mainEntity.length === 12);
 ok('FAQPage questions match visible FAQ', !!faqPage && faqQuestions.every((question, index) => faqPage.mainEntity[index].name === question));

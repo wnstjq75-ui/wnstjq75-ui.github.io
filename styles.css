@@ -484,7 +484,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 .about__intro .section__lead {
-  max-width: 26em;
+  max-width: 36em;
   color: rgba(17, 17, 17, 0.72);
   font-size: clamp(1.08rem, 1.6vw, 1.22rem);
 }
@@ -492,6 +492,12 @@ img { display: block; max-width: 100%; height: auto; }
 .about__intro .section__desc {
   max-width: 40em;
   margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .about__desktop-break {
+    display: none;
+  }
 }
 
 .about__cards {

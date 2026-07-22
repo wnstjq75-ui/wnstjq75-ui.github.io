@@ -484,9 +484,13 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 .about__intro .section__lead {
-  max-width: 36em;
+  max-width: none;
   color: rgba(17, 17, 17, 0.72);
   font-size: clamp(1.08rem, 1.6vw, 1.22rem);
+}
+
+.about__lead-continuation {
+  white-space: nowrap;
 }
 
 .about__intro .section__desc {
@@ -497,6 +501,10 @@ img { display: block; max-width: 100%; height: auto; }
 @media (max-width: 768px) {
   .about__desktop-break {
     display: none;
+  }
+
+  .about__lead-continuation {
+    white-space: normal;
   }
 }
 

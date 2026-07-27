@@ -633,9 +633,6 @@
   const inquiryRetry = document.getElementById('inquiryRetry');
   const inquiryMailFallback = document.getElementById('inquiryMailFallback');
   const inquiryTopbar = inquiryForm?.querySelector('.inquiry-wizard__topbar');
-  const inquiryMediaInputs = inquiryForm
-    ? Array.from(inquiryForm.querySelectorAll('input[name="희망 매체"]'))
-    : [];
   let inquiryStep = 0;
   let inquirySending = false;
 
@@ -697,16 +694,6 @@
       return false;
     }
 
-    if (currentPanel.querySelector('input[name="희망 매체"]')) {
-      const checkedMedia = inquiryForm.querySelectorAll('input[name="희망 매체"]:checked');
-      if (!checkedMedia.length) {
-        inquiryStatus.textContent = '희망 매체를 한 가지 이상 선택해 주세요.';
-        inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';
-        inquiryForm.querySelector('input[name="희망 매체"]')?.focus({ preventScroll: true });
-        return false;
-      }
-    }
-
     return true;
   };
 
@@ -724,20 +711,6 @@
       renderInquiryStep(true);
     });
   }
-
-  inquiryMediaInputs.forEach((input) => {
-    input.addEventListener('change', () => {
-      if (!input.checked) return;
-      if (input.value === '협의 필요') {
-        inquiryMediaInputs.forEach((media) => {
-          if (media !== input) media.checked = false;
-        });
-      } else {
-        const fallbackMedia = inquiryMediaInputs.find((media) => media.value === '협의 필요');
-        if (fallbackMedia) fallbackMedia.checked = false;
-      }
-    });
-  });
 
   if (inquiryForm && inquiryStatus) {
     const showInquirySuccess = () => {
@@ -759,15 +732,11 @@
         if (!(key in payload)) payload[key] = value;
       });
 
-      const checkedMedia = Array.from(
-        inquiryForm.querySelectorAll('input[name="희망 매체"]:checked')
-      );
       const checkedTargeting = Array.from(
         inquiryForm.querySelectorAll('input[name="희망 타겟팅"]:checked')
       );
       const monthlyBudget = inquiryForm.querySelector('input[name="월 예산"]');
 
-      payload['희망 매체'] = checkedMedia.map((input) => input.value).join(', ');
       payload['희망 타겟팅'] = checkedTargeting.length
         ? checkedTargeting.map((input) => input.value).join(', ')
         : '선택 안 함';
@@ -861,22 +830,6 @@
 
       if (inquirySending) return;
 
-      const checkedMedia = Array.from(
-        inquiryForm.querySelectorAll('input[name="희망 매체"]:checked')
-      );
-
-      if (!checkedMedia.length) {
-        inquiryStep = inquirySteps.findIndex((step) =>
-          step.querySelector('input[name="희망 매체"]')
-        );
-        if (inquiryStep < 0) inquiryStep = inquirySteps.length - 1;
-        renderInquiryStep();
-        inquiryStatus.textContent = '희망 매체를 한 가지 이상 선택해 주세요.';
-        inquiryStatus.className = 'inquiry-form__status inquiry-form__status--error';
-        inquiryForm.querySelector('input[name="희망 매체"]')?.focus({ preventScroll: true });
-        return;
-      }
-
       const payload = buildInquiryPayload();
       inquirySending = true;
       inquirySubmit.disabled = true;
@@ -901,8 +854,6 @@
 
     inquiryRestart?.addEventListener('click', () => {
       inquiryForm.reset();
-      const fallbackMedia = inquiryForm.querySelector('input[value="협의 필요"]');
-      if (fallbackMedia) fallbackMedia.checked = true;
       inquiryStep = 0;
       inquirySuccess.hidden = true;
       if (inquiryFallback) inquiryFallback.hidden = true;

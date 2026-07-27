@@ -33,7 +33,7 @@ assert(/name="희망 지역"/.test(form), 'region field');
 assert(/name="기타 문의사항"/.test(form), 'additional inquiry field');
 assert((form.match(/name="희망 타겟팅"/g) || []).length === 3, 'three targeting choices');
 assert(/value="오디언스"/.test(form) && /value="채널"/.test(form) && /value="시간"/.test(form), 'audience channel time targeting');
-assert((form.match(/name="희망 매체"/g) || []).length === 4, 'media choices');
+assert(!/희망 매체/.test(form + js), 'media choices removed');
 assert((form.match(/name="광고 기간"/g) || []).length === 4, 'advertising period choices');
 assert(/type="number" name="월 예산" min="100" step="10"/.test(form), 'monthly budget input');
 assert(/개인정보 수집 및 이용 동의/.test(form) && /required/.test(form), 'required privacy consent');

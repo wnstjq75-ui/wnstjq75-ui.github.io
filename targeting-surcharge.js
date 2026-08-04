@@ -39,7 +39,7 @@
       id: 'audience',
       category: 'audience',
       option: '오디언스 타겟팅',
-      criteria: '400만원 이상 계약 시 적용 가능',
+      criteria: '월 400만원 이상 계약 시 적용 가능',
       rate: '무상',
       rateKind: 'conditional-free',
     },

@@ -114,7 +114,7 @@ assert(html.indexOf('data-calc-region="B"') !== -1, 'region B grade');
 assert(html.indexOf('data-calc-surcharge="time"') !== -1, 'time surcharge toggle');
 assert(html.indexOf('data-calc-surcharge="channel"') !== -1, 'channel surcharge toggle');
 assert(html.indexOf('data-calc-surcharge="audience"') !== -1, 'audience surcharge toggle');
-assert(html.indexOf('400만원 이상 계약 시 무상 적용 가능') !== -1, 'audience free eligibility copy');
+assert(html.indexOf('월 400만원 이상 계약 시 무상 적용 가능') !== -1, 'audience free eligibility copy');
 assert(html.indexOf('강남구') !== -1, 'region names S');
 assert(typeof Calc.isAudienceAvailable === 'function', 'audience eligibility helper');
 assert(Calc.isAudienceAvailable(399) === false, 'audience unavailable below 400만');

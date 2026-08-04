@@ -121,7 +121,7 @@
   var SURCHARGE_OPTIONS = {
     time: { id: 'time', label: '시간', rate: 0.2, rateLabel: '20%', hint: '연속 8시간 이상 선택 송출' },
     channel: { id: 'channel', label: '채널', rate: 0.4, rateLabel: '40%', hint: '7개 이상 채널 선택 송출' },
-    audience: { id: 'audience', label: '오디언스', rate: 0, rateLabel: '무상', availableFromManwon: 400, hint: '400만원 이상 계약 시 무상 적용 가능' },
+    audience: { id: 'audience', label: '오디언스', rate: 0, rateLabel: '무상', availableFromManwon: 400, hint: '월 400만원 이상 계약 시 무상 적용 가능' },
   };
 
   var REGION_GRADES_CALC = [

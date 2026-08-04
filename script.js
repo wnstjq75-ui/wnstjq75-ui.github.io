@@ -513,7 +513,7 @@
         surchargeRate > 0
           ? '할증 ' + surchargePct + (surchargeParts.length ? ' · ' + surchargeParts.join(' + ') : '')
           : calcSurcharge.audience && audienceAvailable
-            ? '오디언스 타겟팅 무상 · 400만원 이상 계약 혜택'
+            ? '오디언스 타겟팅 무상 · 월 400만원 이상 계약 혜택'
           : '할증 미적용 · 기본 단가 기준';
 
       syncSliderBounds();

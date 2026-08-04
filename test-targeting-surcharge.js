@@ -20,7 +20,8 @@ function assert(cond, msg) {
 
 assert(S.ROWS.length === 4, '4 surcharge rows');
 assert(S.filterRows('channel')[0].rate === '40%', 'channel 40%');
-assert(S.filterRows('audience')[0].rate === '20%', 'audience 20%');
+assert(S.filterRows('audience')[0].rate === '무상', 'audience free');
+assert(S.filterRows('audience')[0].criteria.indexOf('400만원 이상') !== -1, 'audience 400만 eligibility');
 assert(S.filterRows('region')[0].rate === '등급별 적용', 'region tiered');
 
 const time = S.ROWS.find((r) => r.id === 'time');
@@ -52,7 +53,7 @@ assert(section.indexOf('8시간') !== -1, 'time criteria text');
 assert(section.indexOf('7개 이상') !== -1, 'channel criteria text');
 assert(section.indexOf('지역 등급 기준') !== -1, 'region grades title');
 assert(section.indexOf('S급') !== -1 && section.indexOf('강남구') !== -1, 'S grade content');
-assert(section.indexOf('집행 조건에 따라 달라질 수 있습니다') !== -1, 'disclaimer');
+assert(section.indexOf('400만원 미만은 적용되지 않습니다') !== -1, 'audience eligibility disclaimer');
 assert(!/src="targeting-surcharge\.js(\?[^"]*)?"/.test(html), 'filter module not loaded');
 assert(js.indexOf('applySurchargeFilter') === -1, 'filter behavior removed');
 

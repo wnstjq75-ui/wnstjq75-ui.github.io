@@ -114,15 +114,22 @@ assert(html.indexOf('data-calc-region="B"') !== -1, 'region B grade');
 assert(html.indexOf('data-calc-surcharge="time"') !== -1, 'time surcharge toggle');
 assert(html.indexOf('data-calc-surcharge="channel"') !== -1, 'channel surcharge toggle');
 assert(html.indexOf('data-calc-surcharge="audience"') !== -1, 'audience surcharge toggle');
+assert(html.indexOf('400만원 이상 계약 시 무상 적용 가능') !== -1, 'audience free eligibility copy');
 assert(html.indexOf('강남구') !== -1, 'region names S');
+assert(typeof Calc.isAudienceAvailable === 'function', 'audience eligibility helper');
+assert(Calc.isAudienceAvailable(399) === false, 'audience unavailable below 400만');
+assert(Calc.isAudienceAvailable(400) === true, 'audience available from 400만');
 assert(typeof Calc.sumSurchargeRate === 'function', 'sumSurchargeRate');
 assert(Calc.sumSurchargeRate({}) === 0, 'no surcharge 0');
 assert(Calc.sumSurchargeRate({ region: 'S' }) === 0.4, 'S region 40%');
 assert(Calc.sumSurchargeRate({ time: true, channel: true }) === 0.6, 'time+channel 60%');
+assert(Calc.sumSurchargeRate({ audience: true }, 400) === 0, 'audience free at 400만');
+assert(Calc.describeSurcharge({ audience: true }, 400)[0] === '오디언스 무상', 'audience free label');
 assert(Calc.applySurchargeRate(180000, 0) === 180000, 'no rate keeps exposures');
 assert(Calc.applySurchargeRate(180000, 0.6) === 112500, '180k / 1.6 = 112500');
 assert(Calc.formatSurchargePct(0.4) === '40%', 'format 40%');
 assert(js.indexOf('sumSurchargeRate') !== -1, 'script applies surcharge');
+assert(js.indexOf('audienceSurchargeBtn.disabled = !audienceAvailable') !== -1, 'script disables audience below 400만');
 
 if (failed) {
   console.error('\n' + failed + ' failed');

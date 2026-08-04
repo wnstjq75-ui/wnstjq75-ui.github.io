@@ -121,7 +121,7 @@
   var SURCHARGE_OPTIONS = {
     time: { id: 'time', label: '시간', rate: 0.2, rateLabel: '20%', hint: '연속 8시간 이상 선택 송출' },
     channel: { id: 'channel', label: '채널', rate: 0.4, rateLabel: '40%', hint: '7개 이상 채널 선택 송출' },
-    audience: { id: 'audience', label: '오디언스', rate: 0.2, rateLabel: '20%', hint: '시청 패턴 맞춤 세그먼트' },
+    audience: { id: 'audience', label: '오디언스', rate: 0, rateLabel: '무상', availableFromManwon: 400, hint: '400만원 이상 계약 시 무상 적용 가능' },
   };
 
   var REGION_GRADES_CALC = [
@@ -160,14 +160,17 @@
    * @param {{ region?: string|null, time?: boolean, channel?: boolean, audience?: boolean }} selection
    * @returns {number} total rate as fraction (e.g. 0.6)
    */
-  function sumSurchargeRate(selection) {
+  function isAudienceAvailable(budgetManwon) {
+    return Number(budgetManwon) >= SURCHARGE_OPTIONS.audience.availableFromManwon;
+  }
+
+  function sumSurchargeRate(selection, budgetManwon) {
     var sel = selection || {};
     var total = 0;
     var region = getRegionGrade(sel.region);
     if (region) total += region.rate;
     if (sel.time) total += SURCHARGE_OPTIONS.time.rate;
     if (sel.channel) total += SURCHARGE_OPTIONS.channel.rate;
-    if (sel.audience) total += SURCHARGE_OPTIONS.audience.rate;
     // Avoid float noise (0.2 + 0.4 → 0.6000000001)
     return Math.round(total * 1000) / 1000;
   }
@@ -188,14 +191,18 @@
   /**
    * Human-readable list of active surcharge labels.
    */
-  function describeSurcharge(selection) {
+  function describeSurcharge(selection, budgetManwon) {
     var sel = selection || {};
     var parts = [];
     var region = getRegionGrade(sel.region);
     if (region) parts.push('지역 ' + region.grade + ' ' + region.rateLabel);
     if (sel.time) parts.push('시간 ' + SURCHARGE_OPTIONS.time.rateLabel);
     if (sel.channel) parts.push('채널 ' + SURCHARGE_OPTIONS.channel.rateLabel);
-    if (sel.audience) parts.push('오디언스 ' + SURCHARGE_OPTIONS.audience.rateLabel);
+    if (sel.audience) {
+      parts.push(isAudienceAvailable(budgetManwon)
+        ? '오디언스 무상'
+        : '오디언스 적용 불가');
+    }
     return parts;
   }
 
@@ -222,6 +229,7 @@
     formatManwon: formatManwon,
     formatTermMonths: formatTermMonths,
     getRegionGrade: getRegionGrade,
+    isAudienceAvailable: isAudienceAvailable,
     sumSurchargeRate: sumSurchargeRate,
     applySurchargeRate: applySurchargeRate,
     formatSurchargePct: formatSurchargePct,

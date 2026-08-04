@@ -137,7 +137,7 @@
       {
         "@type": "Question",
         "name": "IPTV 타겟팅을 적용하면 비용이 추가되나요?",
-        "acceptedAnswer": {"@type": "Answer", "text": "지역·채널·시간·오디언스 조건에 따라 할증이 적용될 수 있습니다. 여러 조건을 함께 선택하면 할증률이 합산될 수 있으며, 계산기에서 예상 노출 변화를 확인할 수 있습니다."}
+        "acceptedAnswer": {"@type": "Answer", "text": "지역·채널·시간 조건에 따라 할증이 적용될 수 있습니다. 오디언스 타겟팅은 400만원 이상 계약 시 무상 적용이 가능하며, 400만원 미만은 적용되지 않습니다. 여러 조건을 함께 선택하면 할증률이 합산될 수 있으며, 계산기에서 예상 노출 변화를 확인할 수 있습니다."}
       },
       {
         "@type": "Question",
@@ -640,8 +640,8 @@
                 </article>
               </div>
               <div class="audience-console__footer">
-                <span>다중 세그먼트 조합</span>
-                <strong>브랜드 맞춤 오디언스 설계</strong>
+                <span>400만원 이상 계약 시</span>
+                <strong>오디언스 타겟팅 무상 적용 가능</strong>
               </div>
             </div>
           </div>
@@ -830,8 +830,8 @@
             </div>
             <div class="surcharge__row" role="row" data-surcharge-cat="audience">
               <span class="surcharge__option" role="cell">오디언스 타겟팅</span>
-              <span class="surcharge__criteria" role="cell">시청 패턴 맞춤 세그먼트</span>
-              <span class="surcharge__rate" role="cell">20%</span>
+              <span class="surcharge__criteria" role="cell">400만원 이상 계약 시 적용 가능</span>
+              <span class="surcharge__rate" role="cell">무상</span>
             </div>
             <div class="surcharge__row surcharge__row--region" role="row" data-surcharge-cat="region">
               <span class="surcharge__option" role="cell">지역 타겟팅</span>
@@ -871,7 +871,7 @@
             </ul>
           </div>
 
-          <p class="surcharge__note">※ 실제 적용은 집행 조건에 따라 달라질 수 있습니다.</p>
+          <p class="surcharge__note">※ 오디언스 타겟팅은 400만원 이상 계약 시 무상 적용이 가능하며, 400만원 미만은 적용되지 않습니다.</p>
         </div>
       </div>
     </div>
@@ -1052,9 +1052,9 @@
                 <strong>채널 · 40%</strong>
                 <span>7개 이상 채널 선택 송출</span>
               </button>
-              <button type="button" class="calc-surcharge__chip calc-surcharge__chip--toggle" data-calc-surcharge="audience" aria-pressed="false">
-                <strong>오디언스 · 20%</strong>
-                <span>시청 패턴 맞춤 세그먼트</span>
+              <button type="button" class="calc-surcharge__chip calc-surcharge__chip--toggle" data-calc-surcharge="audience" aria-pressed="false" aria-disabled="true" disabled>
+                <strong id="calcAudienceRate">오디언스 · 적용 불가</strong>
+                <span>400만원 이상 계약 시 무상 적용 가능</span>
               </button>
             </div>
           </div>
@@ -1171,6 +1171,7 @@
                 <div class="ad-calc__notes">
                   <p>월 예산 기준 예상 노출 수를 계산합니다.</p>
                   <p>할증 적용 시 동일 예산 대비 노출 수가 감소합니다.</p>
+                  <p>오디언스 타겟팅은 월 예산 400만원 이상에서 무상 적용 가능합니다.</p>
                   <p>계약은 6개월 단위로 진행됩니다.</p>
                   <p>실제 집행 조건 및 타겟 설정에 따라 변동될 수 있습니다.</p>
                 </div>
@@ -1267,7 +1268,7 @@
         <details class="faq-item">
           <summary class="faq-item__q">IPTV 타겟팅을 적용하면 비용이 추가되나요?</summary>
           <div class="faq-item__a">
-            <p>지역·채널·시간·오디언스 조건에 따라 할증이 적용될 수 있습니다. 여러 조건을 함께 선택하면 할증률이 합산될 수 있으며, 계산기에서 예상 노출 변화를 확인할 수 있습니다.</p>
+            <p>지역·채널·시간 조건에 따라 할증이 적용될 수 있습니다. 오디언스 타겟팅은 400만원 이상 계약 시 무상 적용이 가능하며, 400만원 미만은 적용되지 않습니다. 여러 조건을 함께 선택하면 할증률이 합산될 수 있으며, 계산기에서 예상 노출 변화를 확인할 수 있습니다.</p>
           </div>
         </details>
         <details class="faq-item">

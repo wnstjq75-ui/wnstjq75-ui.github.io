@@ -444,6 +444,8 @@
     const tabs = document.querySelectorAll('.ad-calc__tab');
     const regionBtns = document.querySelectorAll('[data-calc-region]');
     const surchargeBtns = document.querySelectorAll('[data-calc-surcharge]');
+    const audienceSurchargeBtn = document.querySelector('[data-calc-surcharge="audience"]');
+    const audienceRateLabel = document.getElementById('calcAudienceRate');
 
     function setSliderFill(input) {
       if (!input) return;
@@ -485,17 +487,33 @@
       calcBudget = result.budgetManwon;
       calcTerm = result.termMonths;
 
-      const surchargeRate = BudgetCalculator.sumSurchargeRate(calcSurcharge);
+      const audienceAvailable = BudgetCalculator.isAudienceAvailable(result.budgetManwon);
+      if (!audienceAvailable) calcSurcharge.audience = false;
+      if (audienceSurchargeBtn) {
+        audienceSurchargeBtn.disabled = !audienceAvailable;
+        audienceSurchargeBtn.setAttribute('aria-disabled', audienceAvailable ? 'false' : 'true');
+        audienceSurchargeBtn.setAttribute('aria-pressed', calcSurcharge.audience ? 'true' : 'false');
+        audienceSurchargeBtn.classList.toggle('calc-surcharge__chip--active', calcSurcharge.audience);
+      }
+      if (audienceRateLabel) {
+        audienceRateLabel.textContent = audienceAvailable
+          ? '오디언스 · 무상'
+          : '오디언스 · 적용 불가';
+      }
+
+      const surchargeRate = BudgetCalculator.sumSurchargeRate(calcSurcharge, result.budgetManwon);
       const monthlyExposures = BudgetCalculator.applySurchargeRate(
         result.exposures,
         surchargeRate
       );
       const totalExposures = monthlyExposures * result.termMonths;
-      const surchargeParts = BudgetCalculator.describeSurcharge(calcSurcharge);
+      const surchargeParts = BudgetCalculator.describeSurcharge(calcSurcharge, result.budgetManwon);
       const surchargePct = BudgetCalculator.formatSurchargePct(surchargeRate);
       const surchargeCopy =
         surchargeRate > 0
           ? '할증 ' + surchargePct + (surchargeParts.length ? ' · ' + surchargeParts.join(' + ') : '')
+          : calcSurcharge.audience && audienceAvailable
+            ? '오디언스 타겟팅 무상 · 400만원 이상 계약 혜택'
           : '할증 미적용 · 기본 단가 기준';
 
       syncSliderBounds();

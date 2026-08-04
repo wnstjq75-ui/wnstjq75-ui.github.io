@@ -1875,6 +1875,11 @@ img { display: block; max-width: 100%; height: auto; }
   font-size: 0.78rem;
 }
 
+.surcharge__criteria--nowrap {
+  white-space: nowrap;
+  letter-spacing: -0.03em;
+}
+
 .surcharge__rate {
   font-weight: 800;
   font-size: 0.86rem;

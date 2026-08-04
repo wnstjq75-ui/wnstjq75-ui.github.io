@@ -43,6 +43,7 @@ const start = html.indexOf('id="targeting"');
 const end = html.indexOf('id="aicf"');
 const section = html.slice(start, end);
 
+assert(section.indexOf('surcharge__criteria surcharge__criteria--nowrap') !== -1, 'audience eligibility stays on one line');
 assert(section.indexOf('타겟팅 할증 기준') !== -1, 'title in targeting');
 assert(section.indexOf('data-surcharge-filter=') === -1, 'filter buttons removed');
 assert(section.indexOf('시간 선택형') !== -1, 'row time');

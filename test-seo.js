@@ -121,6 +121,7 @@ const website = ldBlocks.find((block) => block['@type'] === 'WebSite');
 const service = ldBlocks.find((block) => block['@type'] === 'Service');
 const faqPage = ldBlocks.find((block) => block['@type'] === 'FAQPage');
 ok('Organization present', !!org && org.url === ROOT);
+ok('Organization telephone', !!org && org.telephone === '+82-10-2767-2346');
 ok('WebSite present',
   !!website &&
   website.name === '오픈엑스 TV광고' &&

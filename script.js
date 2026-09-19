@@ -213,7 +213,7 @@
 
       if (heroThumb) {
         heroThumb.src = 'https://img.youtube.com/vi/' + slide.youtubeId + '/maxresdefault.jpg';
-        heroThumb.alt = (slide.brand || slide.title) + ' 15초 AI CF 제작 사례';
+        heroThumb.alt = (slide.brand || slide.title) + ' ' + slide.duration + ' AI CF 제작 사례';
         heroThumb.onerror = function () {
           this.onerror = null;
           this.src = slide.thumb;
@@ -286,10 +286,14 @@
         escapeHtml(s.thumb) +
         '" alt="' +
         escapeHtml(s.brand || s.title) +
-        ' 15초 AI CF 제작 사례" width="640" height="360" loading="lazy">' +
+        ' ' +
+        escapeHtml(s.duration) +
+        ' AI CF 제작 사례" width="640" height="360" loading="lazy">' +
         '<div class="video-card__overlay"><span class="video-card__play" aria-hidden="true">' +
         '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>' +
-        '<span class="video-card__duration">15초</span>' +
+        '<span class="video-card__duration">' +
+        escapeHtml(s.duration) +
+        '</span>' +
         '</div>' +
         '<div class="video-card__body">' +
         '<h3>' +
@@ -299,7 +303,9 @@
         escapeHtml(s.desc) +
         '</p>' +
         '<div class="video-card__meta">' +
-        '<span>🎬 AI CF</span><span>📺 IPTV 송출</span><span>⏱ 15초</span>' +
+        '<span>🎬 AI CF</span><span>📺 IPTV 송출</span><span>⏱ ' +
+        escapeHtml(s.duration) +
+        '</span>' +
         '</div>' +
         '<span class="video-card__link">YouTube에서 보기 →</span>' +
         '</div></a>'

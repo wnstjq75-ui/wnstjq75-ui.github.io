@@ -19,28 +19,72 @@ function assert(cond, msg) {
 }
 
 const requiredIds = [
-  'fO7mEll3Leg',
-  'UVZOkBExinQ',
+  '7_jqN3A7QrE',
+  'hMqH4CTQttM',
+  '2j8uBR435Pg',
+  'FejoZJSZgTc',
+  '2YgBN89HzxQ',
+  'p-Z87xNajbU',
   'vVRYGupRGNE',
-  'mi_ikAotG3c',
+  'UVZOkBExinQ',
+  'fO7mEll3Leg',
+  'nIdOks3lYWo',
+  'MfEZEeKwoEw',
+  'wLnrWxpw_KI',
+  'gEf2V_nKXiM',
+  '8j4rYB8eMmc',
+  '0ToCzQUdCDo',
   'G2lDktSjURY',
+  'mi_ikAotG3c',
   'HrUkB2OzNoM',
   'NZ8BtMKu0XE',
   's3Pf_cABpjE',
   'KwgesSgkj4c',
   'jexf0BNc7iw',
+  'Y6xW5nBGv3I',
+  'O5edBXQ80l8',
+  'VxEu0ozTJmA',
+  'z1lg8VQPhU8',
+  'LUqMLQrMW1A',
+  'nUS5m8PRmoE',
+  '9ViPUcaFgRQ',
+  'TYpQ6hMUpCE',
+  'NJk8gX6Tskw',
+  'OuQa3DKodso',
+  '-AEi7raoRCo',
+  'eEgmQpp-4sI',
+  '1il3xXNnyRw',
+  '8IY3jQB2NVw',
+  'LqMtjgKgaEI',
+  '8Qfgd0AdR9o',
   '6REG7_HWdCg',
   'XPCIuqyUwZI',
   'FR8Q9qalmNM',
+  'tgYakr4YcSM',
+  'aO_o_8ejaqY',
+  'BkGrYHecNYs',
+  'Jp_D-olnhiU',
+  '8pDk4itvGwU',
+  'z1qybRpOhto',
+  'QAKCAJExDFI',
+  'O1IiyzPMCkU',
+  'C70vXikLnxY',
+  '3aZhfVY43Zw',
+  '3aRZoaRxZOQ',
+  'Dpo4vktreOM',
+  'frWVlY0Jeps',
+  '7pXeLqpXT14',
 ];
 
-assert(HeroCarousel.slideCount() >= 10, 'at least 10 slides');
+assert(HeroCarousel.slideCount() === 55, 'catalog matches all 55 official channel videos');
 const ids = HeroCarousel.SLIDES.map((s) => s.youtubeId);
+assert(new Set(ids).size === ids.length, 'catalog has no duplicate video IDs');
 requiredIds.forEach((id) => {
   assert(ids.indexOf(id) !== -1, 'catalog includes ' + id);
 });
 assert(HeroCarousel.SLIDES.every((slide) => slide.desc.indexOf('AI CF') !== -1), 'all hero and showcase descriptions use AI CF');
 assert(HeroCarousel.SLIDES.every((slide) => slide.desc.indexOf('AI TV CF') === -1), 'legacy AI TV CF wording removed from descriptions');
+assert(HeroCarousel.SLIDES.every((slide) => /^\d+초$/.test(slide.duration)), 'every video has an official duration');
 
 let i = 0;
 for (let step = 0; step < HeroCarousel.slideCount(); step++) {
@@ -74,6 +118,7 @@ assert(/<button[^>]*id="heroPlay"/.test(html), 'hero play is an in-page button')
 assert(js.indexOf('www.youtube-nocookie.com/embed/') !== -1, 'hero uses privacy-enhanced inline YouTube embed');
 assert(js.indexOf("heroPlay.addEventListener('click', playHeroVideo)") !== -1, 'hero play starts inline video');
 assert(js.indexOf('stopHeroVideo();') !== -1, 'slide change stops active video');
+assert(js.indexOf('escapeHtml(s.duration)') !== -1, 'portfolio renders each official video duration');
 assert(/src="hero-carousel\.js(\?[^"]*)?"/.test(html), 'loads hero-carousel.js');
 
 if (failed) {

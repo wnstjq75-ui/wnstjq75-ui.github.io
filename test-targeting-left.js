@@ -36,7 +36,7 @@ assert(left.indexOf('시·군·구') !== -1 || left.indexOf('정밀 송출') !==
 assert(left.indexOf('채널') !== -1 && left.indexOf('시간') !== -1, 'point channel/time');
 assert(left.indexOf('오디언스') !== -1, 'point audience');
 assert(left.indexOf('targeting__footer') !== -1, 'footer line');
-assert(left.indexOf('효율') !== -1 || left.indexOf('높아집니다') !== -1, 'footer efficiency line');
+assert(left.indexOf('일반계약') !== -1 && left.indexOf('별도 문의') !== -1, 'footer general-contract notice');
 // not two long abstract desc paragraphs only
 assert((left.match(/section__desc/g) || []).length <= 1, 'at most one body desc');
 assert(section.indexOf('targeting-tab') !== -1, 'middle tabs remain');
@@ -55,7 +55,7 @@ assert(section.indexOf('audience-console') !== -1, 'premium audience console');
 assert((section.match(/class="audience-segment audience-segment--/g) || []).length === 3, 'three audience segment tiles');
 assert(section.indexOf('targeting-data__bar') === -1, 'old audience progress bars removed');
 assert(section.indexOf('data-panel="time"') !== -1, 'time targeting panel');
-assert(section.indexOf('관심사·세대 등 오디언스 선택') !== -1, 'audience wording uses interests and generations');
+assert(section.indexOf('오디언스 선택 · 일반계약 전용') !== -1, 'audience marked general-contract only');
 assert(section.indexOf('time-console') !== -1, 'premium time window console');
 assert(section.indexOf('pattern-bar') === -1, 'old time bar chart removed');
 assert(section.indexOf('data-panel="channel"') !== -1, 'channel targeting panel');

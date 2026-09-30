@@ -30,7 +30,7 @@ function stripTags(value) {
 
 const ROOT = 'https://wnstjq75-ui.github.io/';
 const TITLE = 'TV광고 비용·제작·IPTV 송출 | 월 100만원부터 | 오픈엑스';
-const DESCRIPTION = '월 100만원부터 시작하는 TV광고. 15초 AI TV CF 제작 지원부터 KT·SK B tv·LG U+tv IPTV 맞춤 송출, 지역·채널 타겟팅, 완전시청 결과 리포트까지 오픈엑스가 제공합니다.';
+const DESCRIPTION = '월 100만원부터 시작하는 IPTV 3사 동시 송출 TV광고. 지역 할증 미적용 시 월 15만 회 예상 노출(3사 각 5만 회), 지역 타겟팅과 15초 AI TV CF 제작 지원을 안내합니다.';
 const H1 = '월 100만원부터 TV광고를 시작하세요';
 
 // Document and head metadata
@@ -72,11 +72,11 @@ const h1s = html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi) || [];
 ok('exactly one h1', h1s.length === 1);
 ok('h1 has TV광고', /TV광고/.test(h1s[0] || ''));
 ok('h1 exact copy', stripTags(h1s[0]) === H1);
-ok('hero description', /AI CF 무상제작부터 IPTV 맞춤 송출,\s*시청 리포트까지 한 번에/.test(html));
+ok('hero description', /AI CF 무상제작 · IPTV 3사 동시 송출 · 기본 월 15만 회\(각 5만 회\)/.test(html));
 ok('TV advertising definition',
   /<h2 class="section__title">TV광고란\?<\/h2>/.test(html) &&
   /방송 프로그램과 프로그램 사이의 광고 시간에<br class="about__desktop-break"><span class="about__lead-continuation">브랜드·제품 영상을 송출해 인지도와 신뢰를 높이는 영상 광고입니다\.<\/span>/.test(html) &&
-  /15초 CF를 송출하며,<br class="about__desktop-break">지역·채널·시간·관심사 조건/.test(html)
+  /15초 CF를 송출하며,<br class="about__desktop-break">지역 타겟팅과 완전시청 기준 결과/.test(html)
 );
 
 // FAQ visible HTML

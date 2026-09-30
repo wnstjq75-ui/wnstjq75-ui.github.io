@@ -2,7 +2,7 @@
  * Pure 30-day budget → complete-view exposure calculator.
  * Used by pricing simulator UI and node unit tests.
  *
- * IPTV 3사 통합: 월 100만원당 예상 완전시청 노출 18만 회
+ * IPTV 3사 통합: 월 100만원당 예상 완전시청 노출 15만 회 (각 5만 회)
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -18,7 +18,7 @@
       id: 'all3',
       label: 'IPTV 3사 통합 패키지',
       unitPrice: null,
-      unitLabel: '100만원당 월 18만회',
+      unitLabel: '100만원당 월 15만회 · 3사 각 5만회',
       minManwon: 100,
       bonus: 'IPTV 3사 동시 송출로 폭넓은 커버리지 제공',
     },
@@ -69,9 +69,9 @@
     return clampBudgetManwon(manwon, productId) * 10000;
   }
 
-  /** IPTV 3사 통합: 월 100만원당 예상 완전시청 18만 회 */
+  /** IPTV 3사 통합: 월 100만원당 예상 완전시청 15만 회 */
   function exposuresAll3(won) {
-    return Math.floor(won * 0.18);
+    return Math.floor(won * 0.15);
   }
 
   /**
@@ -115,36 +115,18 @@
 
   /**
    * Pricing-side surcharge toggles (additive rates).
-   * Region: exclusive grade S/A/B. Time/channel/audience: multi-select.
+   * Region: premium five districts or no surcharge.
    * Exposures shrink: floor(base / (1 + totalRate)).
    */
-  var SURCHARGE_OPTIONS = {
-    time: { id: 'time', label: '시간', rate: 0.2, rateLabel: '20%', hint: '연속 8시간 이상 선택 송출' },
-    channel: { id: 'channel', label: '채널', rate: 0.4, rateLabel: '40%', hint: '7개 이상 채널 선택 송출' },
-    audience: { id: 'audience', label: '오디언스', rate: 0, rateLabel: '무상', availableFromManwon: 400, hint: '월 400만원 이상 계약 시 무상 적용 가능' },
-  };
+  var SURCHARGE_OPTIONS = {};
 
   var REGION_GRADES_CALC = [
     {
-      id: 'S',
-      grade: 'S급',
-      rate: 0.4,
-      rateLabel: '40%',
-      areas: '강남구, 송파구, 서초구',
-    },
-    {
-      id: 'A',
-      grade: 'A급',
+      id: 'premium',
+      grade: '할증 지역',
       rate: 0.3,
       rateLabel: '30%',
-      areas: '광진구, 분당구, 일산 서구·동구, 부산 해운대구, 대구 달서구, 화성시, 인천 연수구',
-    },
-    {
-      id: 'B',
-      grade: 'B급',
-      rate: 0.2,
-      rateLabel: '20%',
-      areas: '강동구, 노원구, 천안시, 부천시, 광명시, 김포시, 수원 영통·장안·팔달구, 용인시',
+      areas: '강남, 송파, 서초, 용산, 분당',
     },
   ];
 
@@ -157,11 +139,11 @@
   }
 
   /**
-   * @param {{ region?: string|null, time?: boolean, channel?: boolean, audience?: boolean }} selection
-   * @returns {number} total rate as fraction (e.g. 0.6)
+   * @param {{ region?: string|null }} selection
+   * @returns {number} total rate as fraction
    */
   function isAudienceAvailable(budgetManwon) {
-    return Number(budgetManwon) >= SURCHARGE_OPTIONS.audience.availableFromManwon;
+    return false;
   }
 
   function sumSurchargeRate(selection, budgetManwon) {
@@ -169,9 +151,6 @@
     var total = 0;
     var region = getRegionGrade(sel.region);
     if (region) total += region.rate;
-    if (sel.time) total += SURCHARGE_OPTIONS.time.rate;
-    if (sel.channel) total += SURCHARGE_OPTIONS.channel.rate;
-    // Avoid float noise (0.2 + 0.4 → 0.6000000001)
     return Math.round(total * 1000) / 1000;
   }
 
@@ -195,14 +174,7 @@
     var sel = selection || {};
     var parts = [];
     var region = getRegionGrade(sel.region);
-    if (region) parts.push('지역 ' + region.grade + ' ' + region.rateLabel);
-    if (sel.time) parts.push('시간 ' + SURCHARGE_OPTIONS.time.rateLabel);
-    if (sel.channel) parts.push('채널 ' + SURCHARGE_OPTIONS.channel.rateLabel);
-    if (sel.audience) {
-      parts.push(isAudienceAvailable(budgetManwon)
-        ? '오디언스 무상'
-        : '오디언스 적용 불가');
-    }
+    if (region) parts.push('지역 ' + region.rateLabel);
     return parts;
   }
 

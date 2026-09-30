@@ -1,6 +1,7 @@
 /**
  * Targeting surcharge criteria — pure data + filter helpers.
- * Categories: all | time | channel | region | audience
+ * October policy: region targeting is available in the small-business package;
+ * time, channel, and audience targeting require a separate general contract.
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -23,61 +24,46 @@
       id: 'time',
       category: 'time',
       option: '시간 선택형',
-      criteria: '연속하는 8시간 이상 선택하여 송출',
-      rate: '20%',
-      rateKind: 'fixed',
+      criteria: '일반계약에서만 설정 가능 · 계약금 별도 문의',
+      rate: '별도 문의',
+      rateKind: 'inquiry',
     },
     {
       id: 'channel',
       category: 'channel',
       option: '채널 선택형',
-      criteria: '7개 이상의 채널을 선택하여 송출',
-      rate: '40%',
-      rateKind: 'fixed',
+      criteria: '일반계약에서만 설정 가능 · 계약금 별도 문의',
+      rate: '별도 문의',
+      rateKind: 'inquiry',
     },
     {
       id: 'audience',
       category: 'audience',
       option: '오디언스 타겟팅',
-      criteria: '월 400만원 이상 계약 시 적용 가능',
-      rate: '무상',
-      rateKind: 'conditional-free',
+      criteria: '일반계약에서만 설정 가능 · 계약금 별도 문의',
+      rate: '별도 문의',
+      rateKind: 'inquiry',
     },
     {
       id: 'region',
       category: 'region',
       option: '지역 타겟팅',
-      criteria: '지역 등급별 차등 적용',
-      rate: '등급별 적용',
-      rateKind: 'tiered',
+      criteria: '강남·송파·서초·용산·분당만 할증',
+      rate: '30% / 그 외 0%',
+      rateKind: 'regional',
     },
   ];
 
   var REGION_GRADES = [
     {
-      grade: 'S급',
-      rate: '40%',
-      areas: '강남구, 송파구, 서초구',
-    },
-    {
-      grade: 'A급',
+      grade: '할증 지역',
       rate: '30%',
-      areas: '광진구, 분당구, 일산 서구·동구, 부산 해운대구, 대구 달서구, 화성시, 인천 연수구',
+      areas: '강남, 송파, 서초, 용산, 분당',
     },
     {
-      grade: 'B급',
-      rate: '20%',
-      areas: '강동구, 노원구, 천안시, 부천시, 광명시, 김포시, 수원 영통·장안·팔달구, 용인시',
-    },
-    {
-      grade: 'C급',
+      grade: '그 외 지역',
       rate: '0%',
-      areas: '시·군·구 기준 A·B등급 제외 지역',
-    },
-    {
-      grade: 'D급',
-      rate: '0%',
-      areas: '서울특별시·도·광역시 단위만 선택 시',
+      areas: '위 5개 지역 이외',
     },
   ];
 

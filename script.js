@@ -425,10 +425,7 @@
     let calcBudget = BudgetCalculator.DEFAULT_MANWON;
     let calcTerm = BudgetCalculator.DEFAULT_TERM_MONTHS;
     const calcSurcharge = {
-      region: null, // 'S' | 'A' | 'B' | null
-      time: false,
-      channel: false,
-      audience: false,
+      region: null, // 'premium' | null
     };
 
     const budgetInput = document.getElementById('calcBudget');
@@ -449,9 +446,6 @@
     const calcBonusText = document.getElementById('calcBonusText');
     const tabs = document.querySelectorAll('.ad-calc__tab');
     const regionBtns = document.querySelectorAll('[data-calc-region]');
-    const surchargeBtns = document.querySelectorAll('[data-calc-surcharge]');
-    const audienceSurchargeBtn = document.querySelector('[data-calc-surcharge="audience"]');
-    const audienceRateLabel = document.getElementById('calcAudienceRate');
 
     function setSliderFill(input) {
       if (!input) return;
@@ -493,20 +487,6 @@
       calcBudget = result.budgetManwon;
       calcTerm = result.termMonths;
 
-      const audienceAvailable = BudgetCalculator.isAudienceAvailable(result.budgetManwon);
-      if (!audienceAvailable) calcSurcharge.audience = false;
-      if (audienceSurchargeBtn) {
-        audienceSurchargeBtn.disabled = !audienceAvailable;
-        audienceSurchargeBtn.setAttribute('aria-disabled', audienceAvailable ? 'false' : 'true');
-        audienceSurchargeBtn.setAttribute('aria-pressed', calcSurcharge.audience ? 'true' : 'false');
-        audienceSurchargeBtn.classList.toggle('calc-surcharge__chip--active', calcSurcharge.audience);
-      }
-      if (audienceRateLabel) {
-        audienceRateLabel.textContent = audienceAvailable
-          ? '오디언스 · 무상'
-          : '오디언스 · 적용 불가';
-      }
-
       const surchargeRate = BudgetCalculator.sumSurchargeRate(calcSurcharge, result.budgetManwon);
       const monthlyExposures = BudgetCalculator.applySurchargeRate(
         result.exposures,
@@ -518,8 +498,6 @@
       const surchargeCopy =
         surchargeRate > 0
           ? '할증 ' + surchargePct + (surchargeParts.length ? ' · ' + surchargeParts.join(' + ') : '')
-          : calcSurcharge.audience && audienceAvailable
-            ? '오디언스 타겟팅 무상 · 월 400만원 이상 계약 혜택'
           : '할증 미적용 · 기본 단가 기준';
 
       syncSliderBounds();
@@ -593,17 +571,6 @@
       });
     });
 
-    surchargeBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const key = btn.getAttribute('data-calc-surcharge');
-        if (!key || !(key in calcSurcharge) || key === 'region') return;
-        calcSurcharge[key] = !calcSurcharge[key];
-        btn.classList.toggle('calc-surcharge__chip--active', calcSurcharge[key]);
-        btn.setAttribute('aria-pressed', calcSurcharge[key] ? 'true' : 'false');
-        renderCalculator();
-      });
-    });
-
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => {
         const id = tab.getAttribute('data-calc-product');
@@ -614,7 +581,7 @@
           t.classList.toggle('ad-calc__tab--active', on);
           t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
-        // clamp budget to product min (e.g. 3사 → 200만)
+        // Keep the budget within the integrated product range.
         calcBudget = BudgetCalculator.clampBudgetManwon(calcBudget, calcProduct);
         renderCalculator();
       });

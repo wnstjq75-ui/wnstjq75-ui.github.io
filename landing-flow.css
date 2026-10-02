@@ -73,14 +73,19 @@ body { background: #080808; }
 .campaign-detail .section__header { margin-bottom: 24px !important; }
 .campaign-detail .reveal { opacity: 1; transform: none; }
 #faq { background: #101010 !important; }
+#faq > .container { align-items: start; }
+#faq > .container::before { display: none; }
 #faq .section__header { margin-bottom: 26px !important; }
+#faq .section__header::after { content: attr(data-faq-count); }
+#faq .faq-content { width: 100%; min-width: 0; align-self: start; }
 #faq .faq-item { box-shadow: none !important; background: #151515 !important; border-radius: 8px; }
 .faq-more { margin-top: 16px; }
-.faq-more > summary { display: flex; justify-content: space-between; gap: 16px; padding: 18px 4px; color: #ddd; font-size: .85rem; list-style: none; cursor: pointer; border-bottom: 1px solid #343434; }
-.faq-more > summary span { color: #888; font-size: .75rem; }
+.faq-more > summary { display: flex; align-items: center; gap: 16px; padding: 18px 4px; color: #ddd; font-size: .85rem; list-style: none; cursor: pointer; border-bottom: 1px solid #343434; }
+.faq-more__label { flex: 0 0 auto; white-space: nowrap; }
+.faq-more__hint { margin-left: auto; color: #888; font-size: .75rem; }
 .faq-more > summary::after { content: '+'; }
 .faq-more[open] > summary::after { content: '−'; }
-.faq-more .faq-list { margin-top: 16px !important; }
+#faq .faq-more .faq-list { margin-top: 16px !important; counter-reset: faq 4; }
 #contact { background: #080808 !important; }
 #contact .contact-sales { gap: 50px !important; }
 #contact .section__desc { margin-top: 16px !important; }
@@ -133,7 +138,8 @@ body { background: #080808; }
   .campaign-detail > summary strong { flex: 1; font-size: .95rem; }
   .campaign-detail__hint { order: 3; flex: 0 0 100%; margin: 6px 0 0; padding-left: 28px; font-size: .72rem; }
   .campaign-detail > .section > .container { padding-left: 16px; padding-right: 16px; }
-  .faq-more > summary span { display: none; }
+  .faq-more__hint { display: none; }
+  .faq-more > summary::after { margin-left: auto; }
   #contact .contact-sales { gap: 28px !important; }
   #contact .contact-sales__direct { margin-top: 22px !important; }
   #contact .inquiry-form { padding: 22px !important; }

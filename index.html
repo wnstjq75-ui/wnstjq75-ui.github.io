@@ -43,7 +43,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260930-iptv-policy-1">
   <link rel="stylesheet" href="award-benefit.css?v=20261003-flow-1">
-  <link rel="stylesheet" href="landing-flow.css?v=20261003-flow-1">
+  <link rel="stylesheet" href="landing-flow.css?v=20261003-faq-2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1128,13 +1128,14 @@
 
 <section class="section section--faq" id="faq" aria-labelledby="faqTitle">
     <div class="container">
-      <div class="section__header section__header--center reveal">
+      <div class="section__header section__header--center reveal" data-faq-count="13 QUESTIONS">
         <p class="section__eyebrow">FAQ</p>
         <h2 class="section__title section__title--center" id="faqTitle">자주 묻는 질문</h2>
         <p class="section__lead section__lead--center">비용 · 제작 · 송출 범위 · 완전시청 기준</p>
 
       </div>
-      <div class="faq-list reveal">
+      <div class="faq-content">
+        <div class="faq-list reveal">
         <details class="faq-item">
           <summary class="faq-item__q">TV광고 비용은 얼마부터 시작하나요?</summary>
           <div class="faq-item__a">
@@ -1161,8 +1162,8 @@
         </details>
       </div>
       <details class="faq-more">
-        <summary>질문 9개 더 보기 <span>타겟팅 · 완전시청 · 계약 · 혜택</span></summary>
-        <div class="faq-list"><details class="faq-item">
+        <summary aria-controls="faqMoreQuestions"><span class="faq-more__label">질문 9개 더 보기</span><span class="faq-more__hint">타겟팅 · 완전시청 · 계약 · 혜택</span></summary>
+        <div class="faq-list" id="faqMoreQuestions"><details class="faq-item">
           <summary class="faq-item__q">IPTV 광고는 원하는 지역에만 송출할 수 있나요?</summary>
           <div class="faq-item__a">
             <p>가능합니다. 강남·송파·서초·용산·분당 지역 타겟팅에는 30% 할증이 적용되며, 이외 지역에는 할증이 적용되지 않습니다. 상세 송출 권역은 상담 시 확인해 주세요.</p>
@@ -1217,6 +1218,7 @@
           </div>
         </details></div>
       </details>
+      </div>
     </div>
   </section>
 

@@ -1,0 +1,156 @@
+/* KCST benefit for lump-sum IPTV contracts. */
+.award-promo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  max-width: 100%;
+  margin-top: 22px;
+  padding: 14px 20px;
+  border: 1px solid rgba(196, 168, 120, 0.35);
+  border-radius: 12px;
+  background: rgba(196, 168, 120, 0.08);
+  color: #f3ead9;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  text-decoration: none;
+  word-break: keep-all;
+}
+.award-promo__badge {
+  color: #e8c991;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.award-promo strong { color: #e8c991; }
+.award-promo__arrow { color: #e8c991; }
+.award-side-link {
+  display: block;
+  margin-top: 7px;
+  color: #e8c991;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.section--award-benefit {
+  background: #f3efe6;
+  border-bottom: 1px solid #ded7c8;
+  color: #171713;
+}
+.award-benefit__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.award-benefit__eyebrow {
+  margin: 0 0 14px;
+  color: #795b2c;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.award-benefit__title {
+  margin: 0 0 18px;
+  color: #171713;
+  font-size: clamp(1.75rem, 3.7vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+.award-benefit__title span { color: #795b2c; }
+.award-benefit__lead {
+  margin: 0;
+  color: #635c50;
+  font-size: 1rem;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+.award-benefit__offer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 30px 24px;
+  border: 1px solid #cbb68b;
+  border-radius: 14px;
+  background: #ebe2d1;
+  text-align: center;
+  word-break: keep-all;
+}
+.award-benefit__offer span { color: #665637; font-size: 0.8rem; line-height: 1.6; }
+.award-benefit__offer strong { color: #5f451e; font-size: 2rem; line-height: 1.2; }
+.award-benefit__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.award-benefit__card {
+  padding: 24px 20px;
+  border: 1px solid #ded7c8;
+  border-radius: 14px;
+  background: #fffdf8;
+}
+.award-benefit__num {
+  display: block;
+  margin-bottom: 20px;
+  color: #8a6b37;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.award-benefit__card h3 {
+  margin: 0 0 12px;
+  color: #24221e;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.award-benefit__card p {
+  margin: 0;
+  color: #635c50;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+.award-benefit__footer { margin-top: 26px; }
+.award-benefit__note { margin: 0 0 22px; color: #635c50; font-size: 0.8rem; line-height: 1.7; word-break: keep-all; }
+.award-benefit__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; }
+.award-benefit__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 48px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  background: #24221e;
+  color: #fffdf8;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.award-benefit__source { padding: 12px 0; color: #705327; font-size: 0.85rem; text-decoration: underline; text-underline-offset: 4px; }
+.award-promo:hover { border-color: #c4a878; }
+.award-benefit__cta:hover { background: #493d2c; }
+.award-promo:focus-visible,
+.award-side-link:focus-visible,
+.award-benefit__cta:focus-visible,
+.award-benefit__source:focus-visible { outline: 3px solid #c4a878; outline-offset: 4px; }
+@media (max-width: 960px) {
+  .award-benefit__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .award-promo { display: flex; padding: 14px 16px; text-align: center; gap: 6px 10px; }
+  .award-promo__badge { width: 100%; }
+  .award-benefit__header { grid-template-columns: 1fr; gap: 24px; }
+  .award-benefit__offer { padding: 24px 20px; }
+  .award-benefit__grid { grid-template-columns: 1fr; }
+  .award-benefit__card { padding: 22px; }
+  .award-benefit__num { margin-bottom: 12px; }
+  .award-benefit__cta { width: 100%; }
+}

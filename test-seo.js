@@ -93,11 +93,12 @@ const faqQuestions = [
   'IPTV 타겟팅을 적용하면 비용이 추가되나요?',
   'TV광고 계약 기간은 얼마인가요?',
   '중소기업이나 지역 매장도 TV광고를 진행할 수 있나요?',
+  '일시불 계약 시 어떤 추가 혜택이 있나요?',
 ];
 ok('faq id', /id="faq"/.test(html));
 ok('faq title', /id="faqTitle">자주 묻는 질문<\/h2>/.test(html) || /id="faqTitle">TV광고 자주 묻는 질문<\/h2>/.test(html));
 faqQuestions.forEach((question) => ok('faq: ' + question, html.includes('<summary class="faq-item__q">' + question + '</summary>')));
-ok('12 visible faq items', (html.match(/<details class="faq-item">/g) || []).length === 12);
+ok('visible faq item count', (html.match(/<details class="faq-item">/g) || []).length === faqQuestions.length);
 
 // Required anchors remain on the single page
 ['about', 'solution', 'benefits', 'product', 'targeting', 'aicf', 'showcase', 'pricing', 'faq', 'contact'].forEach((id) => {
@@ -130,7 +131,7 @@ ok('WebSite present',
   website.inLanguage === 'ko-KR'
 );
 ok('Service present', !!service && service.name === 'TV광고 제작·IPTV 맞춤 송출' && service.url === ROOT);
-ok('FAQPage present', !!faqPage && Array.isArray(faqPage.mainEntity) && faqPage.mainEntity.length === 12);
+ok('FAQPage present', !!faqPage && Array.isArray(faqPage.mainEntity) && faqPage.mainEntity.length === faqQuestions.length);
 ok('FAQPage questions match visible FAQ', !!faqPage && faqQuestions.every((question, index) => faqPage.mainEntity[index].name === question));
 if (faqPage) {
   const visibleAnswers = Array.from(html.matchAll(/<div class="faq-item__a">\s*<p>([\s\S]*?)<\/p>\s*<\/div>/g), (item) => stripTags(item[1]));

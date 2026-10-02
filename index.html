@@ -42,6 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260930-iptv-policy-1">
+  <link rel="stylesheet" href="award-benefit.css?v=20261003-kcst-1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -148,6 +149,11 @@
         "@type": "Question",
         "name": "중소기업이나 지역 매장도 TV광고를 진행할 수 있나요?",
         "acceptedAnswer": {"@type": "Answer", "text": "가능합니다. 소상공인 계약은 IPTV 3사 동시 송출과 지역 타겟팅으로 진행합니다. 채널·시간·오디언스 타겟팅을 원하시면 일반계약의 계약금을 별도로 문의해 주세요."}
+      },
+      {
+        "@type": "Question",
+        "name": "일시불 계약 시 어떤 추가 혜택이 있나요?",
+        "acceptedAnswer": {"@type": "Answer", "text": "IPTV 광고 일시불 계약 시 대한민국 고객만족 신뢰도 대상(KCST) 무상 증정 혜택을 제공합니다. 수상 특전은 기업·브랜드 상장, 상패, 공식 인증서, 수상 엠블럼 이미지, 네이버 플레이스 배너, X배너, 인증 메탈 현판 및 대한민국 소비자신문 기사 보도입니다. KCST 선정 심사 및 수상 확정 후 제공되며, 진행 절차는 상담 시 안내드립니다."}
       }
     ]
   }
@@ -169,7 +175,7 @@
         <li><a href="#product">상품 구조</a></li>
         <li><a href="#targeting">타겟팅</a></li>
         <li><a href="#showcase">제작 사례</a></li>
-        <li><a href="#pricing">TV광고 비용</a></li>
+        <li><a href="#pricing">TV광고 비용·혜택</a></li>
         <li><a href="#contact" class="nav__cta">상담 문의</a></li>
       </ul>
     </div>
@@ -995,6 +1001,11 @@
       <div class="pricing-premium__header reveal">
         <h2 class="section__title section__title--center">예산에 맞춰 설계하세요</h2>
         <p class="pricing-premium__guide">월 100만원부터 · 예상 완전시청 노출을 바로 확인 · VAT 별도 · 기본 계약 6개월</p>
+        <a class="award-promo" href="#award-benefit">
+          <span class="award-promo__badge">일시불 계약 혜택</span>
+          <span>대한민국 고객만족 신뢰도 대상 <strong>무상 증정</strong></span>
+          <span class="award-promo__arrow" aria-hidden="true">↗</span>
+        </a>
       </div>
 
         <!-- 지역 할증 선택(좌) + 계산기 박스 + 혜택 텍스트(우) -->
@@ -1147,10 +1158,15 @@
           </div>
         </div>
 
-        <div class="pricing-side-text" aria-label="공통 제공 및 누적 혜택">
+        <div class="pricing-side-text" aria-label="공통 제공 및 계약 혜택">
           <p class="pricing-side-text__block">
             <strong>공통 제공</strong>
             AI TV CF 제작 지원 · 완전시청 기준 송출 · 월간 리포트 제공
+          </p>
+          <p class="pricing-side-text__block">
+            <strong>일시불 계약 특별 혜택</strong>
+            대한민국 고객만족 신뢰도 대상 무상 증정
+            <a class="award-side-link" href="#award-benefit">수상 특전 보기 →</a>
           </p>
           <p class="pricing-side-text__block">
             <strong>누적 600만원 이상</strong>
@@ -1160,6 +1176,55 @@
             <strong>누적 1,200만원 이상</strong>
             국민일보 또는 동아일보 브랜드어워드 혜택
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lump-sum contract award benefit -->
+  <section class="section section--award-benefit" id="award-benefit" aria-labelledby="awardBenefitTitle">
+    <div class="container">
+      <div class="award-benefit__header">
+        <div>
+          <p class="award-benefit__eyebrow">일시불 계약 특별 혜택</p>
+          <h2 class="award-benefit__title" id="awardBenefitTitle">대한민국 고객만족<br>신뢰도 대상 <span>무상 증정</span></h2>
+          <p class="award-benefit__lead">TV광고와 함께, 브랜드의 수상 이력을 홍보에 활용하세요.</p>
+        </div>
+        <div class="award-benefit__offer">
+          <span>IPTV 광고 일시불 계약 시</span>
+          <strong>무상 증정</strong>
+          <span>대한민국 고객만족 신뢰도 대상 · KCST</span>
+        </div>
+      </div>
+
+      <ul class="award-benefit__grid" aria-label="KCST 수상 특전">
+        <li class="award-benefit__card">
+          <span class="award-benefit__num" aria-hidden="true">01</span>
+          <h3>상장 · 상패 · 공식 인증서</h3>
+          <p>기업·브랜드명이 기재된 상장과 수상인증 트로피, 공식 수상 인증서를 제공합니다.</p>
+        </li>
+        <li class="award-benefit__card">
+          <span class="award-benefit__num" aria-hidden="true">02</span>
+          <h3>수상 엠블럼 · 플레이스 배너</h3>
+          <p>수상 엠블럼 이미지와 네이버 플레이스 배너를 온라인 브랜드 홍보에 활용할 수 있습니다.</p>
+        </li>
+        <li class="award-benefit__card">
+          <span class="award-benefit__num" aria-hidden="true">03</span>
+          <h3>X배너 · 인증 메탈 현판</h3>
+          <p>매장·행사용 X배너와 로비·매장에 전시할 인증 메탈 현판을 제공합니다.</p>
+        </li>
+        <li class="award-benefit__card">
+          <span class="award-benefit__num" aria-hidden="true">04</span>
+          <h3>대한민국 소비자신문 기사 보도</h3>
+          <p>수상 기업·브랜드의 소식을 기사로 소개해 수상 이력을 알릴 수 있습니다.</p>
+        </li>
+      </ul>
+
+      <div class="award-benefit__footer">
+        <p class="award-benefit__note">KCST 선정 심사 및 수상 확정 후 제공됩니다. 진행 절차는 상담 시 안내드립니다.</p>
+        <div class="award-benefit__actions">
+          <a class="award-benefit__cta" href="#contact">일시불 혜택 상담하기 <span aria-hidden="true">→</span></a>
+          <a class="award-benefit__source" href="https://www.kcsta.co.kr/" target="_blank" rel="noopener noreferrer">KCST 공식 안내 <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>
@@ -1245,6 +1310,12 @@
           <summary class="faq-item__q">중소기업이나 지역 매장도 TV광고를 진행할 수 있나요?</summary>
           <div class="faq-item__a">
             <p>가능합니다. 소상공인 계약은 IPTV 3사 동시 송출과 지역 타겟팅으로 진행합니다. 채널·시간·오디언스 타겟팅을 원하시면 일반계약의 계약금을 별도로 문의해 주세요.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q">일시불 계약 시 어떤 추가 혜택이 있나요?</summary>
+          <div class="faq-item__a">
+            <p>IPTV 광고 일시불 계약 시 대한민국 고객만족 신뢰도 대상(KCST) 무상 증정 혜택을 제공합니다. 수상 특전은 기업·브랜드 상장, 상패, 공식 인증서, 수상 엠블럼 이미지, 네이버 플레이스 배너, X배너, 인증 메탈 현판 및 대한민국 소비자신문 기사 보도입니다. KCST 선정 심사 및 수상 확정 후 제공되며, 진행 절차는 상담 시 안내드립니다.</p>
           </div>
         </details>
       </div>

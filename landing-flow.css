@@ -1,0 +1,140 @@
+/* One reading flow: package → budget → examples → award → details → inquiry. */
+body { background: #080808; }
+#nav, #nav.nav--scrolled { background: rgba(8,8,8,.95) !important; border-bottom: 1px solid #252525 !important; }
+#nav .nav__logo-text, #nav .nav__menu a { color: #bdbdb7 !important; }
+#nav .nav__menu a:hover { color: #fff !important; }
+#nav .nav__menu .nav__cta { color: #f5f5f2 !important; background: #202020 !important; }
+#nav .nav__toggle span { background: #ddd !important; }
+#nav .nav__menu--open { background: #101010 !important; }
+#about, #campaign-guide { padding: 64px 0 !important; }
+.package-overview, .campaign-guide { padding: 64px 0; background: #0b0b0b; color: #f5f5f2; border-bottom: 1px solid #242424; }
+.flow-heading { margin-bottom: 30px; }
+.flow-eyebrow { margin: 0 0 12px; color: #93938e; font-size: .7rem; font-weight: 600; letter-spacing: .16em; }
+.flow-heading h2 { margin: 0; color: #f5f5f2; font-size: clamp(1.6rem,3vw,2.25rem); font-weight: 700; line-height: 1.35; letter-spacing: -.04em; word-break: keep-all; }
+.flow-heading > p:last-child, .flow-heading--inline > p { margin: 14px 0 0; color: #a6a6a0; font-size: .9rem; line-height: 1.7; word-break: keep-all; }
+.package-overview__grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.package-overview__grid article { padding: 26px 0; border-top: 1px solid #3b3b38; }
+.package-overview__num { color: #81817b; font-size: .64rem; font-weight: 500; letter-spacing: .1em; }
+.package-overview__grid h3 { margin: 18px 0 10px; font-size: 1.35rem; font-weight: 600; letter-spacing: -.035em; }
+.package-overview__grid strong { display: block; font-size: .84rem; font-weight: 500; color: #d7d7d0; }
+.package-overview__grid p { margin: 14px 0 0; color: #989892; font-size: .86rem; line-height: 1.8; word-break: keep-all; }
+.package-overview__terms { margin: 0; color: #898983; font-size: .73rem; line-height: 1.7; }
+.package-overview__links { display: flex; flex-wrap: wrap; gap: 16px 32px; margin-top: 20px; }
+.package-overview__links a { display: inline-flex; align-items: center; gap: 24px; color: #d8d8d2; font-size: .84rem; }
+.package-overview__links a:hover { color: #fff; }
+
+/* Place the calculator immediately after the concise package overview. */
+#pricing, #aicf, #faq, #contact { padding-top: 64px !important; padding-bottom: 64px !important; }
+#pricing { background: #101010 !important; }
+#pricing .pricing-premium__header { margin-bottom: 30px !important; }
+#pricing .section__title, #aicf .aicf__portfolio-title, #faq .section__title, #contact .section__title { font-size: clamp(1.6rem,3vw,2.25rem) !important; line-height: 1.35 !important; letter-spacing: -.04em !important; }
+#pricing .pricing-premium__guide { margin-top: 12px !important; }
+#pricing .pricing-sim-row { display: grid !important; grid-template-columns: 250px minmax(0,1fr) !important; align-items: stretch !important; gap: 20px !important; width: 100% !important; max-width: none !important; }
+#pricing .calc-surcharge { width: auto !important; max-width: none !important; min-width: 0 !important; padding: 24px !important; }
+#pricing .ad-calc { width: 100% !important; min-width: 0 !important; max-width: none !important; margin: 0 !important; }
+#pricing .ad-calc__panel { padding: 26px !important; }
+#pricing .ad-calc__intro { padding: 0 0 22px !important; margin-bottom: 20px !important; }
+#pricing .ad-calc__title { font-size: 1.15rem !important; }
+#pricing .ad-calc__lead { margin-top: 8px !important; font-size: .82rem !important; line-height: 1.65 !important; }
+#pricing .ad-calc__body { display: grid !important; grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important; grid-template-areas: none !important; gap: 24px !important; }
+#pricing .ad-calc__controls, #pricing .ad-calc__result { min-width: 0 !important; width: auto !important; padding: 0 !important; }
+#pricing .ad-calc__controls { grid-area: auto !important; }
+#pricing .ad-calc__result { grid-area: auto !important; padding: 20px !important; border-radius: 8px; min-height: 0 !important; }
+#pricing .ad-calc__field { margin-bottom: 22px !important; }
+#pricing .ad-calc__result-num--primary { font-size: clamp(2rem,3.5vw,2.8rem) !important; }
+#pricing .ad-calc__notes { margin-top: 18px !important; }
+#pricing .ad-calc__notes p { font-size: .7rem !important; line-height: 1.7 !important; }
+#pricing .ad-calc__meta-row { display: none !important; }
+#pricing .pricing-side-text { grid-column: 1/-1; display: grid !important; grid-template-columns: 160px repeat(2,minmax(0,1fr)) !important; align-items: start !important; gap: 20px !important; width: auto !important; max-width: none !important; padding: 20px 0 0 !important; border-top: 1px solid #333; }
+.pricing-side-text__heading { color: #aaa; font-size: .8rem; font-weight: 500; }
+#pricing .pricing-side-text__block { margin: 0 !important; font-size: .8rem !important; line-height: 1.7 !important; }
+#pricing .pricing-side-text__block strong { margin-bottom: 4px !important; }
+#aicf { background: #080808 !important; }
+#aicf .aicf__portfolio-header { margin: 0 0 26px !important; }
+#aicf .aicf__portfolio-desc { margin-top: 12px !important; }
+#aicf .showcase__note { margin-top: 18px !important; font-size: .75rem !important; line-height: 1.7 !important; }
+#aicf .showcase__note span { font-size: inherit !important; }
+#aicf .aicf__portfolio { margin-top: 0 !important; padding-top: 0 !important; }
+
+/* Native disclosures retain every detailed policy and sample. */
+.flow-heading--inline { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+.campaign-detail { border-top: 1px solid #33332f; }
+.campaign-detail:last-child { border-bottom: 1px solid #33332f; }
+.campaign-detail > summary { display: flex; align-items: center; gap: 20px; min-height: 80px; padding: 20px 0; list-style: none; cursor: pointer; }
+.campaign-detail > summary::-webkit-details-marker, .faq-more > summary::-webkit-details-marker { display: none; }
+.campaign-detail__number { color: #73736e; font-size: .75rem; }
+.campaign-detail > summary strong { font-size: 1.05rem; font-weight: 500; }
+.campaign-detail__hint { margin-left: auto; color: #90908a; font-size: .8rem; }
+.campaign-detail > summary::after { content: '+'; color: #c9c9c2; font-size: 1.6rem; font-weight: 300; }
+.campaign-detail[open] > summary::after { content: '−'; }
+.campaign-detail > .section { padding: 36px 0 !important; border-radius: 12px; margin-bottom: 24px; }
+.campaign-detail > .section > .container { padding-left: 24px; padding-right: 24px; }
+.campaign-detail .section__title { font-size: 1.8rem !important; }
+.campaign-detail .section__header { margin-bottom: 24px !important; }
+.campaign-detail .reveal { opacity: 1; transform: none; }
+#faq { background: #101010 !important; }
+#faq .section__header { margin-bottom: 26px !important; }
+#faq .faq-item { box-shadow: none !important; background: #151515 !important; border-radius: 8px; }
+.faq-more { margin-top: 16px; }
+.faq-more > summary { display: flex; justify-content: space-between; gap: 16px; padding: 18px 4px; color: #ddd; font-size: .85rem; list-style: none; cursor: pointer; border-bottom: 1px solid #343434; }
+.faq-more > summary span { color: #888; font-size: .75rem; }
+.faq-more > summary::after { content: '+'; }
+.faq-more[open] > summary::after { content: '−'; }
+.faq-more .faq-list { margin-top: 16px !important; }
+#contact { background: #080808 !important; }
+#contact .contact-sales { gap: 50px !important; }
+#contact .section__desc { margin-top: 16px !important; }
+#contact .contact-sales__direct { margin-top: 30px !important; }
+.package-overview__links a:focus-visible, .campaign-detail > summary:focus-visible, .faq-more > summary:focus-visible { outline: 2px solid #c4a878; outline-offset: 5px; }
+
+@media(max-width:960px) {
+  #pricing .pricing-sim-row { grid-template-columns: 1fr !important; }
+  #pricing .calc-surcharge { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+  #pricing .calc-surcharge__eyebrow, #pricing .calc-surcharge__title, #pricing .calc-surcharge__lead { grid-column: 1/-1; margin: 0 !important; }
+  #pricing .calc-surcharge__group { margin: 10px 0 0 !important; }
+  #pricing .calc-surcharge__summary { margin-top: 8px !important; }
+  #pricing .calc-surcharge > .calc-surcharge__note { grid-column: 1/-1; }
+}
+@media(max-width:600px) {
+  .package-overview, .campaign-guide { padding: 44px 0; }
+  #about, #campaign-guide { padding: 44px 0 !important; }
+  #pricing, #aicf, #faq, #contact { padding-top: 44px !important; padding-bottom: 44px !important; }
+  .flow-heading { margin-bottom: 24px; }
+  .flow-heading h2, #pricing .section__title, #aicf .aicf__portfolio-title, #faq .section__title, #contact .section__title { font-size: 1.6rem !important; }
+  .package-overview__grid { grid-template-columns: 1fr; gap: 0; counter-reset: package; }
+  .package-overview__grid article { counter-increment: package; }
+  .package-overview__grid article { position: relative; padding: 20px 0 20px 48px; }
+  .package-overview__num { position: absolute; top: 24px; left: 0; font-size: 0; }
+  .package-overview__num::before { content: counter(package,decimal-leading-zero); font-size: .72rem; }
+  .package-overview__grid h3 { margin: 0 0 6px; font-size: 1.15rem; }
+  .package-overview__grid p { margin-top: 8px; font-size: .8rem; }
+  .package-overview__grid p br { display: none; }
+  .package-overview__links { flex-direction: column; gap: 12px; margin-top: 16px; }
+  .package-overview__links a { font-size: .78rem; }
+  #pricing .calc-surcharge { grid-template-columns: 1fr; padding: 20px !important; gap: 6px; }
+  #pricing .calc-surcharge__region { grid-template-columns: 1fr 1fr !important; }
+  #pricing .calc-surcharge__chip { padding: 10px !important; min-height: 90px; }
+  #pricing .calc-surcharge__chip--region { grid-column: auto !important; }
+  #pricing .calc-surcharge__chip strong { font-size: .72rem !important; }
+  #pricing .calc-surcharge__chip span { font-size: .64rem !important; }
+  #pricing .calc-surcharge__group { margin-top: 8px !important; }
+  #pricing .calc-surcharge__summary { padding-top: 12px !important; }
+  #pricing .ad-calc__panel { padding: 20px !important; }
+  #pricing .ad-calc__intro { margin-bottom: 20px !important; padding-bottom: 18px !important; }
+  #pricing .ad-calc__body { grid-template-columns: 1fr !important; gap: 24px !important; }
+  #pricing .ad-calc__result { border-top: 1px solid #333 !important; padding: 20px !important; }
+  #pricing .ad-calc__result-num--primary { font-size: 2.6rem !important; }
+  #pricing .ad-calc__notes { margin-top: 12px !important; }
+  #pricing .pricing-side-text { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .pricing-side-text__heading { grid-column: 1/-1; }
+  #pricing .pricing-side-text__block { font-size: .74rem !important; }
+  .flow-heading--inline { display: block; }
+  .campaign-detail > summary { flex-wrap: wrap; gap: 0 12px; padding: 16px 0; min-height: 84px; }
+  .campaign-detail > summary strong { flex: 1; font-size: .95rem; }
+  .campaign-detail__hint { order: 3; flex: 0 0 100%; margin: 6px 0 0; padding-left: 28px; font-size: .72rem; }
+  .campaign-detail > .section > .container { padding-left: 16px; padding-right: 16px; }
+  .faq-more > summary span { display: none; }
+  #contact .contact-sales { gap: 28px !important; }
+  #contact .contact-sales__direct { margin-top: 22px !important; }
+  #contact .inquiry-form { padding: 22px !important; }
+}

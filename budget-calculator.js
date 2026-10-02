@@ -2,7 +2,7 @@
  * Pure 30-day budget → complete-view exposure calculator.
  * Used by pricing simulator UI and node unit tests.
  *
- * IPTV 3사 통합: 월 100만원당 예상 완전시청 노출 15만 회 (각 5만 회)
+ * IPTV 3사 통합: 월 100만원당 완전 시청 보장 15만 회 (각 5만 회)
  */
 (function (root, factory) {
   if (typeof module === 'object' && module.exports) {
@@ -69,7 +69,7 @@
     return clampBudgetManwon(manwon, productId) * 10000;
   }
 
-  /** IPTV 3사 통합: 월 100만원당 예상 완전시청 15만 회 */
+  /** IPTV 3사 통합: 월 100만원당 완전 시청 보장 15만 회 */
   function exposuresAll3(won) {
     return Math.floor(won * 0.15);
   }

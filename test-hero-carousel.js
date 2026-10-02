@@ -99,7 +99,7 @@ assert(i === HeroCarousel.slideCount() - 1, 'prev wraps to last');
 const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
 const js = fs.readFileSync(path.join(__dirname, 'script.js'), 'utf8');
 const heroHtml = html.slice(html.indexOf('id="hero"'), html.indexOf('id="about"'));
-const showcaseHtml = html.slice(html.indexOf('id="aicf"'), html.indexOf('id="report"'));
+const showcaseHtml = (html.match(/<section\b[^>]*id="aicf"[^>]*>[\s\S]*?<\/section>/) || [''])[0];
 assert(heroHtml.indexOf('AI TV CF') === -1 && heroHtml.indexOf('제품광고') === -1 && heroHtml.indexOf('브랜드광고') === -1, 'hero visible copy is standardized to AI CF');
 assert(showcaseHtml.indexOf('AI TV CF') === -1 && showcaseHtml.indexOf('제품광고') === -1 && showcaseHtml.indexOf('브랜드광고') === -1, 'showcase visible copy is standardized to AI CF');
 assert(html.indexOf('portfolio-carousel') !== -1, 'portfolio carousel markup');

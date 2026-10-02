@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const S = require('./targeting-surcharge.js');
 const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
-const section = html.slice(html.indexOf('id="targeting"'), html.indexOf('id="aicf"'));
+const section = (html.match(/<section\b[^>]*id="targeting"[^>]*>[\s\S]*?<\/section>/) || [''])[0];
 
 assert.equal(S.ROWS.length, 4);
 for (const category of ['time', 'channel', 'audience']) {

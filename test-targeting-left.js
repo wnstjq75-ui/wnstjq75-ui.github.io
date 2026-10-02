@@ -20,9 +20,7 @@ function assert(cond, msg) {
   }
 }
 
-const start = html.indexOf('id="targeting"');
-const end = html.indexOf('id="aicf"');
-const section = html.slice(start, end);
+const section = (html.match(/<section\b[^>]*id="targeting"[^>]*>[\s\S]*?<\/section>/) || [''])[0];
 const leftStart = section.indexOf('targeting__text');
 const leftEnd = section.indexOf('targeting__panel');
 const left = section.slice(leftStart, leftEnd);
@@ -66,7 +64,7 @@ assert(css.indexOf('var(--targeting-geo-height') !== -1, 'targeting visuals inhe
 assert(/#targeting \.targeting-tabs[\s\S]*grid-template-columns:\s*repeat\(4/.test(css), 'targeting tabs stay in one row');
 assert(js.indexOf('syncTargetingVisualHeight') !== -1, 'first GEO panel height is measured');
 assert(section.indexOf('id="surcharge"') !== -1 || section.indexOf('surcharge') !== -1, 'surcharge remains');
-assert(html.indexOf('href="#targeting"') !== -1, 'nav targeting');
+assert(html.indexOf('href="#campaign-guide"') !== -1, 'nav detailed targeting guide');
 assert(js.indexOf('targeting-tab') !== -1 || js.indexOf('targetingTabs') !== -1, 'tabs JS remains');
 assert(css.indexOf('targeting__points') !== -1, 'points CSS');
 

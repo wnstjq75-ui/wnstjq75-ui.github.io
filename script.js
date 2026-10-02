@@ -55,6 +55,53 @@
     });
   });
 
+  // Open containing disclosures when following links into detailed guidance.
+  const openAnchorDetails = (hash, scroll = false) => {
+    if (!hash || hash === '#') return;
+    let target;
+    try { target = document.getElementById(decodeURIComponent(hash.slice(1))); }
+    catch { return; }
+    if (!target) return;
+    let parent = target.parentElement;
+    let expanded = false;
+    while (parent) {
+      if (parent.tagName === 'DETAILS' && !parent.open) {
+        parent.open = true;
+        expanded = true;
+      }
+      parent = parent.parentElement;
+    }
+    if (scroll && expanded) requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+  };
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', () => openAnchorDetails(link.getAttribute('href')));
+  });
+  window.addEventListener('hashchange', () => openAnchorDetails(window.location.hash, true));
+  openAnchorDetails(window.location.hash, true);
+
+  const awardGallery = document.getElementById('awardGallery');
+  const awardPrev = document.getElementById('awardPrev');
+  const awardNext = document.getElementById('awardNext');
+  if (awardGallery && awardPrev && awardNext) {
+    const updateAwardControls = () => {
+      const end = awardGallery.scrollWidth - awardGallery.clientWidth;
+      awardPrev.disabled = awardGallery.scrollLeft <= 2;
+      awardNext.disabled = awardGallery.scrollLeft >= end - 2;
+    };
+    const moveAward = (direction) => {
+      const card = awardGallery.querySelector('.award-benefit__card');
+      const gap = parseFloat(getComputedStyle(awardGallery).columnGap) || 0;
+      const distance = card ? card.getBoundingClientRect().width + gap : awardGallery.clientWidth;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      awardGallery.scrollBy({ left: direction * distance, behavior: reducedMotion ? 'auto' : 'smooth' });
+    };
+    awardPrev.addEventListener('click', () => moveAward(-1));
+    awardNext.addEventListener('click', () => moveAward(1));
+    awardGallery.addEventListener('scroll', updateAwardControls, { passive: true });
+    window.addEventListener('resize', updateAwardControls, { passive: true });
+    updateAwardControls();
+  }
+
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(
     (entries) => {
